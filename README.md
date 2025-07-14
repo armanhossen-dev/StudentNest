@@ -35,5 +35,4 @@ We proudly present our dedicated team behind **StudentNest** – each member pla
 | Md. Rahul Hossain       | 241-15-766    | [@Rahul003-phy](https://github.com/Rahul003-phy) |
 | Sabbir Hosine           | 241-15-673    | [@sabbir-hossine](https://github.com/sabbir-hossine) |
 | Md. Wahidur Rahman      | 241-15-865    | [@Saief24](https://github.com/Saief24) |
-
---
+|-------------------------|---------------|----------------------------------|
