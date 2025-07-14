@@ -6,7 +6,7 @@
 
 ## 🌟 Key Features
 
-- 🔍 **Location-Based Search** (e.g., Khagan, Candgaon, Carabag, Kumkumari)
+- 🔍 **Location-Based Search** (e.g., Khagan, Candgaon, Carabag, Kumkumari, Shadhupara)
 - 💰 **Budget Filter** – Find rooms that match your financial range
 - 🏠 **Room/Seat Availability** with verified listings
 - 📍 **Map Integration** (optional future feature)
