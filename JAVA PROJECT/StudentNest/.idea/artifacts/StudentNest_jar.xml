@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="StudentNest:jar">
-    <output-path>$USER_HOME$/Desktop/B/jar file</output-path>
+    <output-path>$PROJECT_DIR$/out/artifacts/StudentNest_jar</output-path>
     <root id="archive" name="StudentNest.jar">
       <element id="module-output" name="StudentNest" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/21/javafx-controls-21.jar" path-in-jar="/" />
