@@ -128,17 +128,62 @@ public class StudentController {
      * In a real application, this data would be loaded from a database.
      */
     private void populateSampleData() {
-        allHomes.add(new StudentHome("Khagan", 4500, "1 seat available", "Spacious room with attached bath, near university gate."));
-        allHomes.add(new StudentHome("Candgaon", 3500, "2 seats available", "Shared room, 5 mins walk to campus, includes basic utilities."));
+        allHomes.add(new StudentHome("Khagan", 4500, "1 seat available", "Spacious room with attached bath."));
+        allHomes.add(new StudentHome("Candgaon", 3500, "2 seats available", "Shared room, 5 mins walk to campus."));
         allHomes.add(new StudentHome("Charabag", 5000, "Room available", "Single room, includes food and laundry service."));
-        allHomes.add(new StudentHome("Khagan", 1800, "1 seat available", "Budget-friendly, shared with 3 others, good for first-year students."));
-        allHomes.add(new StudentHome("Dattopara", 2800, "Seat available", "Quiet neighborhood, ideal for study, 10 mins by rickshaw."));
+        allHomes.add(new StudentHome("Khagan", 1800, "1 seat available", "Budget-friendly, shared with 3 others."));
+        allHomes.add(new StudentHome("Dattopara", 2800, "Seat available", "Quiet neighborhood, ideal for study, 2 mins by rickshaw."));
         allHomes.add(new StudentHome("Shadhupara", 5200, "Room available", "Premium single room with AC, attached balcony, and private kitchen."));
-        allHomes.add(new StudentHome("Kumkumari", 3200, "2 seats available", "Good environment, friendly landlord, common living area."));
+        allHomes.add(new StudentHome("Kumkumari", 3200, "2 seats available", "Good environment, friendly landlord."));
         allHomes.add(new StudentHome("Candgaon", 2200, "1 seat available", "Close to local market, shared room, fan included."));
         allHomes.add(new StudentHome("Charabag", 3800, "Room available", "Independent room, suitable for final year students, quiet area."));
-        allHomes.add(new StudentHome("Dattopara", 1500, "Seat available", "Very basic, but affordable, 20 mins walk to main campus."));
+        allHomes.add(new StudentHome("Dattopara", 1500, "Seat available", "Very basic, but affordable, 10 mins walk to main campus."));
+
+        allHomes.add(new StudentHome("Khagan", 2500, "2 seats available", "Simple room, near bus stand, shared bathroom."));
+        allHomes.add(new StudentHome("Candgaon", 4000, "Room available", "Well-lit single room with study table, close to campus."));
+        allHomes.add(new StudentHome("Charabag", 3000, "1 seat available", "Shared room, includes Wi-Fi and filtered water."));
+        allHomes.add(new StudentHome("Dattopara", 4500, "Room available", "Quiet area, good for group study, separate kitchen."));
+        allHomes.add(new StudentHome("Shadhupara", 6000, "Premium room", "AC, attached bath, free Wi-Fi, near library."));
+        allHomes.add(new StudentHome("Kumkumari", 2800, "2 seats available", "Shared with 2 others, kitchen access, clean environment."));
+        allHomes.add(new StudentHome("Khagan", 3300, "Seat available", "Close to grocery shops, includes basic furniture."));
+        allHomes.add(new StudentHome("Candgaon", 2000, "1 seat available", "Low budget shared room, fan only."));
+        allHomes.add(new StudentHome("Charabag", 5000, "Room available", "Independent single room, balcony with good view."));
+        allHomes.add(new StudentHome("Dattopara", 2600, "Seat available", "Budget friendly, quiet area, close to tea stalls."));
+
+        allHomes.add(new StudentHome("Shadhupara", 4800, "Room available", "AC room, includes Wi-Fi and cleaning service."));
+        allHomes.add(new StudentHome("Kumkumari", 3200, "2 seats available", "Common kitchen, friendly environment, 5 mins to bus stand."));
+        allHomes.add(new StudentHome("Khagan", 3700, "Seat available", "Spacious shared room with attached toilet."));
+        allHomes.add(new StudentHome("Candgaon", 2400, "Seat available", "Budget-friendly, includes water and Wi-Fi."));
+        allHomes.add(new StudentHome("Charabag", 5200, "Room available", "Premium single with attached kitchen, balcony."));
+        allHomes.add(new StudentHome("Dattopara", 1900, "Seat available", "Very basic, shared bathroom, student-friendly landlord."));
+        allHomes.add(new StudentHome("Shadhupara", 5600, "Room available", "Well furnished, AC, attached bathroom."));
+        allHomes.add(new StudentHome("Kumkumari", 3100, "2 seats available", "Shared room, includes basic furniture."));
+        allHomes.add(new StudentHome("Khagan", 4000, "Seat available", "Single room, 10 mins to university."));
+        allHomes.add(new StudentHome("Candgaon", 2700, "Seat available", "Close to campus, includes Wi-Fi and fan."));
+
+        allHomes.add(new StudentHome("Charabag", 4800, "Room available", "AC room, near campus, quiet study environment."));
+        allHomes.add(new StudentHome("Dattopara", 3000, "Seat available", "Shared with 2 students, fan, water filter included."));
+        allHomes.add(new StudentHome("Shadhupara", 5000, "Room available", "Premium single with AC and balcony."));
+        allHomes.add(new StudentHome("Kumkumari", 2800, "2 seats available", "Clean environment, kitchen access."));
+        allHomes.add(new StudentHome("Khagan", 3500, "Seat available", "Shared room, includes Wi-Fi."));
+        allHomes.add(new StudentHome("Candgaon", 3200, "Room available", "Near campus, quiet place, balcony."));
+        allHomes.add(new StudentHome("Charabag", 2600, "Seat available", "Budget friendly shared room."));
+        allHomes.add(new StudentHome("Dattopara", 1800, "Seat available", "Very basic, low rent, 20 mins walk."));
+        allHomes.add(new StudentHome("Shadhupara", 5400, "Room available", "Premium AC room, fully furnished."));
+        allHomes.add(new StudentHome("Kumkumari", 3000, "2 seats available", "Shared room, study table, fan included."));
+
+        allHomes.add(new StudentHome("Khagan", 4200, "Seat available", "Single room, quiet, close to library."));
+        allHomes.add(new StudentHome("Candgaon", 2500, "Seat available", "Budget friendly, fan only."));
+        allHomes.add(new StudentHome("Charabag", 4900, "Room available", "Independent AC room."));
+        allHomes.add(new StudentHome("Dattopara", 2100, "Seat available", "Shared room, budget rent."));
+        allHomes.add(new StudentHome("Shadhupara", 5800, "Room available", "Premium AC room with study desk."));
+        allHomes.add(new StudentHome("Kumkumari", 2700, "2 seats available", "Budget shared room."));
+        allHomes.add(new StudentHome("Khagan", 3600, "Seat available", "Near campus, Wi-Fi available."));
+        allHomes.add(new StudentHome("Candgaon", 2900, "Room available", "Close to market, shared room."));
+        allHomes.add(new StudentHome("Charabag", 5100, "Room available", "Single AC room, furnished."));
+        allHomes.add(new StudentHome("Dattopara", 2300, "Seat available", "Budget shared room, fan included."));
     }
+
 
     /**
      * Future Feature: Method to load data from a database.

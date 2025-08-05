@@ -9,12 +9,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" spacing="20.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.StudentController">
+<VBox alignment="TOP_CENTER" prefHeight="784.0" prefWidth="879.0" spacing="20.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.StudentController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label fx:id="title" styleClass="label-header" text="StudentNest - Student Home Finder" textFill="WHITE">
+    <Label fx:id="title" alignment="CENTER" prefHeight="80.0" prefWidth="535.0" styleClass="label-header" text="StudentNest - Student Home Finder" textFill="WHITE">
         <font>
             <Font name="System Bold" size="24.0" />
         </font>
@@ -26,7 +26,7 @@
                 <Font size="14.0" />
             </font>
         </Label>
-        <ComboBox fx:id="locationComboBox" prefHeight="41.0" prefWidth="150.0" promptText="Select Location" />
+        <ComboBox fx:id="locationComboBox" prefHeight="62.0" prefWidth="187.0" promptText="Select Location" />
     </HBox>
 
     <!-- New HBox for price range buttons -->
@@ -45,6 +45,6 @@
         </HBox>
     </VBox>
 
-    <ListView fx:id="homeListView" prefHeight="200.0" prefWidth="200.0" />
+    <ListView fx:id="homeListView" prefHeight="468.0" prefWidth="731.0" />
 
 </VBox>

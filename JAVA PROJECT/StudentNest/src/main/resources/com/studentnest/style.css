@@ -22,12 +22,12 @@
 
 /* Enhanced Labels */
 .label {
-    -fx-color: #9b77be;
-    -fx-text-fill: #E2E8F0;
-    -fx-font-weight: 500;
+    -fx-color: #f5f9ff;
+    -fx-text-fill: #f5f9ff;
+    -fx-font-weight: 700;
+    -fx-font-size: 20px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 1, 0, 0, 0.5);
 }
-
 
 /* Modern Header Label */
 .label-header {
@@ -114,7 +114,7 @@
 }
 
 .slider .thumb:hover {
-    -fx-background-color: linear-gradient(135deg, #60A5FA, #3B82F6);
+    -fx-background-color:  #0b6db3;
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
     -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.6), 12, 0, 0, 4);
@@ -144,14 +144,18 @@
     -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.3), 12, 0, 0, 4);
     -fx-border-color: transparent;
     -fx-border-width: 0;
+
 }
 
 .button:hover {
-    -fx-background-color: linear-gradient(135deg, #60A5FA, #3B82F6);
-    -fx-scale-x: 1.02;
-    -fx-scale-y: 1.02;
-    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.4), 16, 0, 0, 6);
+    -fx-background-color: linear-gradient(to bottom, #3B82F6, #2563EB); /* Vibrant blue gradient */
+    -fx-text-fill: white;
+    -fx-font-weight: 600;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(37, 99, 235, 0.45), 14, 0.3, 0, 4);
 }
+
 
 .button:pressed {
     -fx-background-color: linear-gradient(135deg, #2563EB, #1D4ED8);
@@ -206,7 +210,7 @@
 
 .list-view .list-cell {
     -fx-background-color: transparent;
-    -fx-text-fill: #374151;
+    -fx-text-fill: #0080ff;
     -fx-padding: 16 20;
     -fx-font-weight: 500;
     -fx-border-color: transparent transparent #F3F4F6 transparent;

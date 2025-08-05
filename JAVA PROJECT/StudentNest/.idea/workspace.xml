@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1af0b5a3-9f8e-47fd-9d73-08fc2a44ec83" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/StudentNest_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/studentnest/StudentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/studentnest/StudentNestApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/studentnest/model/StudentHome.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/studentnest/dark-css.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/studentnest/student-home-finder.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/studentnest/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studentnest/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studentnest/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studentnest/StudentNestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studentnest/StudentNestApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/studentnest/student-home-finder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/studentnest/student-home-finder.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/studentnest/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/studentnest/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +58,13 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\CODE OF LIFE\Github\StudentNest\JAVA PROJECT\StudentNest\src\main\resources\com\studentnest" />
+      <recent name="H:\CODE OF LIFE\Github\StudentNest\JAVA PROJECT\StudentNest\src\main\java" />
+      <recent name="H:\CODE OF LIFE\Github\StudentNest\JAVA PROJECT\StudentNest\src\main\java\com\studentnest" />
+    </key>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1af0b5a3-9f8e-47fd-9d73-08fc2a44ec83" name="Changes" comment="" />
