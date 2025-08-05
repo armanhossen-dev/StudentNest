@@ -1,0 +1,90 @@
+/*
+ * StudentNest CSS Stylesheet
+ */
+
+/* Main VBox container */
+.root {
+    -fx-background-color: #3c3f41; /* Dark background color */
+    -fx-font-family: "Segoe UI", "Tahoma", "Arial", sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: #a9b7c6; /* Light gray text color */
+}
+
+/* Heading Label */
+.label-header {
+    -fx-text-fill: #a9b7c6;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 0 0 0;
+}
+
+/* Combo Box */
+.combo-box {
+    -fx-background-color: #4e5254; /* Slightly lighter dark background */
+    -fx-border-color: #616161;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-text-fill: #a9b7c6;
+}
+.combo-box .list-cell {
+    -fx-background-color: #4e5254;
+    -fx-text-fill: #a9b7c6;
+}
+.combo-box .arrow-button {
+    -fx-background-color: #4e5254;
+}
+
+/* Slider */
+.slider .track {
+    -fx-background-color: #616161;
+    -fx-pref-height: 5px;
+    -fx-background-radius: 5px;
+}
+.slider .thumb {
+    -fx-background-color: #4286f4; /* Blue color for the thumb */
+    -fx-background-radius: 10px;
+    -fx-pref-height: 15px;
+    -fx-pref-width: 15px;
+}
+.slider .axis .tick-label {
+    -fx-text-fill: #a9b7c6;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #4286f4; /* Blue button color */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+.button:hover {
+    -fx-background-color: #3b7ad1; /* Darker blue on hover */
+}
+
+/* ListView */
+.list-view {
+    -fx-background-color: #4e5254;
+    -fx-border-color: #616161;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+}
+.list-view .list-cell {
+    -fx-background-color: #4e5254;
+    -fx-text-fill: #a9b7c6;
+    -fx-padding: 10px;
+}
+.list-view .list-cell:filled:selected {
+    -fx-background-color: #55595c; /* Slightly different color for selected item */
+}
+.list-view .scroll-bar:vertical .thumb,
+.list-view .scroll-bar:horizontal .thumb {
+    -fx-background-color: #616161;
+    -fx-background-insets: 2px, 0, 0;
+    -fx-background-radius: 2em;
+}
