@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.RegistrationController">
+    <children>
+        <Label text="Create New Account" textAlignment="CENTER">
+            <font>
+                <Font size="24.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="30.0" top="30.0" />
+            </VBox.margin>
+        </Label>
+
+        <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <padding>
+                <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+            </padding>
+
+            <VBox spacing="8.0">
+                <Label text="User Type:" />
+                <ComboBox fx:id="userTypeComboBox" prefWidth="300.0" />
+            </VBox>
+
+            <VBox spacing="8.0">
+                <Label text="Full Name:" />
+                <TextField fx:id="nameField" prefWidth="300.0" />
+            </VBox>
+
+            <VBox spacing="8.0">
+                <Label text="Phone Number:" />
+                <TextField fx:id="phoneField" prefWidth="300.0" />
+            </VBox>
+
+            <VBox spacing="8.0">
+                <Label text="Username:" />
+                <TextField fx:id="usernameField" prefWidth="300.0" />
+            </VBox>
+
+            <VBox spacing="8.0">
+                <Label text="Password:" />
+                <PasswordField fx:id="passwordField" prefWidth="300.0" />
+            </VBox>
+
+            <Button fx:id="registerButton" onAction="#handleRegister" prefWidth="300.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Register">
+                <VBox.margin>
+                    <Insets top="15.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button fx:id="backToLoginButton" onAction="#handleBackToLogin" prefWidth="300.0" style="-fx-background-color: #ff9800; -fx-text-fill: white;" text="Back to Login" />
+        </VBox>
+    </children>
+
+    <padding>
+        <Insets bottom="30.0" left="50.0" right="50.0" top="30.0" />
+    </padding>
+
+    <style>
+        -fx-background-color: linear-gradient(to bottom, #f0f8ff, #e6f3ff);
+    </style>
+</VBox>

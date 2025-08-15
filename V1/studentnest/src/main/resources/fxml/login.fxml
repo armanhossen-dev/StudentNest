@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.LoginController">
+    <children>
+        <Label text="StudentNest - Student Home Finder" textAlignment="CENTER">
+            <font>
+                <Font size="24.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="30.0" top="50.0" />
+            </VBox.margin>
+        </Label>
+
+        <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <padding>
+                <Insets bottom="40.0" left="50.0" right="50.0" top="40.0" />
+            </padding>
+
+            <Label text="Login to Your Account">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+
+            <VBox spacing="10.0">
+                <Label text="User Type:" />
+                <ComboBox fx:id="userTypeComboBox" prefWidth="300.0" />
+            </VBox>
+
+            <VBox spacing="10.0">
+                <Label text="Username:" />
+                <TextField fx:id="usernameField" prefWidth="300.0" />
+            </VBox>
+
+            <VBox spacing="10.0">
+                <Label text="Password:" />
+                <PasswordField fx:id="passwordField" prefWidth="300.0" />
+            </VBox>
+
+            <Button fx:id="loginButton" onAction="#handleLogin" prefWidth="300.0" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Login">
+                <VBox.margin>
+                    <Insets top="20.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button fx:id="createAccountButton" onAction="#handleCreateAccount" prefWidth="300.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Create Account" />
+        </VBox>
+    </children>
+
+    <padding>
+        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+    </padding>
+
+    <style>
+        -fx-background-color: linear-gradient(to bottom, #f0f8ff, #e6f3ff);
+    </style>
+</VBox>
