@@ -1,0 +1,302 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--<?import javafx.geometry.Insets?>-->
+<!--<?import javafx.scene.control.*?>-->
+<!--<?import javafx.scene.layout.*?>-->
+<!--<?import javafx.scene.text.Font?>-->
+<!--<?import javafx.scene.chart.PieChart?>-->
+
+<!--<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.AdminDashboardController">-->
+
+<!--    &lt;!&ndash; Left Sidebar &ndash;&gt;-->
+<!--&lt;!&ndash;    <left>&ndash;&gt;-->
+<!--&lt;!&ndash;        <VBox prefWidth="250.0" style="-fx-background-color: #673AB7;">&ndash;&gt;-->
+<!--&lt;!&ndash;            <padding>&ndash;&gt;-->
+<!--&lt;!&ndash;                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />&ndash;&gt;-->
+<!--&lt;!&ndash;            </padding>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <Label text="Admin Panel" textFill="WHITE">&ndash;&gt;-->
+<!--&lt;!&ndash;                <font>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <Font size="20.0" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </font>&ndash;&gt;-->
+<!--&lt;!&ndash;                <VBox.margin>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <Insets bottom="30.0" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </VBox.margin>&ndash;&gt;-->
+<!--&lt;!&ndash;            </Label>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <Button text="👥 Manage Users" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5;" prefWidth="200.0">&ndash;&gt;-->
+<!--&lt;!&ndash;                <VBox.margin>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <Insets bottom="10.0" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </VBox.margin>&ndash;&gt;-->
+<!--&lt;!&ndash;            </Button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <Button text="🏠 Manage Rooms" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5;" prefWidth="200.0">&ndash;&gt;-->
+<!--&lt;!&ndash;                <VBox.margin>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <Insets bottom="10.0" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </VBox.margin>&ndash;&gt;-->
+<!--&lt;!&ndash;            </Button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <Button text="📊 Statistics" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5;" prefWidth="200.0">&ndash;&gt;-->
+<!--&lt;!&ndash;                <VBox.margin>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <Insets bottom="10.0" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </VBox.margin>&ndash;&gt;-->
+<!--&lt;!&ndash;            </Button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <Button text="🛠️ Settings" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5;" prefWidth="200.0">&ndash;&gt;-->
+<!--&lt;!&ndash;                <VBox.margin>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <Insets bottom="30.0" />&ndash;&gt;-->
+<!--&lt;!&ndash;                </VBox.margin>&ndash;&gt;-->
+<!--&lt;!&ndash;            </Button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <Button fx:id="logoutButton" onAction="#handleLogout" text="🚪 Logout" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-border-radius: 5;" prefWidth="200.0" />&ndash;&gt;-->
+<!--&lt;!&ndash;        </VBox>&ndash;&gt;-->
+<!--&lt;!&ndash;    </left>&ndash;&gt;-->
+
+<!--    <left>-->
+<!--        <VBox prefWidth="250.0" style="-fx-background-color: #673AB7;">-->
+<!--            <padding>-->
+<!--                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />-->
+<!--            </padding>-->
+
+<!--            <Label text="Admin Panel" textFill="WHITE">-->
+<!--                <font>-->
+<!--                    <Font size="20.0" />-->
+<!--                </font>-->
+<!--                <VBox.margin>-->
+<!--                    <Insets bottom="30.0" />-->
+<!--                </VBox.margin>-->
+<!--            </Label>-->
+
+<!--            <Label text="Total Users:" textFill="WHITE">-->
+<!--                <font>-->
+<!--                    <Font size="16.0" />-->
+<!--                </font>-->
+<!--            </Label>-->
+<!--            <Label fx:id="userCountLabel" text="0" textFill="WHITE">-->
+<!--                <font>-->
+<!--                    <Font size="18.0" />-->
+<!--                </font>-->
+<!--                <VBox.margin>-->
+<!--                    <Insets bottom="20.0" />-->
+<!--                </VBox.margin>-->
+<!--            </Label>-->
+
+<!--            <Label text="Total Rooms:" textFill="WHITE">-->
+<!--                <font>-->
+<!--                    <Font size="16.0" />-->
+<!--                </font>-->
+<!--            </Label>-->
+<!--            <Label fx:id="roomCountLabel" text="0" textFill="WHITE">-->
+<!--                <font>-->
+<!--                    <Font size="18.0" />-->
+<!--                </font>-->
+<!--                <VBox.margin>-->
+<!--                    <Insets bottom="30.0" />-->
+<!--                </VBox.margin>-->
+<!--            </Label>-->
+
+<!--            <Button fx:id="logoutButton" onAction="#handleLogout"-->
+<!--                    text="🚪 Logout"-->
+<!--                    style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-border-radius: 5;"-->
+<!--                    prefWidth="200.0" />-->
+<!--        </VBox>-->
+<!--    </left>-->
+
+<!--    &lt;!&ndash; Main Content &ndash;&gt;-->
+<!--    <center>-->
+<!--        <VBox spacing="20.0">-->
+<!--            <padding>-->
+<!--                <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />-->
+<!--            </padding>-->
+
+<!--            &lt;!&ndash; Header &ndash;&gt;-->
+<!--            <Label fx:id="welcomeLabel" text="Admin Dashboard">-->
+<!--                <font>-->
+<!--                    <Font size="24.0" />-->
+<!--                </font>-->
+<!--            </Label>-->
+
+<!--            &lt;!&ndash; Content Tabs &ndash;&gt;-->
+<!--            <TabPane>-->
+<!--                &lt;!&ndash; Users Tab &ndash;&gt;-->
+<!--                <Tab text="Users Management" closable="false">-->
+<!--                    <VBox spacing="15.0">-->
+<!--                        <padding>-->
+<!--                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />-->
+<!--                        </padding>-->
+
+<!--                        <Label text="All Registered Users">-->
+<!--                            <font>-->
+<!--                                <Font size="16.0" />-->
+<!--                            </font>-->
+<!--                        </Label>-->
+
+<!--                        <TableView fx:id="usersTable" prefHeight="300.0">-->
+<!--                            <columns>-->
+<!--                                <TableColumn fx:id="nameColumn" text="Name" prefWidth="150.0" />-->
+<!--                                <TableColumn fx:id="userTypeColumn" text="Type" prefWidth="100.0" />-->
+<!--                                <TableColumn fx:id="usernameColumn" text="Username" prefWidth="150.0" />-->
+<!--                                <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="120.0" />-->
+<!--                            </columns>-->
+<!--                        </TableView>-->
+
+<!--                        <Button fx:id="deleteUserButton" onAction="#handleDeleteUser" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Delete Selected User" />-->
+<!--                    </VBox>-->
+<!--                </Tab>-->
+
+<!--                &lt;!&ndash; Rooms Tab &ndash;&gt;-->
+<!--                <Tab text="Rooms Management" closable="false">-->
+<!--                    <VBox spacing="15.0">-->
+<!--                        <padding>-->
+<!--                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />-->
+<!--                        </padding>-->
+
+<!--                        <Label text="All Posted Rooms">-->
+<!--                            <font>-->
+<!--                                <Font size="16.0" />-->
+<!--                            </font>-->
+<!--                        </Label>-->
+
+<!--                        <TableView fx:id="roomsTable" prefHeight="300.0">-->
+<!--                            <columns>-->
+<!--                                <TableColumn fx:id="roomLocationColumn" text="Location" prefWidth="150.0" />-->
+<!--                                <TableColumn fx:id="roomPriceColumn" text="Price" prefWidth="100.0" />-->
+<!--                                <TableColumn fx:id="roomOwnerColumn" text="Owner" prefWidth="150.0" />-->
+<!--                            </columns>-->
+<!--                        </TableView>-->
+
+<!--                        <Button fx:id="deleteRoomButton" onAction="#handleDeleteRoom" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Delete Selected Room" />-->
+<!--                    </VBox>-->
+<!--                </Tab>-->
+
+<!--                &lt;!&ndash; Statistics Tab &ndash;&gt;-->
+<!--                <Tab text="Statistics" closable="false">-->
+<!--                    <VBox spacing="15.0">-->
+<!--                        <padding>-->
+<!--                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />-->
+<!--                        </padding>-->
+
+<!--                        <Label text="User Statistics">-->
+<!--                            <font>-->
+<!--                                <Font size="16.0" />-->
+<!--                            </font>-->
+<!--                        </Label>-->
+
+<!--                        <PieChart fx:id="userStatsChart" prefHeight="400.0" prefWidth="500.0" />-->
+<!--                    </VBox>-->
+<!--                </Tab>-->
+<!--            </TabPane>-->
+<!--        </VBox>-->
+<!--    </center>-->
+
+<!--    <style>-->
+<!--        -fx-background-color: #f5f5f5;-->
+<!--    </style>-->
+<!--</BorderPane>-->
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.PieChart?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.AdminDashboardController">
+
+    <!-- Left Sidebar -->
+    <left>
+        <VBox prefWidth="250.0" styleClass="sidebar,admin-sidebar">
+
+            <Label text="Admin Panel" textFill="WHITE" styleClass="subtitle-label">
+                <VBox.margin>
+                    <Insets bottom="30.0" />
+                </VBox.margin>
+            </Label>
+
+            <Button text="👥 Manage Users" styleClass="sidebar-btn" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button text="🏠 Manage Rooms" styleClass="sidebar-btn" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button text="📊 Statistics" styleClass="sidebar-btn" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button text="🛠️ Settings" styleClass="sidebar-btn" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="30.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button fx:id="logoutButton" onAction="#handleLogout" text="🚪 Logout" styleClass="btn-danger" prefWidth="200.0" />
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="20.0" styleClass="container">
+
+            <!-- Header -->
+            <Label fx:id="welcomeLabel" text="Admin Dashboard" styleClass="welcome-label" />
+
+            <!-- Content Tabs -->
+            <TabPane>
+                <!-- Users Tab -->
+                <Tab text="Users Management" closable="false">
+                    <VBox spacing="15.0" styleClass="container">
+
+                        <Label text="All Registered Users" styleClass="section-label" />
+
+                        <TableView fx:id="usersTable" prefHeight="300.0">
+                            <columns>
+                                <TableColumn fx:id="nameColumn" text="Name" prefWidth="150.0" />
+                                <TableColumn fx:id="userTypeColumn" text="Type" prefWidth="100.0" />
+                                <TableColumn fx:id="usernameColumn" text="Username" prefWidth="150.0" />
+                                <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="120.0" />
+                            </columns>
+                        </TableView>
+
+                        <Button fx:id="deleteUserButton" onAction="#handleDeleteUser" styleClass="btn-danger" text="Delete Selected User" />
+                    </VBox>
+                </Tab>
+
+                <!-- Rooms Tab -->
+                <Tab text="Rooms Management" closable="false">
+                    <VBox spacing="15.0" styleClass="container">
+
+                        <Label text="All Posted Rooms" styleClass="section-label" />
+
+                        <TableView fx:id="roomsTable" prefHeight="300.0">
+                            <columns>
+                                <TableColumn fx:id="roomLocationColumn" text="Location" prefWidth="150.0" />
+                                <TableColumn fx:id="roomPriceColumn" text="Price" prefWidth="100.0" />
+                                <TableColumn fx:id="roomOwnerColumn" text="Owner" prefWidth="150.0" />
+                            </columns>
+                        </TableView>
+
+                        <Button fx:id="deleteRoomButton" onAction="#handleDeleteRoom" styleClass="btn-danger" text="Delete Selected Room" />
+                    </VBox>
+                </Tab>
+
+                <!-- Statistics Tab -->
+                <Tab text="Statistics" closable="false">
+                    <VBox spacing="15.0" styleClass="container">
+
+                        <Label text="User Statistics" styleClass="section-label" />
+
+                        <PieChart fx:id="userStatsChart" prefHeight="400.0" prefWidth="500.0" styleClass="chart" />
+                    </VBox>
+                </Tab>
+            </TabPane>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,167 @@
+/* Modern Login Page Styles */
+
+/* Left Panel Styles with Image Slider Animation */
+.left-panel {
+    -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -fx-background-image: url("../images/room1.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-transition: -fx-background-image 0.5s ease-in-out;
+}
+
+.title-label {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: 700;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+
+.subtitle-label{
+    -fx-text-fill: #141511;
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-padding: 8;
+}
+
+.overlay {
+    -fx-background-color: rgba(0,0,0,0.2);
+}
+
+.logo-text {
+    -fx-text-fill: white;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+.hero-text {
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+}
+
+.back-button {
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 8 16;
+}
+
+/* Right Panel Styles */
+.right-panel {
+    -fx-background-color: #f3f4f6;
+    -fx-padding: 50;
+    -fx-alignment: center;
+}
+
+/* Login Card */
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-padding: 40;
+    -fx-spacing: 20;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 0);
+}
+
+.main-title {
+    -fx-text-fill: #1f2937;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+.link-text {
+    -fx-text-fill: #6366f1;
+    -fx-underline: true;
+}
+
+.field-label {
+    -fx-text-fill: #4b5563;
+    -fx-font-weight: bold;
+}
+
+/* Input Fields */
+.input-field {
+    -fx-background-color: #f9fafb;
+    -fx-text-fill: #1f2937;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8 10;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #9ca3af;
+}
+
+.input-field:focused {
+    -fx-border-color: #6366f1;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.1), 8, 0, 0, 0);
+}
+
+/* Buttons */
+.btn-primary {
+    -fx-background-color: #6366f1;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.25), 4, 0, 0, 2);
+}
+
+.btn-primary:hover {
+    -fx-background-color: #5850e6;
+    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.35), 8, 0, 0, 4);
+}
+
+.btn-primary:pressed {
+    -fx-background-color: #4f46e5;
+}
+
+.btn-success {
+    -fx-background-color: #10b981;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.25), 4, 0, 0, 2);
+}
+
+.btn-success:hover {
+    -fx-background-color: #059669;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.35), 8, 0, 0, 4);
+}
+
+.btn-success:pressed {
+    -fx-background-color: #047857;
+}
+
+.social-text {
+    -fx-text-fill: #6b7280;
+    -fx-font-size: 12px;
+}
+
+.social-button {
+    -fx-background-color: white;
+    -fx-text-fill: #4b5563;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 0);
+}
+
+.social-button:hover {
+    -fx-background-color: #f9fafb;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 0);
+}
+
+/* Checkbox */
+.checkbox {
+    -fx-box-border: #9ca3af;
+    -fx-background-color: white;
+    -fx-mark-color: #6366f1;
+    -fx-font-size: 14px;
+    -fx-text-fill: #4b5563;
+}

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.HouseOwnerDashboardController">
+
+    <!-- Left Sidebar -->
+    <left>
+        <VBox prefWidth="250.0" styleClass="sidebar,owner-sidebar">
+
+            <Label text="House Owner Panel" textFill="WHITE" styleClass="subtitle-label">
+                <VBox.margin>
+                    <Insets bottom="30.0" />
+                </VBox.margin>
+            </Label>
+
+            <Button text="🏠 Manage Rooms" styleClass="sidebar-btn" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button text="➕ Add New Room" styleClass="sidebar-btn" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button text="📊 Statistics" styleClass="sidebar-btn" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button text="📞 Support" styleClass="sidebar-btn" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="30.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button fx:id="logoutButton" onAction="#handleLogout" text="🚪 Logout" styleClass="btn-danger" prefWidth="200.0" />
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="20.0" styleClass="container">
+
+            <!-- Header -->
+            <Label fx:id="welcomeLabel" text="Welcome, House Owner!" styleClass="welcome-label" />
+
+            <!-- Split Content -->
+            <HBox spacing="30.0" styleClass="row">
+                <!-- Add/Update Room Form -->
+                <VBox spacing="15.0" styleClass="card">
+
+                    <Label text="Add/Update Room Details" styleClass="section-label" />
+
+                    <VBox spacing="8.0">
+                        <Label text="Location:" />
+                        <ComboBox fx:id="locationComboBox" prefWidth="250.0" />
+                    </VBox>
+
+                    <VBox spacing="8.0">
+                        <Label text="Price (per month):" />
+                        <TextField fx:id="priceField" prefWidth="250.0" />
+                    </VBox>
+
+                    <VBox spacing="8.0">
+                        <Label text="Description:" />
+                        <TextArea fx:id="descriptionArea" prefHeight="80.0" prefWidth="250.0" />
+                    </VBox>
+
+                    <VBox spacing="8.0">
+                        <Label text="Contact Number:" />
+                        <TextField fx:id="contactField" prefWidth="250.0" />
+                    </VBox>
+
+                    <VBox spacing="8.0">
+                        <Label text="Map Link (optional):" />
+                        <TextField fx:id="mapLinkField" prefWidth="250.0" />
+                    </VBox>
+
+                    <HBox spacing="10.0">
+                        <Button fx:id="addRoomButton" onAction="#handleAddRoom" styleClass="btn-success" text="Add Room" />
+                        <Button fx:id="updateRoomButton" onAction="#handleUpdateRoom" styleClass="btn-primary" text="Update Room" />
+                    </HBox>
+                </VBox>
+
+                <!-- Rooms List -->
+                <VBox spacing="15.0" styleClass="card">
+
+                    <Label text="Your Rooms" styleClass="section-label" />
+
+                    <ListView fx:id="roomsList" prefHeight="300.0" prefWidth="300.0" />
+
+                    <Button fx:id="deleteRoomButton" onAction="#handleDeleteRoom" styleClass="btn-danger" text="Delete Selected Room" />
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.StudentDashboardController">
+
+    <!-- Left Sidebar -->
+    <left>
+        <VBox prefWidth="250.0" styleClass="sidebar,student-sidebar">
+
+            <Label text="StudentNest" textFill="WHITE" styleClass="subtitle-label">
+                <VBox.margin>
+                    <Insets bottom="30.0" />
+                </VBox.margin>
+            </Label>
+
+            <Button text="🏠 Browse Rooms" styleClass="sidebar-btn" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button text="📍 Locations" styleClass="sidebar-btn" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button text="💰 Price Guide" styleClass="sidebar-btn" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button text="📞 Support" styleClass="sidebar-btn" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="30.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button fx:id="logoutButton" onAction="#handleLogout" text="🚪 Logout" styleClass="btn-danger" prefWidth="200.0" />
+        </VBox>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="20.0" styleClass="container">
+
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                <Label fx:id="welcomeLabel" text="Welcome, Student!" styleClass="welcome-label" />
+            </HBox>
+
+            <!-- Filters -->
+            <HBox spacing="20.0" alignment="CENTER_LEFT" styleClass="filter-container">
+                <Label text="Filter by:" styleClass="section-label" />
+                <ComboBox fx:id="locationFilter" onAction="#handleLocationFilter" />
+                <ComboBox fx:id="priceFilter" onAction="#handlePriceFilter" />
+            </HBox>
+
+            <!-- Rooms Container -->
+            <ScrollPane fitToWidth="true">
+                <VBox fx:id="roomsContainer" spacing="15.0">
+                    <padding>
+                        <Insets bottom="20.0" />
+                    </padding>
+                </VBox>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>
