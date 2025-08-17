@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.FeedbackController">
+    <center>
+        <VBox spacing="15" styleClass="feedback-container">
+            <Label styleClass="feedback-title" text="💬 Share Your Feedback" />
+            <!-- Replaced the Text element with a Label to resolve the "Text is not a valid type" error -->
+            <Label styleClass="feedback-description" text="We value your opinion! Please use the form below to report any issues, suggest improvements, or share your overall thoughts about StudentNest." wrapText="true" />
+
+            <Label text="Your Feedback:" />
+            <TextArea fx:id="feedbackTextArea" prefHeight="200" prefWidth="500" promptText="Type your comments or suggestions here..." />
+
+            <HBox alignment="CENTER" spacing="10">
+                <Button fx:id="submitButton" onAction="#handleSubmitFeedback" styleClass="submit-button" text="Send Feedback" />
+                <Button onAction="#handleBack" text="Cancel" styleClass="cancel-button" />
+            </HBox>
+        </VBox>
+    </center>
+    <stylesheets>
+        <URL value="@css/feedback-page.css" />
+    </stylesheets>
+</BorderPane>

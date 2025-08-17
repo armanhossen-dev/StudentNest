@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.chart.PieChart?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.AdminDashboardController">
+
+    <left>
+        <VBox prefWidth="250.0" style="-fx-background-color: #673AB7;">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <Label text="Admin Panel" textFill="WHITE" styleClass="DashboardTitleText">
+                <font>
+                    <Font size="20.0" />
+                </font>
+                <VBox.margin>
+                    <Insets bottom="30.0" />
+                </VBox.margin>
+            </Label>
+            <Label text="Total Users:" textFill="WHITE" styleClass="rN">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Label>
+            <Label fx:id="userCountLabel" text="0" textFill="WHITE" styleClass="rN">
+                <font>
+                    <Font size="18.0" />
+                </font>
+                <VBox.margin>
+                    <Insets bottom="20.0" />
+                </VBox.margin>
+            </Label>
+            <Label text="Total Rooms:" textFill="WHITE" styleClass="rN">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Label>
+            <Label fx:id="roomCountLabel" text="0" textFill="WHITE" styleClass="rN">
+                <font>
+                    <Font size="18.0" />
+                </font>
+                <VBox.margin>
+                    <Insets bottom="30.0" />
+                </VBox.margin>
+            </Label>
+
+            <!-- New Navigation Buttons -->
+            <Button fx:id="usersButton" onAction="#handleShowUsers" text="👥 Users" prefWidth="200.0" styleClass="AdminSideBTN">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+            <Button fx:id="roomsButton" onAction="#handleShowRooms" text="🏠 Rooms" prefWidth="200.0" styleClass="AdminSideBTN">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+            <Button fx:id="statisticsButton" onAction="#handleShowStats" text="📊 Statistics" prefWidth="200.0" styleClass="AdminSideBTN">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+            <Button fx:id="feedbackButton" onAction="#handleShowFeedback" text="💬 Feedback" prefWidth="200.0" styleClass="AdminSideBTN">
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button fx:id="logoutButton" onAction="#handleLogout"
+                    text="🚪 Logout"
+                    style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-border-radius: 5;"
+                    prefWidth="200.0" />
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+            </padding>
+
+            <Label fx:id="welcomeLabel" text="Admin Dashboard">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+
+            <TabPane fx:id="mainTabPane">
+                <Tab text="Users Management" closable="false">
+                    <VBox spacing="15.0">
+                        <padding>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        </padding>
+                        <Label text="All Registered Users">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <TableView fx:id="usersTable" prefHeight="300.0">
+                            <columns>
+                                <TableColumn fx:id="nameColumn" text="Name" prefWidth="150.0" />
+                                <TableColumn fx:id="userTypeColumn" text="Type" prefWidth="100.0" />
+                                <TableColumn fx:id="usernameColumn" text="Username" prefWidth="150.0" />
+                                <TableColumn fx:id="phoneColumn" text="Phone" prefWidth="120.0" />
+                            </columns>
+                        </TableView>
+                        <Button fx:id="deleteUserButton" onAction="#handleDeleteUser" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Delete Selected User" />
+                    </VBox>
+                </Tab>
+
+                <Tab text="Rooms Management" closable="false">
+                    <VBox spacing="15.0">
+                        <padding>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        </padding>
+                        <Label text="All Posted Rooms">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <TableView fx:id="roomsTable" prefHeight="300.0">
+                            <columns>
+                                <TableColumn fx:id="roomLocationColumn" text="Location" prefWidth="150.0" />
+                                <TableColumn fx:id="roomPriceColumn" text="Price" prefWidth="100.0" />
+                                <TableColumn fx:id="roomOwnerColumn" text="Owner" prefWidth="150.0" />
+                            </columns>
+                        </TableView>
+                        <Button fx:id="deleteRoomButton" onAction="#handleDeleteRoom" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Delete Selected Room" />
+                    </VBox>
+                </Tab>
+
+                <Tab text="Statistics" closable="false">
+                    <VBox spacing="15.0">
+                        <padding>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        </padding>
+                        <Label text="User Statistics">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <PieChart fx:id="userStatsChart" prefHeight="400.0" prefWidth="500.0" />
+                    </VBox>
+                </Tab>
+
+                <Tab text="Feedback" closable="false">
+                    <VBox spacing="15.0">
+                        <padding>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        </padding>
+                        <Label text="User Feedback &amp; Issues">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <TableView fx:id="feedbackTable" prefHeight="300.0">
+                            <columns>
+                                <TableColumn fx:id="feedbackUserColumn" text="User" prefWidth="150.0" />
+                                <TableColumn fx:id="feedbackTextColumn" text="Feedback" prefWidth="300.0" />
+                                <TableColumn fx:id="feedbackDateColumn" text="Date" prefWidth="120.0" />
+                            </columns>
+                        </TableView>
+                        <!-- NEW: Button to delete selected feedback -->
+                        <Button fx:id="deleteFeedbackButton" onAction="#handleDeleteFeedback" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Delete Selected Feedback" />
+                    </VBox>
+                </Tab>
+            </TabPane>
+        </VBox>
+    </center>
+</BorderPane>

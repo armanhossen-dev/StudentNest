@@ -1,0 +1,73 @@
+/* Main container styles */
+.feedback-container {
+    -fx-background-color: #f0f2f5; /* Light gray background for a clean look */
+    -fx-padding: 30px;
+    -fx-border-radius: 15px; /* Rounded corners for the form */
+    -fx-background-radius: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.5, 0, 5); /* Subtle shadow for depth */
+    -fx-alignment: center; /* Center the content */
+    -fx-spacing: 20px;
+}
+
+/* Title and description labels */
+.feedback-title {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Dark gray for high contrast */
+}
+
+.feedback-description {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 16px;
+    -fx-text-fill: #555555;
+    -fx-wrap-text: true;
+    -fx-padding: 0 20px;
+    -fx-alignment: center;
+}
+
+/* TextArea for user input */
+.text-area {
+    -fx-background-radius: 8px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-prompt-text-fill: #999999;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+}
+
+.text-area:focused {
+    -fx-border-color: #673AB7; /* A nice purple accent on focus */
+}
+
+/* Buttons styles */
+.submit-button, .cancel-button {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: #673AB7; /* Main purple color */
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 10px 25px;
+    -fx-cursor: hand;
+}
+
+.submit-button:hover {
+    -fx-background-color: #552a9e; /* Slightly darker purple on hover */
+}
+
+.cancel-button {
+    -fx-background-color: #f44336; /* Red color for cancel button */
+}
+
+.cancel-button:hover {
+    -fx-background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* HBox for button alignment */
+.hbox {
+    -fx-alignment: center;
+}
