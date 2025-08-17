@@ -4,13 +4,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.text.Font?>
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.HouseOwnerDashboardController">
 
     <!-- Left Sidebar -->
     <left>
         <VBox prefWidth="250.0" styleClass="sidebar,owner-sidebar">
 
-            <Label text="House Owner Panel" textFill="WHITE" styleClass="subtitle-label">
+            <Label alignment="CENTER" text="House Owner Panel"  prefHeight="30.0" prefWidth="220.0" styleClass="HouseOwnerPanel">
                 <VBox.margin>
                     <Insets bottom="30.0" />
                 </VBox.margin>

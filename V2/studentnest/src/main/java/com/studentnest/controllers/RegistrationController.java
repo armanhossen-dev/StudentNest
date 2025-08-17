@@ -56,9 +56,7 @@ public class RegistrationController {
                 registerButton.getScene().getStylesheets().clear();
                 // Load both common styles and registration-specific styles
                 registerButton.getScene().getStylesheets().addAll(
-                        getClass().getResource("/css/styles1.css").toExternalForm(),
-                        getClass().getResource("/css/registration.css").toExternalForm()
-                );
+                        getClass().getResource("/css/registration.css").toExternalForm());
             }
         } catch (Exception e) {
             System.err.println("Warning: Could not load CSS stylesheets: " + e.getMessage());
@@ -109,7 +107,30 @@ public class RegistrationController {
                 // Show a success message if registration is successful.
                 showAlert("Success", "Registration successful! Please login.", Alert.AlertType.INFORMATION);
                 // Switch back to the login scene with consistent dimensions
-                SceneManager.switchScene("login.fxml", 1000, 600);
+//                SceneManager.switchScene("login.fxml", 1000, 600);
+                try {
+                    // Switch to registration scene
+                    SceneManager.switchScene("login.fxml", 1000, 620);
+                    System.out.println("Navigating to registration page...");
+
+                    // Get the current scene from the primary stage
+                    javafx.scene.Scene currentScene = SceneManager.getPrimaryStage().getScene();
+
+                    // Clear existing stylesheets to avoid conflicts
+                    currentScene.getStylesheets().clear();
+
+                    // Apply the new stylesheet for the registration page
+                    currentScene.getStylesheets().add(getClass().getResource("/css/login.css").toExternalForm());
+                    System.out.println("login.css stylesheet applied to registration scene.");
+
+                } catch (Exception e) {
+                    System.err.println("Error loading login page or applying stylesheet: " + e.getMessage());
+                    e.printStackTrace();
+
+                    showAlert("Navigation Error",
+                            "Unable to load login page or apply stylesheet. Please check if registration.fxml and /css/login.css exist.\nError: " + e.getMessage(),
+                            Alert.AlertType.ERROR);
+                }
             } else {
                 // Show an error message if registration fails.
                 showAlert("Error", "Registration failed. Username might already exist.", Alert.AlertType.ERROR);
@@ -191,26 +212,7 @@ public class RegistrationController {
         }
     }
 
-    /**
-     * Handles the action when the "Back to Login" button is clicked.
-     * Switches the scene back to the login screen.
-     */
-//    @FXML
-//    public void handleBackToLogin() {
-//        try {
-//            // Use consistent window size with the login controller
-//            SceneManager.switchScene("login.fxml", 1000, 620);
-//
-//
-//            System.out.println("Navigating back to login page...");
-//        } catch (Exception e) {
-//            System.err.println("Error navigating to login page: " + e.getMessage());
-//            e.printStackTrace();
-//            showAlert("Navigation Error",
-//                    "Unable to return to login page. Please try again.",
-//                    Alert.AlertType.ERROR);
-//        }
-//    }
+
 
     @FXML
     public void handleBackToLogin() {
@@ -234,6 +236,7 @@ public class RegistrationController {
                     Alert.AlertType.ERROR);
         }
     }
+
     /**
      * Helper method to display an alert dialog with specified type.
      * @param title The title of the alert.
@@ -261,13 +264,11 @@ public class RegistrationController {
                 // Style the alert to match the application theme
                 try {
                     alert.getDialogPane().getStylesheets().addAll(
-//                            getClass().getResource("/css/styles1.css").toExternalForm(),
                             getClass().getResource("/css/registration.css").toExternalForm()
                     );
                 } catch (Exception e) {
                     System.err.println("Could not apply styles to alert dialog");
                 }
-
                 alert.showAndWait();
             } catch (Exception e) {
                 System.err.println("Error showing alert: " + e.getMessage());

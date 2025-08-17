@@ -2,12 +2,15 @@ package com.studentnest.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import com.studentnest.database.DatabaseConnection;
 import com.studentnest.models.Room;
 import com.studentnest.utils.SceneManager;
+import javafx.stage.Stage;
+
+import java.net.URL;
 import java.sql.*;
 
 public class HouseOwnerDashboardController {
@@ -59,26 +62,26 @@ public class HouseOwnerDashboardController {
 
     private void loadRooms() {
         rooms.clear();
-        try {
-            Connection conn = DatabaseConnection.getConnection();
-            String sql = "SELECT * FROM rooms WHERE owner_id = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+        String sql = "SELECT * FROM rooms WHERE owner_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, LoginController.getCurrentUserId());
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                Room room = new Room();
-                room.setId(rs.getInt("id"));
-                room.setOwnerId(rs.getInt("owner_id"));
-                room.setLocation(rs.getString("location"));
-                room.setPrice(rs.getDouble("price"));
-                room.setDescription(rs.getString("description"));
-                room.setContactNumber(rs.getString("contact_number"));
-                room.setMapLink(rs.getString("map_link"));
-                rooms.add(room);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Room room = new Room();
+                    room.setId(rs.getInt("id"));
+                    room.setOwnerId(rs.getInt("owner_id"));
+                    room.setLocation(rs.getString("location"));
+                    room.setPrice(rs.getDouble("price"));
+                    room.setDescription(rs.getString("description"));
+                    room.setContactNumber(rs.getString("contact_number"));
+                    room.setMapLink(rs.getString("map_link"));
+                    rooms.add(room);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            showAlert("Database Error", "Failed to load rooms.", Alert.AlertType.ERROR);
         }
     }
 
@@ -99,40 +102,40 @@ public class HouseOwnerDashboardController {
         String mapLink = mapLinkField.getText();
 
         if (location == null || priceText.isEmpty() || description.isEmpty() || contact.isEmpty()) {
-            showAlert("Error", "Please fill in all required fields");
+            showAlert("Validation Error", "Please fill in all required fields", Alert.AlertType.WARNING);
             return;
         }
 
         try {
             double price = Double.parseDouble(priceText);
-
-            Connection conn = DatabaseConnection.getConnection();
             String sql = "INSERT INTO rooms (owner_id, location, price, description, contact_number, map_link) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, LoginController.getCurrentUserId());
-            stmt.setString(2, location);
-            stmt.setDouble(3, price);
-            stmt.setString(4, description);
-            stmt.setString(5, contact);
-            stmt.setString(6, mapLink);
+            try (Connection conn = DatabaseConnection.getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, LoginController.getCurrentUserId());
+                stmt.setString(2, location);
+                stmt.setDouble(3, price);
+                stmt.setString(4, description);
+                stmt.setString(5, contact);
+                stmt.setString(6, mapLink);
 
-            if (stmt.executeUpdate() > 0) {
-                showAlert("Success", "Room added successfully!");
-                clearForm();
-                loadRooms();
+                if (stmt.executeUpdate() > 0) {
+                    showAlert("Success", "Room added successfully!", Alert.AlertType.INFORMATION);
+                    clearForm();
+                    loadRooms();
+                }
             }
         } catch (NumberFormatException e) {
-            showAlert("Error", "Please enter a valid price");
+            showAlert("Input Error", "Please enter a valid price", Alert.AlertType.ERROR);
         } catch (SQLException e) {
             e.printStackTrace();
-            showAlert("Error", "Failed to add room");
+            showAlert("Database Error", "Failed to add room.", Alert.AlertType.ERROR);
         }
     }
 
     @FXML
     public void handleUpdateRoom() {
         if (selectedRoom == null) {
-            showAlert("Error", "Please select a room to update");
+            showAlert("Error", "Please select a room to update", Alert.AlertType.ERROR);
             return;
         }
 
@@ -143,41 +146,41 @@ public class HouseOwnerDashboardController {
         String mapLink = mapLinkField.getText();
 
         if (location == null || priceText.isEmpty() || description.isEmpty() || contact.isEmpty()) {
-            showAlert("Error", "Please fill in all required fields");
+            showAlert("Validation Error", "Please fill in all required fields", Alert.AlertType.WARNING);
             return;
         }
 
         try {
             double price = Double.parseDouble(priceText);
-
-            Connection conn = DatabaseConnection.getConnection();
             String sql = "UPDATE rooms SET location = ?, price = ?, description = ?, contact_number = ?, map_link = ? WHERE id = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, location);
-            stmt.setDouble(2, price);
-            stmt.setString(3, description);
-            stmt.setString(4, contact);
-            stmt.setString(5, mapLink);
-            stmt.setInt(6, selectedRoom.getId());
+            try (Connection conn = DatabaseConnection.getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, location);
+                stmt.setDouble(2, price);
+                stmt.setString(3, description);
+                stmt.setString(4, contact);
+                stmt.setString(5, mapLink);
+                stmt.setInt(6, selectedRoom.getId());
 
-            if (stmt.executeUpdate() > 0) {
-                showAlert("Success", "Room updated successfully!");
-                clearForm();
-                loadRooms();
-                selectedRoom = null;
+                if (stmt.executeUpdate() > 0) {
+                    showAlert("Success", "Room updated successfully!", Alert.AlertType.INFORMATION);
+                    clearForm();
+                    loadRooms();
+                    selectedRoom = null;
+                }
             }
         } catch (NumberFormatException e) {
-            showAlert("Error", "Please enter a valid price");
+            showAlert("Input Error", "Please enter a valid price", Alert.AlertType.ERROR);
         } catch (SQLException e) {
             e.printStackTrace();
-            showAlert("Error", "Failed to update room");
+            showAlert("Database Error", "Failed to update room.", Alert.AlertType.ERROR);
         }
     }
 
     @FXML
     public void handleDeleteRoom() {
         if (selectedRoom == null) {
-            showAlert("Error", "Please select a room to delete");
+            showAlert("Error", "Please select a room to delete", Alert.AlertType.ERROR);
             return;
         }
 
@@ -186,21 +189,20 @@ public class HouseOwnerDashboardController {
         confirmAlert.setContentText("Are you sure you want to delete this room?");
 
         if (confirmAlert.showAndWait().get() == ButtonType.OK) {
-            try {
-                Connection conn = DatabaseConnection.getConnection();
-                String sql = "DELETE FROM rooms WHERE id = ?";
-                PreparedStatement stmt = conn.prepareStatement(sql);
+            String sql = "DELETE FROM rooms WHERE id = ?";
+            try (Connection conn = DatabaseConnection.getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setInt(1, selectedRoom.getId());
 
                 if (stmt.executeUpdate() > 0) {
-                    showAlert("Success", "Room deleted successfully!");
+                    showAlert("Success", "Room deleted successfully!", Alert.AlertType.INFORMATION);
                     clearForm();
                     loadRooms();
                     selectedRoom = null;
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
-                showAlert("Error", "Failed to delete room");
+                showAlert("Database Error", "Failed to delete room.", Alert.AlertType.ERROR);
             }
         }
     }
@@ -215,13 +217,59 @@ public class HouseOwnerDashboardController {
 
     @FXML
     public void handleLogout() {
-        SceneManager.switchScene("login.fxml", 800, 600);
+        try {
+            SceneManager.switchScene("login.fxml", 1000, 620);
+            URL cssUrl = this.getClass().getResource("/css/login.css");
+            if (cssUrl != null) {
+                SceneManager.getPrimaryStage().getScene().getStylesheets().add(cssUrl.toExternalForm());
+                System.out.println("login.css loaded successfully on back to login.");
+            } else {
+                System.err.println("Warning: CSS file not found: /css/login.css.");
+            }
+            System.out.println("Navigating back to login page...");
+        } catch (Exception e) {
+            System.err.println("Error navigating to login page: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void showAlert(String title, String message, Alert.AlertType alertType) {
+        javafx.application.Platform.runLater(() -> {
+            try {
+                Alert alert = new Alert(alertType);
+                alert.setTitle(title);
+                alert.setHeaderText(null);
+                alert.setContentText(message);
+
+                Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+                URL imageUrl = getClass().getResource("/images/img.png");
+                if (imageUrl != null) {
+                    Image icon = new Image(imageUrl.toExternalForm());
+                    alertStage.getIcons().add(icon);
+                } else {
+                    System.err.println("Warning: The image file was not found. Please check the path: /images/img.png");
+                }
+
+                // Try to style the alert to match the application theme
+                try {
+                    URL cssUrl = getClass().getResource("/css/login.css");
+                    if (cssUrl != null) {
+                        alert.getDialogPane().getStylesheets().add(cssUrl.toExternalForm());
+                    } else {
+                        System.err.println("Warning: Could not apply CSS to alert dialog, file not found: /css/login.css");
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error applying CSS to alert dialog: " + e.getMessage());
+                }
+
+                alert.showAndWait();
+            } catch (Exception e) {
+                System.err.println("Error showing alert: " + e.getMessage());
+            }
+        });
     }
 
     private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.showAndWait();
+        showAlert(title, message, Alert.AlertType.INFORMATION);
     }
 }

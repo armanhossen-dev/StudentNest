@@ -95,7 +95,7 @@
             <children>
                 <Pane styleClass="image-overlay">
                     <children>
-                        <VBox alignment="CENTER" prefHeight="653.0" prefWidth="590.0" spacing="30.0" styleClass="overlay-content">
+                        <VBox alignment="CENTER" layoutX="-2.0" layoutY="1.0" prefHeight="642.0" prefWidth="590.0" spacing="30.0" styleClass="overlay-content">
                             <children>
                                 <!-- Decorative Icon -->
                                 <Pane styleClass="decorative-icon" />

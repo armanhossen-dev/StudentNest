@@ -1,13 +1,18 @@
 package com.studentnest.controllers;
 
+import com.studentnest.models.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import com.studentnest.database.DatabaseConnection;
 import com.studentnest.models.Room;
 import com.studentnest.utils.SceneManager;
+import javafx.stage.Stage;
+
+import java.net.URL;
 import java.sql.*;
 
 public class StudentDashboardController {
@@ -17,7 +22,12 @@ public class StudentDashboardController {
     @FXML private VBox roomsContainer;
     @FXML private Button logoutButton;
 
+    @FXML private Label userCountLabel;
+    @FXML private Label roomCountLabel;
+
+    private ObservableList<User> users = FXCollections.observableArrayList();
     private ObservableList<Room> rooms = FXCollections.observableArrayList();
+
 
     @FXML
     public void initialize() {
@@ -26,12 +36,15 @@ public class StudentDashboardController {
         // Initialize filters
         locationFilter.getItems().addAll("All Locations", "Khagan", "Candgaon", "Charabag",
                 "Kumkumari", "Dattopara", "Shadhupara");
-        priceFilter.getItems().addAll("All Prices", "0-5000", "5000-10000", "10000-15000", "15000+");
+        priceFilter.getItems().addAll("All Prices", "0-3000", "3000-5000", "5000-9000", "9000+");
 
         locationFilter.setValue("All Locations");
         priceFilter.setValue("All Prices");
 
         loadRooms();
+        // Call the new methods to load user and room counts
+        loadUserCount();
+        loadRoomCount();
     }
 
     private void loadRooms() {
@@ -56,6 +69,40 @@ public class StudentDashboardController {
             }
 
             displayRooms();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // New method to load the total user count
+    private void loadUserCount() {
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            String sql = "SELECT COUNT(*) FROM users";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                userCountLabel.setText(String.valueOf(count));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // New method to load the total room count
+    private void loadRoomCount() {
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            String sql = "SELECT COUNT(*) FROM rooms";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                roomCountLabel.setText(String.valueOf(count));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -87,35 +134,14 @@ public class StudentDashboardController {
 
     private boolean isPriceInRange(double price, String priceRange) {
         switch (priceRange) {
-            case "0-5000": return price <= 5000;
-            case "5000-10000": return price > 5000 && price <= 10000;
-            case "10000-15000": return price > 10000 && price <= 15000;
-            case "15000+": return price > 15000;
+            case "0-5000": return price <= 3000;
+            case "5000-10000": return price > 3000 && price <= 5000;
+            case "10000-15000": return price > 5000 && price <= 9000;
+            case "15000+": return price > 9000;
             default: return true;
         }
     }
 
-//    private VBox createRoomCard(Room room) {
-//        VBox card = new VBox(10);
-//        card.setStyle("-fx-border-color: #ddd; -fx-border-width: 1; -fx-padding: 15; " +
-//                "-fx-background-color: white; -fx-background-radius: 5;");
-//
-//        Label titleLabel = new Label("Room in " + room.getLocation());
-//        titleLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
-//
-//        Label priceLabel = new Label("Price: ৳" + room.getPrice() + "/month");
-//        priceLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #2196F3;");
-//
-//        Label ownerLabel = new Label("Owner: " + room.getOwnerName());
-//        Label descriptionLabel = new Label("Description: " + room.getDescription());
-//
-//        Button contactButton = new Button("Contact Owner");
-//        contactButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
-//        contactButton.setOnAction(e -> showContactInfo(room));
-//
-//        card.getChildren().addAll(titleLabel, priceLabel, ownerLabel, descriptionLabel, contactButton);
-//        return card;
-//    }
 
     private VBox createRoomCard(Room room) {
         VBox card = new VBox(10);
@@ -159,6 +185,62 @@ public class StudentDashboardController {
 
     @FXML
     public void handleLogout() {
-        SceneManager.switchScene("login.fxml", 800, 600);
+        try {
+            // Use consistent window size with the login controller
+            SceneManager.switchScene("login.fxml", 1000, 620);
+            // Load the login.css stylesheet to ensure consistent styling
+            URL cssUrl = this.getClass().getResource("/css/login.css");
+            if (cssUrl != null) {
+                SceneManager.getPrimaryStage().getScene().getStylesheets().add(cssUrl.toExternalForm());
+                System.out.println("login.css loaded successfully on back to login.");
+            } else {
+                System.err.println("Warning: CSS file not found: /css/login.css.");
+            }
+            System.out.println("Navigating back to login page...");
+        } catch (Exception e) {
+            System.err.println("Error navigating to login page: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
+
+    /**
+     * Helper method to display an alert dialog with specified type.
+     * @param title The title of the alert.
+     * @param message The message to display.
+     * @param alertType The type of alert (INFO, WARNING, ERROR).
+     */
+
+    private void showAlert(String title, String message, Alert.AlertType alertType) {
+        javafx.application.Platform.runLater(() -> {
+            try {
+                Alert alert = new Alert(alertType);
+                alert.setTitle(title);
+                alert.setHeaderText(null);
+                alert.setContentText(message);
+
+                // Check if there is a primary stage and set the icon
+                Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+                URL imageUrl = getClass().getResource("/images/img.png");
+                if (imageUrl != null) {
+                    Image icon = new Image(imageUrl.toExternalForm());
+                    alertStage.getIcons().add(icon);
+                } else {
+                    System.err.println("Warning: The image file was not found. Please check the path: /images/img.png");
+                }
+
+                // Style the alert to match the application theme
+                try {
+                    alert.getDialogPane().getStylesheets().addAll(
+                            getClass().getResource("/css/registration.css").toExternalForm()
+                    );
+                } catch (Exception e) {
+                    System.err.println("Could not apply styles to alert dialog");
+                }
+                alert.showAndWait();
+            } catch (Exception e) {
+                System.err.println("Error showing alert: " + e.getMessage());
+            }
+        });
+    }
+
 }

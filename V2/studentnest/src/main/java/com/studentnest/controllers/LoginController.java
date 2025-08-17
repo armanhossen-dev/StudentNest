@@ -123,19 +123,32 @@ public class LoginController {
      */
     private void navigateToDashboard(String userType) {
         try {
+            String fxmlFile;
             switch (userType) {
                 case "Student":
-                    SceneManager.switchScene("student-dashboard.fxml", 1200, 800);
+                    fxmlFile = "student-dashboard.fxml";
                     break;
                 case "House Owner":
-                    SceneManager.switchScene("houseowner-dashboard.fxml", 1200, 800);
+                    fxmlFile = "houseowner-dashboard.fxml";
                     break;
                 case "Admin":
-                    SceneManager.switchScene("admin-dashboard.fxml", 1200, 800);
+                    fxmlFile = "admin-dashboard.fxml";
                     break;
                 default:
                     showAlert("Error", "Unknown user type: " + userType, Alert.AlertType.ERROR);
+                    return;
             }
+
+            SceneManager.switchScene(fxmlFile, 1200, 700);
+
+            // Add the stylesheet to the new scene
+            URL cssUrl = getClass().getResource("/css/styles1.css");
+            if (cssUrl != null) {
+                SceneManager.getPrimaryStage().getScene().getStylesheets().add(cssUrl.toExternalForm());
+            } else {
+                System.err.println("Warning: CSS file not found: /css/styles1.css");
+            }
+
         } catch (Exception e) {
             System.err.println("Navigation error: " + e.getMessage());
             e.printStackTrace();
@@ -145,9 +158,7 @@ public class LoginController {
         }
     }
 
-    /**
-     * Authenticate user against the database
-     */
+    /*Authenticate user against the database*/
     private boolean authenticateUser(String username, String password, String userType) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -192,25 +203,7 @@ public class LoginController {
         }
     }
 
-    /**
-     * Handle create account button click - FIXED VERSION
-     */
-//    @FXML
-//    public void handleCreateAccount() {
-//        try {
-//            // Switch to registration scene
-//            SceneManager.switchScene("registration.fxml", 1000, 647);
-//            System.out.println("Navigating to registration page...");
-//
-//        } catch (Exception e) {
-//            System.err.println("Error loading registration page: " + e.getMessage());
-//            e.printStackTrace();
-//
-//            showAlert("Navigation Error",
-//                    "Unable to load registration page. Please check if registration.fxml exists.\nError: " + e.getMessage(),
-//                    Alert.AlertType.ERROR);
-//        }
-//    }
+
     @FXML
     public void handleCreateAccount() {
         try {
@@ -238,10 +231,7 @@ public class LoginController {
         }
     }
 
-
-    /**
-     * Show alert dialog with specified type
-     */
+    /* Show alert dialog with specified type   */
     private void showAlert(String title, String message, Alert.AlertType alertType) {
         javafx.application.Platform.runLater(() -> {
             try {

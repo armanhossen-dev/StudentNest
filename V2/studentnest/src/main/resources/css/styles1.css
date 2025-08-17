@@ -252,17 +252,18 @@ File: src/main/resources/css/styles.css
 
 .table-view .table-cell {
     -fx-padding: 12 10;
-    -fx-border-color: #e9ecef;
+    -fx-border-color: #bac3cb;
     -fx-border-width: 0 0 1 0;
 }
 
 .table-row-cell:selected {
-    -fx-background-color: rgba(33,150,243,0.1);
+    -fx-background-color: #2d8ded;
     -fx-text-fill: #1976D2;
 }
 
 .table-row-cell:hover {
-    -fx-background-color: rgba(33,150,243,0.05);
+    -fx-background-color: #328fec;
+    -fx-text-fill: white;
 }
 
 /* ListView */
@@ -461,12 +462,39 @@ File: src/main/resources/css/styles.css
     -fx-spacing: 10;
 }
 
-.quote-panel {
-    -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -fx-background-image: url("../images/room1.jpg");
-    -fx-background-size: cover;
-    -fx-background-position: center;
-    -fx-background-repeat: no-repeat;
+.PANELNAME{
+   -fx-text-fill: #ffffff;
+   -fx-font-weight: bold;
+   -fx-font-size: 20;
+}
+
+.HouseOwnerPanel{
+   -fx-text-fill: #ffffff;
+   -fx-font-weight: bold;
+   -fx-font-size: 20;
+}
+
+.Admin_panel_css{
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+}
+
+.PANELNAMEN{
+       -fx-text-fill: #ffffff;
+       -fx-font-weight: bold;
+       -fx-font-size: 16;
+ }
+
+.rN{
+   -fx-text-fill: #ffffff;
+   -fx-font-weight: bold;
+   -fx-font-size: 16;
+}
+.uN{
+   -fx-text-fill: #ffffff;
+   -fx-font-weight: bold;
+   -fx-font-size: 16;
 }
 
 
