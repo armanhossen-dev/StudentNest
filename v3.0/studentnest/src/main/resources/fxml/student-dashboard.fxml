@@ -10,88 +10,118 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<!--
-    This FXML file defines the layout for the Student Dashboard.
-    It includes a sidebar on the left and a main content area for displaying room listings.
-    The layout uses a BorderPane as the root container.
--->
-<BorderPane xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.StudentDashboardController">
+<BorderPane fx:id="rootContainer" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.studentnest.controllers.StudentDashboardController">
+
+    <!-- Top Header Bar -->
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="20.0">
+            <padding>
+                <Insets top="15" right="25" bottom="15" left="25"/>
+            </padding>
+
+            <Label fx:id="welcomeLabel" styleClass="welcome-label" text="Welcome, Student!" HBox.hgrow="ALWAYS"/>
+
+            <!-- Theme Toggle Button -->
+            <Button fx:id="themeToggleButton" onAction="#handleThemeToggle" styleClass="theme-toggle-btn" text="🌙"/>
+
+            <!-- Logout Button -->
+            <Button fx:id="logoutButton" onAction="#handleLogout" text="Logout" styleClass="logout-btn"/>
+        </HBox>
+    </top>
 
     <!-- Left sidebar for navigation and information -->
     <left>
-        <VBox prefWidth="250.0" style="-fx-background-color: #673AB7;">
+        <VBox prefWidth="280.0" styleClass="sidebar">
             <padding>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                <Insets top="30" right="25" bottom="30" left="25"/>
             </padding>
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="220.0" styleClass="PANELNAME" text="Student Panel">
-                <font>
-                    <Font size="20.0" />
-                </font>
+
+            <!-- Brand Section -->
+            <VBox styleClass="brand-section" alignment="CENTER">
                 <VBox.margin>
-                    <Insets bottom="30.0" />
+                    <Insets bottom="40.0"/>
                 </VBox.margin>
-            </Label>
-            <Label styleClass="PANELNAMEN" text="Total Users:" textFill="WHITE">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            </Label>
-            <Label fx:id="userCountLabel" prefHeight="27.0" prefWidth="285.0" styleClass="uN" text="0" textFill="WHITE">
-                <font>
-                    <Font size="18.0" />
-                </font>
+                <Label text="🎓" styleClass="brand-icon"/>
+                <Label text="StudentNest" styleClass="brand-title"/>
+                <Label text="Student Portal" styleClass="brand-subtitle"/>
+            </VBox>
+
+            <!-- Stats Section -->
+            <VBox styleClass="stats-section" spacing="20.0">
                 <VBox.margin>
-                    <Insets bottom="20.0" />
+                    <Insets bottom="30.0"/>
                 </VBox.margin>
-            </Label>
-            <Label styleClass="PANELNAMEN" text="Total Rooms:" textFill="WHITE">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            </Label>
-            <Label fx:id="roomCountLabel" prefHeight="27.0" prefWidth="245.0" styleClass="rN" text="0" textFill="WHITE">
-                <font>
-                    <Font size="18.0" />
-                </font>
-                <VBox.margin>
-                    <Insets bottom="30.0" />
-                </VBox.margin>
-            </Label>
-            <Button fx:id="aboutUsButton" onAction="#handleAboutUs" prefWidth="200.0" styleClass="sidebar-btn" text="ℹ️ About Us">
-                <VBox.margin>
-                    <Insets bottom="10.0" />
-                </VBox.margin>
-            </Button>
-            <Button fx:id="feedbackButton" onAction="#handleFeedback" prefWidth="200.0" styleClass="sidebar-btn" text="💬 Feedback &amp; Issues">
-                <VBox.margin>
-                    <Insets bottom="10.0" />
-                </VBox.margin>
-            </Button>
-            <Button fx:id="logoutButton" onAction="#handleLogout" prefWidth="200.0" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-border-radius: 5;" text="🚪 Logout" />
+
+                <!-- Total Users Card -->
+                <VBox styleClass="stat-card">
+                    <Label text="👥" styleClass="stat-icon"/>
+                    <Label fx:id="userCountLabel" text="0" styleClass="stat-number"/>
+                    <Label text="Total Users" styleClass="stat-label"/>
+                </VBox>
+
+                <!-- Total Rooms Card -->
+                <VBox styleClass="stat-card">
+                    <Label text="🏠" styleClass="stat-icon"/>
+                    <Label fx:id="roomCountLabel" text="0" styleClass="stat-number"/>
+                    <Label text="Available Rooms" styleClass="stat-label"/>
+                </VBox>
+            </VBox>
+
+            <!-- Navigation Menu -->
+            <VBox styleClass="nav-menu" spacing="12.0">
+                <Label text="MENU" styleClass="nav-section-title"/>
+
+                <Button fx:id="aboutUsButton" onAction="#handleAboutUs" prefWidth="230.0"
+                        styleClass="nav-btn" text="ℹ️ About Us">
+                </Button>
+
+                <Button fx:id="feedbackButton" onAction="#handleFeedback" prefWidth="230.0"
+                        styleClass="nav-btn" text="💬 Feedback &amp; Issues">
+                </Button>
+            </VBox>
         </VBox>
     </left>
 
     <!-- Main content area -->
     <center>
-        <VBox spacing="20.0" styleClass="container">
-            <!-- Header section with welcome label -->
-            <HBox alignment="CENTER_LEFT" spacing="20.0">
-                <Label fx:id="welcomeLabel" styleClass="welcome-label" text="Welcome, Student!" />
-            </HBox>
+        <VBox spacing="25.0" styleClass="main-content">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+
             <!-- Filter section -->
-            <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="filter-container">
-                <Label alignment="CENTER" prefHeight="17.0" prefWidth="68.0" styleClass="section-label" text="Filter by:" />
-                <ComboBox fx:id="locationFilter" onAction="#handleLocationFilter" />
-                <ComboBox fx:id="priceFilter" onAction="#handlePriceFilter" />
-            </HBox>
-            <!-- Scrollable container for room listings -->
-            <ScrollPane fitToWidth="true">
-                <VBox fx:id="roomsContainer" spacing="15.0">
-                    <padding>
-                        <Insets bottom="20.0" />
-                    </padding>
-                </VBox>
-            </ScrollPane>
+            <VBox styleClass="filter-section" spacing="15.0">
+                <Label text="🔍 Find Your Perfect Room" styleClass="section-title"/>
+
+                <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="filter-container">
+                    <Label alignment="CENTER" text="Filter by:" styleClass="filter-label"/>
+                    <VBox spacing="5.0">
+                        <Label text="Location" styleClass="combo-label"/>
+                        <ComboBox fx:id="locationFilter" onAction="#handleLocationFilter"
+                                  styleClass="filter-combo" promptText="All Locations"/>
+                    </VBox>
+                    <VBox spacing="5.0">
+                        <Label text="Price Range" styleClass="combo-label"/>
+                        <ComboBox fx:id="priceFilter" onAction="#handlePriceFilter"
+                                  styleClass="filter-combo" promptText="All Prices"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- Rooms section -->
+            <VBox spacing="15.0">
+                <Label text="📋 Available Rooms" styleClass="section-title"/>
+
+                <!-- Scrollable container for room listings -->
+                <ScrollPane fitToWidth="true" styleClass="rooms-scroll">
+                    <VBox fx:id="roomsContainer" spacing="20.0" styleClass="rooms-container">
+                        <padding>
+                            <Insets bottom="20.0"/>
+                        </padding>
+                    </VBox>
+                </ScrollPane>
+            </VBox>
         </VBox>
     </center>
 </BorderPane>

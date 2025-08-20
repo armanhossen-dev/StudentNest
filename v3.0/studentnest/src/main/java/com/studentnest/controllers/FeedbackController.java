@@ -2,6 +2,7 @@ package com.studentnest.controllers;
 
 import com.studentnest.database.DatabaseConnection;
 import com.studentnest.utils.SceneManager;
+import javafx.event.ActionEvent; // Added import for ActionEvent
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
@@ -10,6 +11,9 @@ import javafx.scene.control.Alert.AlertType;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.net.URL;
+import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
 public class FeedbackController {
 
@@ -34,7 +38,7 @@ public class FeedbackController {
      * Handles the submission of user feedback to the database.
      */
     @FXML
-    public void handleSubmitFeedback() {
+    public void handleSubmitFeedback(ActionEvent event) {
         String feedbackText = feedbackTextArea.getText().trim();
         if (feedbackText.isEmpty()) {
             showAlert(AlertType.ERROR, "Submission Failed", "Please write something before submitting.");
@@ -50,7 +54,7 @@ public class FeedbackController {
             int rowsInserted = stmt.executeUpdate();
             if (rowsInserted > 0) {
                 showAlert(AlertType.INFORMATION, "Success", "Your feedback has been submitted successfully!");
-                handleBack(); // Go back to the correct dashboard
+                handleBack(event); // Pass the ActionEvent to the handleBack method
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -60,16 +64,17 @@ public class FeedbackController {
 
     /**
      * Handles the 'back' button action, navigating the user to the previous page.
+     * @param event The action event from the back button.
      */
     @FXML
-    public void handleBack() {
+    public void handleBack(ActionEvent event) {
         // Navigate back to the stored previous page
         if (previousPageFxml != null) {
-            // Use the new SceneManager method with FXML, CSS, and dimensions
-            SceneManager.switchScene(previousPageFxml, previousPageCss, 1200, 700);
+            // Correct the dimensions to match the dashboard's dimensions
+            SceneManager.switchScene(event, previousPageFxml, previousPageCss, 1200, 700);
         } else {
             // Fallback in case previousPageFxml is not set
-            SceneManager.switchScene("login.fxml", "login.css", 1000, 620);
+            SceneManager.switchScene(event, "login.fxml", "login.css", 1000, 620);
         }
     }
 
@@ -80,10 +85,37 @@ public class FeedbackController {
      * @param message The content message of the alert dialog.
      */
     private void showAlert(AlertType type, String title, String message) {
-        Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        javafx.application.Platform.runLater(() -> {
+            try {
+                Alert alert = new Alert(type);
+                alert.setTitle(title);
+                alert.setHeaderText(null);
+                alert.setContentText(message);
+
+                Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+                URL imageUrl = getClass().getResource("/images/img.png");
+                if (imageUrl != null) {
+                    Image icon = new Image(imageUrl.toExternalForm());
+                    alertStage.getIcons().add(icon);
+                } else {
+                    System.err.println("Warning: The image file was not found. Please check the path: /images/img.png");
+                }
+
+                try {
+                    URL cssUrl = getClass().getResource("/css/login.css");
+                    if (cssUrl != null) {
+                        alert.getDialogPane().getStylesheets().add(cssUrl.toExternalForm());
+                    } else {
+                        System.err.println("Warning: Could not apply CSS to alert dialog, file not found: /css/login.css");
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error applying CSS to alert dialog: " + e.getMessage());
+                }
+
+                alert.showAndWait();
+            } catch (Exception e) {
+                System.err.println("Error showing alert: " + e.getMessage());
+            }
+        });
     }
 }

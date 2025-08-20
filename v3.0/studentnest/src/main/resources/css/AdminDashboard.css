@@ -1,0 +1,439 @@
+/* ==========================================================================
+   StudentNest Admin Dashboard Styles
+   ========================================================================== */
+
+/* Root Variables */
+.root {
+    /* Light Theme Colors */
+    -fx-primary-color: #2563eb;
+    -fx-primary-hover: #1d4ed8;
+    -fx-secondary-color: #64748b;
+    -fx-accent-color: #10b981;
+    -fx-warning-color: #f59e0b;
+    -fx-danger-color: #ef4444;
+    -fx-success-color: #22c55e;
+
+    /* Background Colors */
+    -fx-background-primary: #ffffff;
+    -fx-background-secondary: #f8fafc;
+    -fx-background-tertiary: #f1f5f9;
+    -fx-sidebar-background: #1e293b;
+
+    /* Text Colors */
+    -fx-text-primary: #0f172a;
+    -fx-text-secondary: #64748b;
+    -fx-text-light: #ffffff;
+
+    /* Border Colors */
+    -fx-border-light: #e2e8f0;
+    -fx-border-medium: #cbd5e1;
+    -fx-border-dark: #94a3b8;
+
+    /* Shadow */
+    -fx-shadow-light: rgba(0, 0, 0, 0.05);
+    -fx-shadow-medium: rgba(0, 0, 0, 0.1);
+    -fx-shadow-dark: rgba(0, 0, 0, 0.15);
+}
+
+/* Dark Theme Support */
+.root.dark-theme {
+    -fx-background-primary: #0f172a;
+    -fx-background-secondary: #1e293b;
+    -fx-background-tertiary: #334155;
+    -fx-sidebar-background: #020617;
+
+    -fx-text-primary: #f8fafc;
+    -fx-text-secondary: #cbd5e1;
+
+    -fx-border-light: #475569;
+    -fx-border-medium: #64748b;
+    -fx-border-dark: #94a3b8;
+}
+
+/* ==========================================================================
+   Root Container
+   ========================================================================== */
+.root-container {
+    -fx-background-color: -fx-background-secondary;
+}
+
+/* ==========================================================================
+   Sidebar Styles
+   ========================================================================== */
+.sidebar {
+    -fx-background-color: -fx-sidebar-background;
+    -fx-min-width: 250px;
+    -fx-max-width: 250px;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-medium, 10, 0, 2, 0);
+}
+
+.welcome-label {
+    -fx-text-fill: -fx-text-light;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-light;
+    -fx-font-size: 14px;
+    -fx-padding: 12 20 12 20;
+    -fx-background-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+    -fx-alignment: center-left;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: #ffffff;
+}
+
+.sidebar-button:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-button.selected {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: #ffffff;
+}
+
+.theme-toggle-button {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: -fx-text-light;
+    -fx-font-size: 16px;
+    -fx-padding: 10;
+    -fx-background-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+
+.theme-toggle-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}
+
+.logout-button {
+    -fx-background-color: -fx-danger-color;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 20 12 20;
+    -fx-background-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: #dc2626;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-medium, 5, 0, 0, 2);
+}
+
+/* ==========================================================================
+   Tab Pane Styles
+   ========================================================================== */
+.main-tab-pane {
+    -fx-background-color: -fx-background-primary;
+}
+
+.main-tab-pane .tab-header-area {
+    -fx-padding: 0 20 0 20;
+    -fx-background-color: -fx-background-primary;
+}
+
+.main-tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.main-tab {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8px 8px 0 0;
+    -fx-padding: 12 20 12 20;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.main-tab:selected {
+    -fx-background-color: -fx-background-primary;
+    -fx-text-base-color: -fx-primary-color;
+}
+
+.main-tab .tab-label {
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.main-tab:selected .tab-label {
+    -fx-text-fill: -fx-primary-color;
+}
+
+/* ==========================================================================
+   Content Area Styles
+   ========================================================================== */
+.tab-content-pane {
+    -fx-background-color: -fx-background-primary;
+    -fx-spacing: 20;
+}
+
+.toolbar {
+    -fx-background-color: -fx-background-secondary;
+    -fx-padding: 15 20 15 20;
+    -fx-background-radius: 8px;
+    -fx-border-color: -fx-border-light;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+}
+
+.header-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+/* ==========================================================================
+   Button Styles
+   ========================================================================== */
+.action-button {
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-cursor: hand;
+    -fx-border-width: 0;
+}
+
+.refresh-button {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: #ffffff;
+}
+
+.refresh-button:hover {
+    -fx-background-color: -fx-primary-hover;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-medium, 5, 0, 0, 2);
+}
+
+.delete-button {
+    -fx-background-color: -fx-danger-color;
+    -fx-text-fill: #ffffff;
+}
+
+.delete-button:hover {
+    -fx-background-color: #dc2626;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-medium, 5, 0, 0, 2);
+}
+
+.resolve-button {
+    -fx-background-color: -fx-success-color;
+    -fx-text-fill: #ffffff;
+}
+
+.resolve-button:hover {
+    -fx-background-color: #16a34a;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-medium, 5, 0, 0, 2);
+}
+
+/* ==========================================================================
+   Table Styles
+   ========================================================================== */
+.data-table {
+    -fx-background-color: -fx-background-primary;
+    -fx-border-color: -fx-border-light;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+
+.data-table .column-header-background {
+    -fx-background-color: -fx-background-secondary;
+}
+
+.data-table .column-header {
+    -fx-background-color: -fx-background-secondary;
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 15 10 15 10;
+    -fx-border-color: -fx-border-light;
+}
+
+.data-table .table-row-cell {
+    -fx-background-color: -fx-background-primary;
+    -fx-border-color: transparent transparent -fx-border-light transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-padding: 12 10 12 10;
+}
+
+.data-table .table-row-cell:hover {
+    -fx-background-color: -fx-background-tertiary;
+}
+
+.data-table .table-row-cell:selected {
+    -fx-background-color: rgba(37, 99, 235, 0.1);
+    -fx-border-color: -fx-primary-color;
+}
+
+.data-table .table-cell {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 13px;
+    -fx-padding: 12 10 12 10;
+    -fx-border-color: transparent;
+}
+
+.data-table .table-row-cell:selected .table-cell {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.data-table .placeholder .label {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 16px;
+}
+
+/* ==========================================================================
+   Statistics Grid Styles
+   ========================================================================== */
+.stats-grid-pane {
+    -fx-background-color: -fx-background-primary;
+}
+
+.stats-card {
+    -fx-background-color: -fx-background-primary;
+    -fx-border-color: -fx-border-light;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 25;
+    -fx-spacing: 10;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-light, 8, 0, 0, 2);
+    -fx-min-width: 200px;
+    -fx-min-height: 120px;
+}
+
+.stats-card:hover {
+    -fx-effect: dropshadow(gaussian, -fx-shadow-medium, 12, 0, 0, 4);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.stats-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-alignment: center;
+}
+
+.stats-value {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-primary-color;
+    -fx-alignment: center;
+}
+
+/* ==========================================================================
+   Chart Styles
+   ========================================================================== */
+.chart-container {
+    -fx-background-color: -fx-background-primary;
+    -fx-border-color: -fx-border-light;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 25;
+    -fx-effect: dropshadow(gaussian, -fx-shadow-light, 8, 0, 0, 2);
+}
+
+.user-stats-chart {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.user-stats-chart .chart-title {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.user-stats-chart .chart-legend {
+    -fx-background-color: -fx-background-secondary;
+    -fx-background-radius: 8px;
+    -fx-padding: 10;
+}
+
+/* ==========================================================================
+   Scrollbar Styles
+   ========================================================================== */
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .track {
+    -fx-background-color: -fx-background-tertiary;
+    -fx-background-radius: 5px;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: -fx-border-medium;
+    -fx-background-radius: 5px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: -fx-border-dark;
+}
+
+/* ==========================================================================
+   Animation and Transitions
+   ========================================================================== */
+.sidebar-button,
+.action-button,
+.stats-card {
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+/* ==========================================================================
+   Responsive Design Adjustments
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .sidebar {
+        -fx-min-width: 200px;
+        -fx-max-width: 200px;
+    }
+
+    .stats-card {
+        -fx-min-width: 150px;
+        -fx-min-height: 100px;
+        -fx-padding: 20;
+    }
+
+    .stats-value {
+        -fx-font-size: 28px;
+    }
+}
+
+/* ==========================================================================
+   Focus and Accessibility
+   ========================================================================== */
+.sidebar-button:focused,
+.action-button:focused,
+.data-table:focused {
+    -fx-border-color: -fx-primary-color;
+    -fx-border-width: 2px;
+}
+
+/* ==========================================================================
+   Custom Utility Classes
+   ========================================================================== */
+.text-center {
+    -fx-alignment: center;
+}
+
+.text-bold {
+    -fx-font-weight: bold;
+}
+
+.margin-top-10 {
+    -fx-padding: 10 0 0 0;
+}
+
+.margin-bottom-10 {
+    -fx-padding: 0 0 10 0;
+}

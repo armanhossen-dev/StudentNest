@@ -1,0 +1,563 @@
+/* ========== ROOT VARIABLES ========== */
+.root {
+    -fx-font-family: 'Segoe UI', 'San Francisco', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Light Theme Variables */
+.root {
+    /* Primary gradients */
+    -primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -secondary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    -success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    -danger-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    -purple-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    /* Background colors */
+    -bg-primary: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    -bg-secondary: #ffffff;
+    -bg-card: rgba(255, 255, 255, 0.95);
+    -bg-sidebar: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    -bg-filter: rgba(255, 255, 255, 0.9);
+
+    /* Text colors */
+    -text-primary: #2c3e50;
+    -text-secondary: #34495e;
+    -text-light: #ffffff;
+    -text-muted: #7f8c8d;
+    -text-accent: #667eea;
+
+    /* Border and shadow */
+    -border-color: rgba(189, 195, 199, 0.3);
+    -shadow-light: rgba(0, 0, 0, 0.08);
+    -shadow-medium: rgba(0, 0, 0, 0.15);
+    -shadow-heavy: rgba(0, 0, 0, 0.25);
+}
+
+/* Dark Theme Variables */
+.root.dark-theme {
+    /* Primary gradients - darker versions */
+    -primary-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    -secondary-gradient: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+    -success-gradient: linear-gradient(135deg, #0f3460 0%, #0c7b93 100%);
+    -danger-gradient: linear-gradient(135deg, #833ab4 0%, #fd1d1d 100%);
+    -purple-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+
+    /* Background colors */
+    -bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    -bg-secondary: #2c3e50;
+    -bg-card: rgba(44, 62, 80, 0.95);
+    -bg-sidebar: linear-gradient(180deg, #1a252f 0%, #2c3e50 100%);
+    -bg-filter: rgba(44, 62, 80, 0.9);
+
+    /* Text colors */
+    -text-primary: #ecf0f1;
+    -text-secondary: #bdc3c7;
+    -text-light: #ffffff;
+    -text-muted: #95a5a6;
+    -text-accent: #74b9ff;
+
+    /* Border and shadow */
+    -border-color: rgba(149, 165, 166, 0.2);
+    -shadow-light: rgba(0, 0, 0, 0.3);
+    -shadow-medium: rgba(0, 0, 0, 0.4);
+    -shadow-heavy: rgba(0, 0, 0, 0.6);
+}
+
+/* ========== MAIN LAYOUT ========== */
+.root {
+    -fx-background: -bg-primary;
+}
+
+/* ========== HEADER BAR ========== */
+.header-bar {
+    -fx-background-color: -bg-secondary;
+    -fx-border-color: -border-color;
+    -fx-border-width: 0 0 1 0;
+    -fx-effect: dropshadow(three-pass-box, -shadow-light, 4, 0, 0, 2);
+}
+
+.welcome-label {
+    -fx-font-size: 28px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -text-primary;
+}
+
+.theme-toggle-btn {
+    -fx-background-color: -bg-card;
+    -fx-text-fill: -text-primary;
+    -fx-font-size: 16px;
+    -fx-padding: 8 12 8 12;
+    -fx-background-radius: 50;
+    -fx-border-color: -border-color;
+    -fx-border-radius: 50;
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, -shadow-light, 4, 0, 0, 2);
+}
+
+.theme-toggle-btn:hover {
+    -fx-background: -primary-gradient;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+
+.logout-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-secondary;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 8;
+    -fx-border-color: -border-color;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+}
+
+.logout-btn:hover {
+    -fx-background: -danger-gradient;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+
+/* ========== SIDEBAR STYLING ========== */
+.sidebar {
+    -fx-background: -bg-sidebar;
+    -fx-effect: dropshadow(three-pass-box, -shadow-medium, 8, 0, 2, 0);
+    -fx-border-color: -border-color;
+    -fx-border-width: 0 1 0 0;
+}
+
+/* Brand Section */
+.brand-section {
+    -fx-spacing: 8;
+}
+
+.brand-icon {
+    -fx-font-size: 48px;
+    -fx-text-fill: -text-light;
+}
+
+.brand-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -text-light;
+}
+
+.brand-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+}
+
+/* Stats Section */
+.stats-section {
+    -fx-spacing: 15;
+}
+
+.stat-card {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-background-radius: 15;
+    -fx-padding: 20;
+    -fx-spacing: 8;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 2);
+}
+
+.stat-icon {
+    -fx-font-size: 24px;
+    -fx-text-fill: -text-light;
+}
+
+.stat-number {
+    -fx-font-size: 28px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -text-light;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 2, 0, 0, 1);
+}
+
+.stat-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+}
+
+/* Navigation Menu */
+.nav-section-title {
+    -fx-font-size: 11px;
+    -fx-font-weight: 600;
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+    -fx-padding: 0 0 10 0;
+}
+
+.nav-btn {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-background-radius: 12;
+    -fx-text-fill: -text-light;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-padding: 12 20 12 20;
+    -fx-cursor: hand;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 12;
+    -fx-border-width: 1;
+    -fx-alignment: CENTER_LEFT;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 2);
+}
+
+.nav-btn:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 6, 0, 0, 3);
+}
+
+/* ========== MAIN CONTENT AREA ========== */
+.main-content {
+    -fx-background-color: transparent;
+}
+
+.section-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -text-primary;
+    -fx-padding: 0 0 5 0;
+}
+
+/* ========== FILTER SECTION ========== */
+.filter-section {
+    -fx-background-color: transparent;
+}
+
+.filter-container {
+    -fx-background: -bg-filter;
+    -fx-background-radius: 15;
+    -fx-padding: 20 25 20 25;
+    -fx-effect: dropshadow(three-pass-box, -shadow-light, 6, 0, 0, 3);
+    -fx-border-color: -border-color;
+    -fx-border-radius: 15;
+    -fx-border-width: 1;
+}
+
+.filter-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -text-secondary;
+}
+
+.combo-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: 500;
+    -fx-text-fill: -text-muted;
+}
+
+/* ========== COMBO BOXES ========== */
+.filter-combo {
+    -fx-background: linear-gradient(to bottom, -bg-secondary, #f8f9fa);
+    -fx-border-color: -border-color;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-width: 1;
+    -fx-padding: 8 15 8 15;
+    -fx-font-size: 14px;
+    -fx-min-width: 150px;
+}
+
+.filter-combo:focused {
+    -fx-border-color: -text-accent;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(102, 126, 234, 0.3), 4, 0, 0, 0);
+}
+
+.filter-combo .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.filter-combo .arrow {
+    -fx-background-color: -text-secondary;
+}
+
+.filter-combo .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-primary;
+    -fx-font-size: 14px;
+}
+
+/* ComboBox Popup */
+.combo-box-popup .list-view {
+    -fx-background: -bg-secondary;
+    -fx-border-color: -border-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, -shadow-medium, 8, 0, 0, 4);
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-primary;
+    -fx-padding: 8 12 8 12;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background: -secondary-gradient;
+    -fx-text-fill: -text-light;
+    -fx-background-radius: 6;
+}
+
+/* ========== SCROLL PANE & ROOMS ========== */
+.rooms-scroll {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.rooms-scroll .viewport {
+    -fx-background-color: transparent;
+}
+
+.rooms-container {
+    -fx-background-color: transparent;
+}
+
+/* ========== ROOM CARD STYLING ========== */
+.room-card {
+    -fx-background: -bg-card;
+    -fx-background-radius: 20;
+    -fx-padding: 25;
+    -fx-effect: dropshadow(three-pass-box, -shadow-light, 8, 0, 0, 4);
+    -fx-border-color: -border-color;
+    -fx-border-radius: 20;
+    -fx-border-width: 1;
+}
+
+.room-card:hover {
+    -fx-effect: dropshadow(three-pass-box, -shadow-medium, 12, 0, 0, 6);
+    -fx-scale-x: 1.005;
+    -fx-scale-y: 1.005;
+}
+
+.room-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -text-primary;
+}
+
+.room-price {
+    -fx-font-size: 24px;
+    -fx-font-weight: 800;
+    -fx-text-fill: -text-accent;
+}
+
+.room-detail {
+    -fx-font-size: 14px;
+    -fx-text-fill: -text-secondary;
+}
+
+.room-description {
+    -fx-font-size: 13px;
+    -fx-text-fill: -text-muted;
+    -fx-wrap-text: true;
+}
+
+/* ========== BUTTONS IN ROOM CARDS ========== */
+.contact-btn {
+    -fx-background: -success-gradient;
+    -fx-text-fill: -text-light;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(17, 153, 142, 0.3), 4, 0, 0, 2);
+}
+
+.contact-btn:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(17, 153, 142, 0.5), 6, 0, 0, 3);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.map-btn {
+    -fx-background: -secondary-gradient;
+    -fx-text-fill: -text-light;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(79, 172, 254, 0.3), 4, 0, 0, 2);
+}
+
+.map-btn:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(79, 172, 254, 0.5), 6, 0, 0, 3);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* ========== SCROLL BAR STYLING ========== */
+.scroll-bar:horizontal,
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-opacity: 0.7;
+}
+
+.scroll-bar .thumb {
+    -fx-background: -primary-gradient;
+    -fx-background-radius: 10;
+}
+
+.scroll-bar .track {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+    -fx-background-radius: 10;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
+
+/* ========== ANIMATIONS AND TRANSITIONS ========== */
+.sidebar-btn,
+.contact-btn,
+.map-btn,
+.combo-box-base {
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 1200px) {
+    .welcome-label {
+        -fx-font-size: 24px;
+    }
+
+    .room-title {
+        -fx-font-size: 18px;
+    }
+
+    .room-price {
+        -fx-font-size: 20px;
+    }
+}
+
+/* ========== DARK THEME SPECIFIC OVERRIDES ========== */
+.root.dark-theme .PANELNAME {
+    -fx-background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+}
+
+.root.dark-theme .filter-container {
+    -fx-background: -bg-filter;
+}
+
+/* ========== COMBO BOXES - DARK THEME OVERRIDES ========== */
+/* Main combo box style */
+.root.dark-theme .filter-combo {
+    -fx-background-color: -bg-secondary;
+    -fx-text-fill: -text-primary;
+    -fx-border-color: -border-color;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+/* Combo box popup list */
+.root.dark-theme .combo-box-popup .list-view {
+    -fx-background-color: -bg-secondary;
+    -fx-border-color: -border-color;
+}
+
+/* Items in the combo box list */
+.root.dark-theme .combo-box-popup .list-view .list-cell {
+    -fx-background-color: -bg-secondary;
+    -fx-text-fill: -text-primary;
+}
+
+/* Selected item in the combo box list */
+.root.dark-theme .combo-box-popup .list-view .list-cell:filled:selected,
+.root.dark-theme .combo-box-popup .list-view .list-cell:filled:selected:hover {
+    -fx-background: -primary-gradient;
+    -fx-text-fill: white;
+}
+
+
+.root.dark-theme .scroll-bar .track {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ========== SPECIAL EFFECTS ========== */
+.room-card::before {
+    -fx-background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+/* ========== ACCESSIBILITY ========== */
+.combo-box-base:focused,
+.sidebar-btn:focused,
+.contact-btn:focused,
+.map-btn:focused {
+    -fx-border-color: -text-accent;
+    -fx-border-width: 2;
+}
+
+/* ========== LOADING STATES ========== */
+.loading {
+    -fx-opacity: 0.6;
+    -fx-cursor: wait;
+}
+
+/* Light Theme (Default) */
+.root {
+    -fx-background-color: #f5f5f5;
+}
+
+.header-bar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.sidebar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 1 0 0;
+}
+
+.main-content {
+    -fx-background-color: #f9f9f9;
+}
+
+/* Dark Theme */
+.dark-theme {
+    -fx-background-color: #2b2b2b;
+}
+
+.dark-theme .header-bar {
+    -fx-background-color: #3c3c3c;
+    -fx-border-color: #555555;
+}
+
+.dark-theme .sidebar {
+    -fx-background-color: #333333;
+    -fx-border-color: #555555;
+}
+
+.dark-theme .main-content {
+    -fx-background-color: #2b2b2b;
+}
+
+.dark-theme .label {
+    -fx-text-fill: #ffffff;
+}
+
+.dark-theme .room-card {
+    -fx-background-color: #3c3c3c;
+    -fx-border-color: #555555;
+}
+
+.theme-toggle-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12 8 12;
+}
+
+.dark-theme .theme-toggle-btn {
+    -fx-border-color: #666666;
+    -fx-text-fill: #ffffff;
+}

@@ -5,86 +5,166 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.HouseOwnerDashboardController">
 
-    <left>
-        <VBox prefWidth="250.0" styleClass="sidebar,owner-sidebar">
+<BorderPane fx:id="rootContainer" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+                fx:controller="com.studentnest.controllers.HouseOwnerDashboardController" styleClass="root-container">
+
+    <!-- Top Header Bar -->
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="20.0">
             <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
+                <Insets top="15" right="25" bottom="15" left="25"/>
             </padding>
-            <Label alignment="CENTER" text="House Owner Panel" prefHeight="30.0" prefWidth="220.0" styleClass="HouseOwnerPanel">
-                <VBox.margin>
-                    <Insets bottom="30.0" />
-                </VBox.margin>
-            </Label>
 
-            <Button text="🏠 Manage Rooms" fx:id="manageRoomsButton" onAction="#handleManageRooms" styleClass="sidebar-btn" prefWidth="200.0">
-                <VBox.margin>
-                    <Insets bottom="10.0" />
-                </VBox.margin>
-            </Button>
+            <Label fx:id="welcomeLabel" text="Welcome, House Owner!" styleClass="header-title" HBox.hgrow="ALWAYS"/>
 
-            <Button text="➕ Add New Room" fx:id="addNewRoomButton" onAction="#handleAddNewRoom" styleClass="sidebar-btn" prefWidth="200.0">
-                <VBox.margin>
-                    <Insets bottom="10.0" />
-                </VBox.margin>
-            </Button>
+            <!-- Theme Toggle Button -->
+            <Button fx:id="themeToggleButton" onAction="#handleThemeToggle" styleClass="theme-toggle-btn" text="🌙"/>
 
-            <Button text="📊 Statistics" fx:id="statisticsButton" onAction="#handleStatistics" styleClass="sidebar-btn" prefWidth="200.0">
-                <VBox.margin>
-                    <Insets bottom="10.0" />
-                </VBox.margin>
-            </Button>
+            <!-- Logout Button -->
+            <Button fx:id="logoutButton" onAction="#handleBackToLogin" text="Logout" styleClass="logout-btn"/>
+        </HBox>
+    </top>
 
-            <Button text="💬 Feedback &amp; Issues" fx:id="feedbackButton" onAction="#handleFeedback" styleClass="sidebar-btn" prefWidth="200.0">
-                <VBox.margin>
-                    <Insets bottom="30.0" />
-                </VBox.margin>
-            </Button>
+    <!-- Left Sidebar -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="280.0">
+            <padding>
+                <Insets top="30" right="25" bottom="30" left="25"/>
+            </padding>
 
-            <Button fx:id="logoutButton" onAction="#handleLogout" text="🚪 Logout" styleClass="btn-danger" prefWidth="200.0" />
+            <!-- Logo/Brand -->
+            <VBox styleClass="brand-section" alignment="CENTER">
+                <VBox.margin>
+                    <Insets bottom="40.0"/>
+                </VBox.margin>
+                <Label text="🏠" styleClass="brand-icon"/>
+                <Label text="StudentNest" styleClass="brand-title"/>
+                <Label text="Owner Portal" styleClass="brand-subtitle"/>
+            </VBox>
+
+            <!-- Navigation Menu -->
+            <VBox styleClass="nav-menu" spacing="8.0">
+                <Label text="MENU" styleClass="nav-section-title"/>
+
+                <Button text="💬 Feedback" fx:id="feedbackButton" onAction="#handleFeedback" styleClass="nav-btn" prefWidth="230.0">
+                    <VBox.margin>
+                        <Insets bottom="5.0"/>
+                    </VBox.margin>
+                </Button>
+
+
+            </VBox>
+
+            <!-- Quick Stats Card -->
+            <VBox styleClass="quick-stats-card" VBox.vgrow="ALWAYS">
+                <VBox.margin>
+                    <Insets top="20.0"/>
+                </VBox.margin>
+                <Label text="Quick Stats" styleClass="stats-title"/>
+                <HBox styleClass="stat-item" alignment="CENTER_LEFT">
+                    <Label text="📍" styleClass="stat-icon"/>
+                    <VBox>
+                        <Label fx:id="totalRoomsLabel" text="0" styleClass="stat-number"/>
+                        <Label text="Total Rooms" styleClass="stat-label"/>
+                    </VBox>
+                </HBox>
+                <HBox styleClass="stat-item" alignment="CENTER_LEFT">
+                    <Label text="👥" styleClass="stat-icon"/>
+                    <VBox>
+                        <Label fx:id="occupiedRoomsLabel" text="0" styleClass="stat-number"/>
+                        <Label text="Occupied" styleClass="stat-label"/>
+                    </VBox>
+                </HBox>
+            </VBox>
         </VBox>
     </left>
 
+    <!-- Main Content Area -->
     <center>
-        <VBox spacing="20.0" styleClass="container">
-            <Label fx:id="welcomeLabel" text="Welcome, House Owner!" styleClass="welcome-label" />
+        <ScrollPane styleClass="main-scroll" fitToWidth="true" fitToHeight="true">
+            <VBox styleClass="main-content" spacing="25.0">
+                <padding>
+                    <Insets top="30" right="30" bottom="30" left="30"/>
+                </padding>
 
-            <HBox spacing="30.0" styleClass="row">
-                <VBox spacing="15.0" styleClass="card">
-                    <Label text="Add/Update Room Details" styleClass="section-label" />
-                    <VBox spacing="8.0">
-                        <Label text="Location:" />
-                        <ComboBox fx:id="locationComboBox" prefWidth="250.0" />
-                    </VBox>
-                    <VBox spacing="8.0">
-                        <Label text="Price (per month):" />
-                        <TextField fx:id="priceField" prefWidth="250.0" />
-                    </VBox>
-                    <VBox spacing="8.0">
-                        <Label text="Description:" />
-                        <TextArea fx:id="descriptionArea" prefHeight="80.0" prefWidth="250.0" />
-                    </VBox>
-                    <VBox spacing="8.0">
-                        <Label text="Contact Number:" />
-                        <TextField fx:id="contactField" prefWidth="250.0" />
-                    </VBox>
-                    <VBox spacing="8.0">
-                        <Label text="Map Link (optional):" />
-                        <TextField fx:id="mapLinkField" prefWidth="250.0" />
-                    </VBox>
-                    <HBox spacing="10.0">
-                        <Button fx:id="addRoomButton" onAction="#handleAddRoom" styleClass="btn-success" text="Add Room" />
-                        <Button fx:id="updateRoomButton" onAction="#handleUpdateRoom" styleClass="btn-primary" text="Update Room" />
-                    </HBox>
-                </VBox>
+                <!-- Room Management Section -->
+                <HBox spacing="30.0" styleClass="content-row">
 
-                <VBox spacing="15.0" styleClass="card">
-                    <Label text="Your Rooms" styleClass="section-label" />
-                    <ListView fx:id="roomsList" prefHeight="300.0" prefWidth="300.0" />
-                    <Button fx:id="deleteRoomButton" onAction="#handleDeleteRoom" styleClass="btn-danger" text="Delete Selected Room" />
-                </VBox>
-            </HBox>
-        </VBox>
+                    <!-- Add/Update Room Card -->
+                    <VBox styleClass="main-card, add-room-card" spacing="20.0" HBox.hgrow="ALWAYS">
+                        <Label text="🏠 Room Management" styleClass="card-title"/>
+
+                        <GridPane styleClass="form-grid" hgap="20.0" vgap="15.0">
+                            <!-- Row 1 -->
+                            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                <Label text="Location" styleClass="form-label"/>
+                                <ComboBox fx:id="locationComboBox" styleClass="form-input" prefWidth="250.0" promptText="Select location"/>
+                            </VBox>
+
+                            <VBox spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                <Label text="Price (Monthly)" styleClass="form-label"/>
+                                <TextField fx:id="priceField" styleClass="form-input" prefWidth="250.0" promptText="Enter price"/>
+                            </VBox>
+
+                            <!-- Row 2 -->
+                            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                <Label text="Room Type" styleClass="form-label"/>
+                                <ComboBox fx:id="roomTypeComboBox" styleClass="form-input" prefWidth="250.0" promptText="Select type"/>
+                            </VBox>
+
+                            <VBox spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <Label text="Contact Number" styleClass="form-label"/>
+                                <TextField fx:id="contactField" styleClass="form-input" prefWidth="250.0" promptText="Enter contact"/>
+                            </VBox>
+
+                            <!-- Row 3 - Full Width -->
+                            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2">
+                                <Label text="Description" styleClass="form-label"/>
+                                <TextArea fx:id="descriptionArea" styleClass="form-textarea" prefHeight="100.0" promptText="Enter room description..."/>
+                            </VBox>
+
+                            <!-- Row 4 - Full Width -->
+                            <VBox spacing="8.0" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+                                <Label text="Map Link (Optional)" styleClass="form-label"/>
+                                <TextField fx:id="mapLinkField" styleClass="form-input" promptText="Enter Google Maps link"/>
+                            </VBox>
+                        </GridPane>
+
+                        <!-- Image Upload Section -->
+                        <VBox styleClass="upload-section" spacing="15.0">
+                            <Label text="📸 Room Images (Max 2)" styleClass="section-subtitle"/>
+
+                            <HBox spacing="20.0">
+                                <VBox styleClass="upload-item" alignment="CENTER" spacing="10.0">
+                                    <Button onAction="#handleUploadImage1" styleClass="upload-btn" text="📷 Select Image 1"/>
+                                    <Label fx:id="image1PathLabel" styleClass="upload-label" text="No image selected"/>
+                                </VBox>
+
+                                <VBox styleClass="upload-item" alignment="CENTER" spacing="10.0">
+                                    <Button onAction="#handleUploadImage2" styleClass="upload-btn" text="📷 Select Image 2"/>
+                                    <Label fx:id="image2PathLabel" styleClass="upload-label" text="No image selected"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+
+                        <!-- Action Buttons -->
+                        <HBox styleClass="action-buttons" spacing="15.0" alignment="CENTER">
+                            <Button fx:id="addRoomButton" onAction="#handleAddRoom" styleClass="secondary-btn" text="➕ Add Room"/>
+                            <Button fx:id="updateRoomButton" onAction="#handleUpdateRoom" styleClass="secondary-btn" text="Update Room"/>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Rooms List Card -->
+                    <VBox styleClass="main-card, rooms-list-card" spacing="20.0" prefWidth="380.0">
+                        <Label text="📋 Your Rooms" styleClass="card-title"/>
+
+                        <ListView fx:id="roomsList" styleClass="rooms-list" prefHeight="400.0"/>
+
+                        <Button fx:id="deleteRoomButton" onAction="#handleDeleteRoom" styleClass="danger-btn" text="🗑 Delete Selected Room"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </ScrollPane>
     </center>
 </BorderPane>

@@ -6,96 +6,149 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.LoginController">
+<HBox fillHeight="true" prefHeight="700.0" prefWidth="1200.0" styleClass="login-container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.LoginController">
     <children>
-        <!-- Left side - Image Slider Section -->
-        <StackPane prefHeight="599.0" prefWidth="492.0" styleClass="left-panel">
+        <!-- Left Panel - Form -->
+        <VBox alignment="CENTER" fillWidth="true" prefHeight="700.0" prefWidth="600.0" spacing="0.0" styleClass="login-form-panel">
             <children>
-                <Pane prefHeight="600.0" prefWidth="491.0" styleClass="overlay">
-               <children>
-                      <VBox alignment="CENTER" layoutY="35.0" prefHeight="588.0" prefWidth="495.0" spacing="30.0">
-                          <children>
-                            <VBox alignment="TOP_RIGHT" />
-                              <VBox alignment="CENTER" spacing="10.0" />
-                          </children>
-                      </VBox>
-                          <Label alignment="CENTER" layoutX="3.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="92.0" prefWidth="464.0" styleClass="title-label" text="STUDENT HOME FINDER" textAlignment="CENTER" />
-               </children></Pane>
-            </children>
-        </StackPane>
-
-        <!-- Right side - Login Form -->
-        <VBox alignment="CENTER" prefHeight="600.0" prefWidth="489.0" styleClass="right-panel">
-            <children>
-                <Label alignment="CENTER" prefHeight="36.0" prefWidth="428.0" styleClass="subtitle-label" text="Welcome Back! Login to Your Account" />
-            <AnchorPane prefHeight="30.0" prefWidth="428.0" />
-                <VBox alignment="CENTER" prefHeight="487.0" prefWidth="428.0" spacing="20.0" styleClass="login-card">
+                <!-- Welcome Section -->
+                <VBox alignment="CENTER" spacing="8.0" styleClass="welcome-section">
                     <children>
+                        <Label styleClass="welcome-title" text="Welcome back">
+                            <font>
+                                <Font name="System Bold" size="32.0" />
+                            </font>
+                        </Label>
+                        <Label styleClass="welcome-subtitle" text="Please sign in to your account">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="40.0" />
+                    </VBox.margin>
+                </VBox>
 
-                        <HBox alignment="CENTER" spacing="15.0">
+                <!-- Login Form -->
+                <VBox fillWidth="true" maxWidth="400.0" spacing="24.0" styleClass="login-form">
+                    <children>
+                        <!-- User Type Selection -->
+                        <VBox spacing="8.0" styleClass="input-group">
                             <children>
-                                <VBox prefWidth="162.0" spacing="8.0" />
-                                <VBox prefWidth="162.0" spacing="8.0" />
-                            </children>
-                        </HBox>
-
-                        <VBox fillWidth="false" spacing="8.0">
-                            <children>
-                                <Label styleClass="field-label" text="User Type:" />
-                                <ComboBox fx:id="userTypeComboBox" prefHeight="32.0" prefWidth="428.0" styleClass="input-field" />
+                                <Label styleClass="input-label" text="Login as">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Label>
+                                <ComboBox fx:id="userTypeComboBox" prefHeight="50.0" prefWidth="400.0" styleClass="modern-combo" />
                             </children>
                         </VBox>
 
-                        <VBox prefHeight="52.0" prefWidth="340.0" spacing="8.0">
+                        <!-- Username Field -->
+                        <VBox spacing="8.0" styleClass="input-group">
                             <children>
-                                <Label styleClass="field-label" text="Username:" />
-                                <TextField fx:id="usernameField" prefHeight="44.0" prefWidth="428.0" styleClass="input-field" />
+                                <Label styleClass="input-label" text="Username">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="usernameField" prefHeight="50.0" promptText="Enter your username" styleClass="modern-field" />
                             </children>
                         </VBox>
 
-                        <VBox prefHeight="51.0" prefWidth="428.0" spacing="8.0">
+                        <!-- Password Field with Toggle -->
+                        <VBox spacing="8.0" styleClass="input-group">
                             <children>
-                                <Label styleClass="field-label" text="Password:" />
-                                <PasswordField fx:id="passwordField" prefHeight="46.0" prefWidth="428.0" styleClass="input-field" />
+                                <Label styleClass="input-label" text="Password">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Label>
+                                <HBox spacing="0.0" styleClass="password-container">
+                                    <children>
+                                        <PasswordField fx:id="passwordField" prefHeight="50.0" promptText="Enter your password" styleClass="modern-field password-field" HBox.hgrow="ALWAYS" />
+                                        <TextField fx:id="passwordTextField" managed="false" prefHeight="50.0" promptText="Enter your password" styleClass="modern-field password-field" visible="false" HBox.hgrow="ALWAYS" />
+                                        <Button fx:id="passwordToggleButton" onAction="#togglePasswordVisibility" prefHeight="50.0" prefWidth="50.0" styleClass="password-toggle-btn" text="👁" />
+                                    </children>
+                                </HBox>
                             </children>
                         </VBox>
 
-                        <Button fx:id="loginButton" onAction="#handleLogin" prefHeight="49.0" prefWidth="340.0" styleClass="btn-primary" text="Login">
+                        <!-- Login Button -->
+                        <Button fx:id="loginButton" onAction="#handleLogin" prefHeight="50.0" prefWidth="400.0" styleClass="login-btn" text="LOGIN">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
                             <VBox.margin>
-                                <Insets top="20.0" />
+                                <Insets top="16.0" />
                             </VBox.margin>
                         </Button>
 
-                        <Button fx:id="createAccountButton" onAction="#handleCreateAccount" prefHeight="57.0" prefWidth="340.0" styleClass="btn-success" text="Create Account" />
-
-                        <VBox alignment="CENTER" spacing="15.0">
-                            <children>
-                                <HBox alignment="CENTER" spacing="10.0" />
-                            </children>
+                        <!-- Create Account Link -->
+                        <HBox alignment="CENTER" spacing="8.0" styleClass="signup-section">
                             <VBox.margin>
-                                <Insets top="10.0" />
+                                <Insets top="24.0" />
                             </VBox.margin>
-                        </VBox>
+                            <children>
+                                <Label styleClass="signup-text" text="Don't have an account?">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="createAccountButton" onAction="#handleCreateAccount" styleClass="signup-link" text="Create Account">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </HBox>
                     </children>
-                </VBox>
-                <VBox alignment="CENTER" spacing="10.0">
-                    <children>
-                        <HBox alignment="CENTER" spacing="5.0" />
-                    </children>
-                    <VBox.margin>
-                        <Insets bottom="30.0" />
-                    </VBox.margin>
                 </VBox>
             </children>
             <padding>
-                <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                <Insets bottom="60.0" left="60.0" right="40.0" top="60.0" />
             </padding>
+        </VBox>
+
+        <!-- Right Panel - Hero Section -->
+        <VBox alignment="CENTER" fillWidth="true" prefHeight="700.0" prefWidth="600.0" styleClass="hero-panel">
+            <children>
+                <VBox alignment="CENTER" spacing="32.0" styleClass="hero-content">
+                    <children>
+                        <!-- Hero Text with Background -->
+                        <VBox alignment="CENTER" spacing="16.0" styleClass="hero-text-section hero-background">
+                            <children>
+                                <Label styleClass="hero-title" text="Student Nest" textAlignment="CENTER">
+                                    <font>
+                                        <Font name="System Bold" size="36.0" />
+                                    </font>
+                                </Label>
+                                <Label styleClass="hero-subtitle" text="Your perfect home away from home" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <Label styleClass="hero-description" text="Connect with verified house owners and find your ideal accommodation" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+                            </padding>
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="40.0" left="60.0" right="60.0" top="40.0" />
+                    </padding>
+                </VBox>
+            </children>
         </VBox>
     </children>
 </HBox>

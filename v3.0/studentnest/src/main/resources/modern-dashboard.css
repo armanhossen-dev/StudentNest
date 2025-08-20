@@ -1,0 +1,513 @@
+/* ========== ROOT VARIABLES ========== */
+.root-container {
+    -fx-font-family: 'Segoe UI', 'San Francisco', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Light Theme Variables */
+.root-container {
+    -primary-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -secondary-color: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    -success-color: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    -danger-color: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    -warning-color: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+
+    -bg-primary: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    -bg-secondary: #ffffff;
+    -bg-card: rgba(255, 255, 255, 0.9);
+    -bg-sidebar: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+
+    -text-primary: #2c3e50;
+    -text-secondary: #7f8c8d;
+    -text-light: #ffffff;
+    -text-muted: #95a5a6;
+
+    -border-color: rgba(189, 195, 199, 0.3);
+    -shadow-light: rgba(0, 0, 0, 0.1);
+    -shadow-medium: rgba(0, 0, 0, 0.15);
+    -shadow-heavy: rgba(0, 0, 0, 0.25);
+}
+
+/* Dark Theme Variables */
+.root-container.dark-theme {
+    -primary-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -secondary-color: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    -success-color: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    -danger-color: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    -warning-color: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+
+    -bg-primary: linear-gradient(135deg, #1a1a1a 0%, #2d2d30 100%);
+    -bg-secondary: #2d2d30;
+    -bg-card: rgba(45, 45, 48, 0.95);
+    -bg-sidebar: linear-gradient(180deg, #1e1e1e 0%, #252526 100%);
+
+    -text-primary: #ffffff;
+    -text-secondary: #cccccc;
+    -text-light: #ffffff;
+    -text-muted: #969696;
+
+    -border-color: rgba(204, 204, 204, 0.2);
+    -shadow-light: rgba(0, 0, 0, 0.4);
+    -shadow-medium: rgba(0, 0, 0, 0.5);
+    -shadow-heavy: rgba(0, 0, 0, 0.7);
+}
+
+/* ========== MAIN LAYOUT ========== */
+.root-container {
+    -fx-background: -bg-primary;
+}
+
+.header-bar {
+    -fx-background-color: -bg-secondary;
+    -fx-border-color: -border-color;
+    -fx-border-width: 0 0 1 0;
+    -fx-effect: dropshadow(three-pass-box, -shadow-light, 4, 0, 0, 2);
+}
+
+.header-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -text-primary;
+}
+
+/* ========== SIDEBAR ========== */
+.sidebar {
+    -fx-background: -bg-sidebar;
+    -fx-border-color: -border-color;
+    -fx-border-width: 0 1 0 0;
+}
+
+.brand-section {
+    -fx-spacing: 8;
+}
+
+.brand-icon {
+    -fx-font-size: 48px;
+}
+
+.brand-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -text-light;
+}
+
+.brand-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: -text-muted;
+}
+
+.nav-section-title {
+    -fx-font-size: 11px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -text-muted;
+    -fx-padding: 0 0 10 0;
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-light;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 20 12 20;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+
+.nav-btn:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn-active {
+    -fx-background: -primary-color;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, -shadow-medium, 6, 0, 0, 2);
+}
+
+.quick-stats-card {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-background-radius: 15;
+    -fx-padding: 20;
+    -fx-spacing: 15;
+}
+
+.stats-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -text-light;
+    -fx-padding: 0 0 10 0;
+}
+
+.stat-item {
+    -fx-spacing: 15;
+    -fx-padding: 8 0 8 0;
+}
+
+.stat-icon {
+    -fx-font-size: 24px;
+}
+
+.stat-number {
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -text-light;
+}
+
+.stat-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: -text-muted;
+}
+
+/* ========== MAIN CONTENT ========== */
+.main-scroll {
+    -fx-background-color: transparent;
+    -fx-background: -bg-primary;
+}
+
+.main-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.main-content {
+    -fx-background-color: transparent;
+}
+
+.main-card {
+    -fx-background: linear-gradient(45deg, #ffffff, #f0f0f5);
+    -fx-background-radius: 20;
+    -fx-padding: 30;
+    -fx-effect: dropshadow(three-pass-box, -shadow-light, 8, 0, 0, 4);
+    -fx-border-color: -border-color;
+    -fx-border-radius: 20;
+    -fx-border-width: 1;
+}
+
+.card-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -text-primary;
+    -fx-padding: 0 0 5 0;
+}
+
+.section-subtitle {
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -text-primary;
+}
+
+/* ========== FORM ELEMENTS ========== */
+.form-grid {
+    -fx-hgap: 20;
+    -fx-vgap: 15;
+}
+
+.form-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -text-secondary;
+}
+
+.form-input {
+    -fx-background-color: -bg-secondary;
+    -fx-text-fill: -text-primary;
+    -fx-font-size: 14px;
+    -fx-padding: 12 15 12 15;
+    -fx-background-radius: 10;
+    -fx-border-color: -border-color;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+}
+
+.form-input:focused {
+    -fx-border-color: -primary-color;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(102, 126, 234, 0.3), 6, 0, 0, 0);
+}
+
+.form-textarea {
+    -fx-background-color: -bg-secondary;
+    -fx-text-fill: -text-primary;
+    -fx-font-size: 14px;
+    -fx-padding: 12 15 12 15;
+    -fx-background-radius: 10;
+    -fx-border-color: -border-color;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+}
+
+.form-textarea:focused {
+    -fx-border-color: -primary-color;
+    -fx-border-width: 2;
+}
+
+.form-textarea .content {
+    -fx-background-color: -bg-secondary;
+    -fx-text-fill: -text-primary;
+}
+
+/* ========== UPLOAD SECTION ========== */
+.upload-section {
+    -fx-background-color: rgba(102, 126, 234, 0.08);
+    -fx-background-radius: 15;
+    -fx-padding: 20;
+}
+
+/* Dark theme specific upload section */
+.root-container.dark-theme .upload-section {
+    -fx-background-color: rgba(102, 126, 234, 0.15);
+}
+
+.upload-item {
+    -fx-spacing: 10;
+}
+
+.upload-btn {
+    -fx-background: -warning-color;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
+}
+
+.upload-btn:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 6, 0, 0, 3);
+    -fx-scale-y: 1.02;
+    -fx-scale-x: 1.02;
+}
+
+.upload-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: -text-muted;
+    -fx-text-alignment: center;
+}
+
+/* ========== BUTTONS ========== */
+.primary-btn {
+    -fx-background: -primary-color;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 12 24 12 24;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(102, 126, 234, 0.4), 6, 0, 0, 3);
+}
+
+.primary-btn:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(102, 126, 234, 0.6), 8, 0, 0, 4);
+    -fx-scale-y: 1.02;
+    -fx-scale-x: 1.02;
+}
+
+.secondary-btn {
+    -fx-background: -success-color;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 12 24 12 24;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(79, 172, 254, 0.4), 6, 0, 0, 3);
+}
+
+.secondary-btn:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(79, 172, 254, 0.6), 8, 0, 0, 4);
+    -fx-scale-y: 1.02;
+    -fx-scale-x: 1.02;
+}
+
+.danger-btn {
+    -fx-background: -danger-color;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 12 24 12 24;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(250, 112, 154, 0.4), 6, 0, 0, 3);
+}
+
+.danger-btn:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(250, 112, 154, 0.6), 8, 0, 0, 4);
+    -fx-scale-y: 1.02;
+    -fx-scale-x: 1.02;
+}
+
+.logout-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-secondary;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 8;
+    -fx-border-color: -border-color;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+}
+
+.logout-btn:hover {
+    -fx-background-color: -danger-color;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+
+.theme-toggle-btn {
+    -fx-background-color: -bg-card;
+    -fx-text-fill: -text-primary;
+    -fx-font-size: 16px;
+    -fx-padding: 8 12 8 12;
+    -fx-background-radius: 50;
+    -fx-border-color: -border-color;
+    -fx-border-radius: 50;
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, -shadow-light, 4, 0, 0, 2);
+}
+
+.theme-toggle-btn:hover {
+    -fx-background: -primary-color;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(three-pass-box, rgba(102, 126, 234, 0.4), 6, 0, 0, 3);
+}
+
+/* ========== ROOMS LIST ========== */
+.rooms-list {
+    -fx-background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+    -fx-border-color: -border-color;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-border-width: 1;
+}
+
+.rooms-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-primary;
+    -fx-padding: 15 20 15 20;
+    -fx-border-color: -border-color;
+    -fx-border-width: 0 0 1 0;
+}
+
+.rooms-list .list-cell:selected {
+    -fx-background: -primary-color;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+}
+
+.rooms-list .list-cell:hover {
+    -fx-background-color: rgba(102, 126, 234, 0.1);
+    -fx-background-radius: 8;
+}
+
+/* ========== COMBO BOX ========== */
+.combo-box-base {
+    -fx-background: linear-gradient(to right, #f8f8f8, #e8e8e8);
+    -fx-border-color: -border-color;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-width: 1;
+}
+
+.combo-box-base:focused {
+    -fx-border-color: -primary-color;
+    -fx-border-width: 2;
+}
+
+.combo-box-base .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box-base .arrow {
+    -fx-background-color: -text-secondary;
+}
+
+.combo-box-base .list-cell {
+    -fx-background-color: -bg-secondary;
+    -fx-text-fill: -text-primary;
+}
+
+.combo-box-popup .list-view {
+    -fx-background: linear-gradient(to bottom, #ffffff, #e8e8e8);
+    -fx-border-color: -border-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: -bg-secondary;
+    -fx-text-fill: -text-primary;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: rgba(102, 126, 234, 0.1);
+}
+
+/* ========== SCROLL PANE ========== */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .corner {
+    -fx-background-color: transparent;
+}
+
+/* ========== RESPONSIVE & ANIMATIONS ========== */
+.action-buttons {
+    -fx-alignment: CENTER;
+}
+
+.content-row {
+    -fx-alignment: TOP_LEFT;
+}
+
+/* ========== HOVER ANIMATIONS ========== */
+.main-card:hover {
+    -fx-effect: dropshadow(three-pass-box, -shadow-medium, 12, 0, 0, 6);
+    -fx-scale-y: 1.005;
+    -fx-scale-x: 1.005;
+}
+
+.nav-btn {
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.primary-btn, .secondary-btn, .danger-btn, .upload-btn {
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+/* ========== ADDITIONAL STYLING ========== */
+.form-input::prompt-text,
+.form-textarea::prompt-text {
+    -fx-text-fill: -text-muted;
+}
+
+.scroll-bar:horizontal,
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-opacity: 0.7;
+}
+
+.scroll-bar .thumb {
+    -fx-background: -primary-color;
+    -fx-background-radius: 10;
+}
+
+.scroll-bar .track {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+    -fx-background-radius: 10;
+}
+
+/* Dark theme scroll bar */
+.root-container.dark-theme .scroll-bar .track {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}

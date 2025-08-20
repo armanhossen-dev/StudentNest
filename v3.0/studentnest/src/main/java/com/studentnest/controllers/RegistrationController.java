@@ -6,6 +6,7 @@ import com.studentnest.database.DatabaseConnection;
 import com.studentnest.utils.SceneManager;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
 
 import java.net.URL;
 import java.sql.*;
@@ -49,7 +50,7 @@ public class RegistrationController {
      * Retrieves user input, validates it, and attempts to register the new user.
      */
     @FXML
-    public void handleRegister() {
+    public void handleRegister(ActionEvent event) {
         try {
             String userType = userTypeComboBox.getValue();
             String name = nameField.getText().trim();
@@ -79,20 +80,32 @@ public class RegistrationController {
                 return;
             }
 
+            // Phone number validation (basic)
+            if (!phone.matches("\\d{10,15}")) {
+                showAlert("Error", "Phone number must be 10-15 digits", Alert.AlertType.WARNING);
+                return;
+            }
+
+            // Name validation (basic)
+            if (!name.matches("[a-zA-Z\\s.]+")) {
+                showAlert("Error", "Name can only contain letters, spaces, and periods", Alert.AlertType.WARNING);
+                return;
+            }
+
             // Disable register button during processing
             registerButton.setDisable(true);
             registerButton.setText("Registering...");
 
-            // Attempt to register the user in the database.
+            // Attempt to register the user in the database
             if (registerUser(name, phone, username, password, userType)) {
-                // Show a success message if registration is successful.
+                // Show a success message if registration is successful
                 showAlert("Success", "Registration successful! Please login.", Alert.AlertType.INFORMATION);
 
-                // Fix: Use the updated SceneManager method with the CSS file name.
-                SceneManager.switchScene("login.fxml", "login.css", 1000, 620);
+                // Navigate back to login screen with proper parameters
+                SceneManager.switchScene(event, "/fxml/login.fxml", "/css/login.css", 1000, 620, "StudentNest - Login");
 
             } else {
-                // Show an error message if registration fails.
+                // Show an error message if registration fails
                 showAlert("Error", "Registration failed. Username might already exist.", Alert.AlertType.ERROR);
             }
         } catch (Exception e) {
@@ -117,7 +130,9 @@ public class RegistrationController {
      */
     private boolean registerUser(String name, String phone, String username, String password, String userType) {
         Connection conn = null;
-        PreparedStatement stmt = null;
+        PreparedStatement checkStmt = null;
+        PreparedStatement insertStmt = null;
+        ResultSet rs = null;
 
         try {
             // Establish a database connection.
@@ -129,9 +144,9 @@ public class RegistrationController {
 
             // First check if username already exists
             String checkSql = "SELECT COUNT(*) FROM users WHERE username = ?";
-            PreparedStatement checkStmt = conn.prepareStatement(checkSql);
+            checkStmt = conn.prepareStatement(checkSql);
             checkStmt.setString(1, username);
-            ResultSet rs = checkStmt.executeQuery();
+            rs = checkStmt.executeQuery();
 
             if (rs.next() && rs.getInt(1) > 0) {
                 System.out.println("Username already exists: " + username);
@@ -140,15 +155,15 @@ public class RegistrationController {
 
             // Prepare a SQL statement to prevent SQL injection.
             String sql = "INSERT INTO users (name, phone, username, password, user_type) VALUES (?, ?, ?, ?, ?)";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, name);
-            stmt.setString(2, phone);
-            stmt.setString(3, username);
-            stmt.setString(4, password); // Consider hashing passwords in production
-            stmt.setString(5, userType);
+            insertStmt = conn.prepareStatement(sql);
+            insertStmt.setString(1, name);
+            insertStmt.setString(2, phone);
+            insertStmt.setString(3, username);
+            insertStmt.setString(4, password); // Consider hashing passwords in production
+            insertStmt.setString(5, userType);
 
             // Execute the update and check the result.
-            int result = stmt.executeUpdate();
+            int result = insertStmt.executeUpdate();
             boolean success = result > 0;
 
             if (success) {
@@ -162,9 +177,11 @@ public class RegistrationController {
             e.printStackTrace();
             return false;
         } finally {
-            // Clean up database resources
+            // Clean up database resources in proper order
             try {
-                if (stmt != null) stmt.close();
+                if (rs != null) rs.close();
+                if (checkStmt != null) checkStmt.close();
+                if (insertStmt != null) insertStmt.close();
                 if (conn != null) conn.close();
             } catch (SQLException e) {
                 System.err.println("Error closing database resources: " + e.getMessage());
@@ -172,13 +189,14 @@ public class RegistrationController {
         }
     }
 
-
-
+    /**
+     * Handles the back to login button click
+     */
     @FXML
-    public void handleBackToLogin() {
+    public void handleBackToLogin(ActionEvent event) {
         try {
-            // Fix: Use the updated SceneManager method with the CSS file name.
-            SceneManager.switchScene("login.fxml", "login.css", 1000, 620);
+            // Use the correct SceneManager method with ActionEvent
+            SceneManager.switchScene(event, "/fxml/login.fxml", "/css/login.css", 1000, 620, "StudentNest - Login");
             System.out.println("Navigating back to login page...");
         } catch (Exception e) {
             System.err.println("Error navigating to login page: " + e.getMessage());
@@ -215,9 +233,10 @@ public class RegistrationController {
 
                 // Style the alert to match the application theme
                 try {
-                    alert.getDialogPane().getStylesheets().addAll(
-                            getClass().getResource("/css/registration.css").toExternalForm()
-                    );
+                    URL cssUrl = getClass().getResource("/css/registration.css");
+                    if (cssUrl != null) {
+                        alert.getDialogPane().getStylesheets().add(cssUrl.toExternalForm());
+                    }
                 } catch (Exception e) {
                     System.err.println("Could not apply styles to alert dialog");
                 }
