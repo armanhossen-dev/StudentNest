@@ -1,5 +1,6 @@
 package com.studentnest.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -89,12 +90,30 @@ public class AdminDashboardController {
 
     @FXML
     public void initialize() {
+        System.out.println("AdminDashboardController initialize() called");
+
         // Set welcome message
         String currentUser = LoginController.getCurrentUserName();
         welcomeLabel.setText("Welcome, " + (currentUser != null ? currentUser : "Admin") + "!");
 
+        // Debug: Check if database connection works
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            if (conn != null) {
+                System.out.println("Database connection successful");
+                conn.close();
+            } else {
+                System.out.println("Database connection failed");
+            }
+        } catch (Exception e) {
+            System.out.println("Database error: " + e.getMessage());
+        }
+
         // Initialize table columns
         setupTableColumns();
+
+        // Debug: Print before loading data
+        System.out.println("About to load all data...");
 
         // Load data
         loadAllData();
@@ -104,6 +123,8 @@ public class AdminDashboardController {
 
         // Initialize theme
         applyTheme();
+
+        System.out.println("AdminDashboardController initialization completed");
     }
 
     private void setupTableColumns() {
@@ -174,6 +195,7 @@ public class AdminDashboardController {
         });
     }
 
+
     private void loadUsers() {
         users.clear();
         String sql = "SELECT * FROM users WHERE user_type != 'Admin' ORDER BY created_at DESC";
@@ -196,6 +218,7 @@ public class AdminDashboardController {
         }
         updateCounts();
     }
+
 
     private void loadRooms() {
         rooms.clear();
@@ -547,26 +570,58 @@ public class AdminDashboardController {
     }
 
     @FXML
-    public void handleLogout() {
-        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        confirmAlert.setTitle("Confirm Logout");
-        confirmAlert.setHeaderText("Logout Confirmation");
-        confirmAlert.setContentText("Are you sure you want to logout?");
-
-        if (confirmAlert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
-            try {
-                // Clear current user session
-                LoginController.setCurrentUserName(null);
-
-                // Navigate back to login
-                SceneManager.switchScene("login.fxml", "login.css", 1000, 620);
-                System.out.println("Successfully logged out and navigated to login page.");
-            } catch (Exception e) {
-                System.err.println("Error navigating to login page: " + e.getMessage());
-                e.printStackTrace();
-                showAlert("Navigation Error", "Failed to logout properly. Please restart the application.", Alert.AlertType.ERROR);
-            }
+    public void handleBackToLogin(ActionEvent event) {
+        try {
+            // Use the correct SceneManager method with ActionEvent and proper parameters
+            SceneManager.switchScene(event, "/fxml/login.fxml", "/css/login.css", 1000, 620, "StudentNest - Login");
+            System.out.println("Navigating back to login page...");
+        } catch (Exception e) {
+            System.err.println("Error navigating to login page: " + e.getMessage());
+            e.printStackTrace();
         }
+    }
+
+    // Single showAlert method to avoid duplication
+    private void showAlert(String title, String message, Alert.AlertType alertType) {
+        Platform.runLater(() -> {
+            try {
+                Alert alert = new Alert(alertType);
+                alert.setTitle(title);
+                alert.setHeaderText(null);
+                alert.setContentText(message);
+
+                // Set icon for the alert window
+                Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+                URL imageUrl = getClass().getResource("/images/img.png");
+                if (imageUrl != null) {
+                    Image icon = new Image(imageUrl.toExternalForm());
+                    alertStage.getIcons().add(icon);
+                } else {
+                    System.err.println("Warning: The image file was not found. Please check the path: /images/img.png");
+                }
+
+                // Try to style the alert to match the application theme
+                try {
+                    URL cssUrl = getClass().getResource("/css/login.css");
+                    if (cssUrl != null) {
+                        alert.getDialogPane().getStylesheets().add(cssUrl.toExternalForm());
+                    } else {
+                        System.err.println("Warning: Could not apply CSS to alert dialog, file not found: /css/login.css");
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error applying CSS to alert dialog: " + e.getMessage());
+                }
+
+                alert.showAndWait();
+            } catch (Exception e) {
+                System.err.println("Error showing alert: " + e.getMessage());
+            }
+        });
+    }
+
+    // Overloaded method for default INFO alerts
+    private void showAlert(String title, String message) {
+        showAlert(title, message, Alert.AlertType.INFORMATION);
     }
 
     private void updateCounts() {
@@ -583,36 +638,4 @@ public class AdminDashboardController {
         });
     }
 
-    private void showAlert(String title, String message, Alert.AlertType alertType) {
-        Platform.runLater(() -> {
-            try {
-                Alert alert = new Alert(alertType);
-                alert.setTitle(title);
-                alert.setHeaderText(null);
-                alert.setContentText(message);
-
-                // Set application icon for alert
-                Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
-                try {
-                    URL imageUrl = getClass().getResource("/images/img.png");
-                    if (imageUrl != null) {
-                        Image icon = new Image(imageUrl.toExternalForm());
-                        alertStage.getIcons().add(icon);
-                    }
-                } catch (Exception e) {
-                    System.err.println("Warning: Could not load application icon for alert.");
-                }
-
-                alert.showAndWait();
-            } catch (Exception e) {
-                System.err.println("Error showing alert: " + e.getMessage());
-                e.printStackTrace();
-            }
-        });
-    }
-
-    // Convenience method for info alerts
-    private void showAlert(String title, String message) {
-        showAlert(title, message, Alert.AlertType.INFORMATION);
-    }
 }

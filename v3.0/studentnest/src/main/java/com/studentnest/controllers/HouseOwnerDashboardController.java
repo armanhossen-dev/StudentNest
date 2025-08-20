@@ -5,29 +5,26 @@ import com.studentnest.models.Room;
 import com.studentnest.utils.SceneManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import javafx.stage.FileChooser;
-import javafx.collections.FXCollections;
-
-import java.net.URL;
 import java.sql.*;
 
 import com.studentnest.database.DatabaseConnection;
-import com.studentnest.models.User;
-import javafx.stage.Stage;
 
 public class HouseOwnerDashboardController {
 
-    // ========== EXISTING FXML VARIABLES ==========
+    // ========== FXML VARIABLES ==========
     @FXML private Label welcomeLabel;
     @FXML private TextField priceField;
     @FXML private TextArea descriptionArea;
@@ -45,26 +42,19 @@ public class HouseOwnerDashboardController {
     @FXML private Button feedbackButton;
     @FXML private Button themeToggleButton;
     @FXML private BorderPane rootContainer;
-
-    // ========== NEW FXML VARIABLES FOR QUICK STATS ==========
     @FXML private Label totalRoomsLabel;
     @FXML private Label occupiedRoomsLabel;
 
-    // ========== EXISTING VARIABLES ==========
+    // ========== INSTANCE VARIABLES ==========
     private File image1File;
     private File image2File;
     private ObservableList<Room> rooms = FXCollections.observableArrayList();
     private Room selectedRoom = null;
 
-    // ========== REMOVED UNUSED VARIABLES ==========
-    // Removed: TabPane mainTabPane and other unused button variables
-
     @FXML
     public void initialize() {
         // Defer initialization to ensure FXML elements are properly injected
-        Platform.runLater(() -> {
-            initializeComponents();
-        });
+        Platform.runLater(this::initializeComponents);
     }
 
     private void initializeComponents() {
@@ -246,6 +236,7 @@ public class HouseOwnerDashboardController {
         descriptionArea.setText(room.getDescription());
         contactField.setText(room.getContactInfo());
         mapLinkField.setText(room.getMapLink());
+        roomTypeComboBox.setValue(room.getRoomType());
     }
 
     @FXML
@@ -325,6 +316,7 @@ public class HouseOwnerDashboardController {
             return null;
         }
     }
+
     @FXML
     public void handleUpdateRoom() {
         if (selectedRoom == null) {
@@ -337,6 +329,7 @@ public class HouseOwnerDashboardController {
         String description = descriptionArea.getText();
         String contact = contactField.getText();
         String mapLink = mapLinkField.getText();
+        String roomType = roomTypeComboBox.getValue();
 
         if (location == null || priceText.isEmpty() || description.isEmpty() || contact.isEmpty()) {
             showAlert("Validation Error", "Please fill in all required fields", Alert.AlertType.WARNING);
@@ -345,15 +338,39 @@ public class HouseOwnerDashboardController {
 
         try {
             double price = Double.parseDouble(priceText);
-            String sql = "UPDATE rooms SET location = ?, price = ?, description = ?, contact_number = ?, map_link = ? WHERE id = ?";
+
+            // Handle image updates
+            String image1Path = saveImage(image1File);
+            String image2Path = saveImage(image2File);
+
+            String sql;
+            if (image1Path != null || image2Path != null) {
+                sql = "UPDATE rooms SET location = ?, price = ?, description = ?, contact_number = ?, map_link = ?, room_type = ?" +
+                        (image1Path != null ? ", image1_path = ?" : "") +
+                        (image2Path != null ? ", image2_path = ?" : "") +
+                        " WHERE id = ?";
+            } else {
+                sql = "UPDATE rooms SET location = ?, price = ?, description = ?, contact_number = ?, map_link = ?, room_type = ? WHERE id = ?";
+            }
+
             try (Connection conn = DatabaseConnection.getConnection();
                  PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setString(1, location);
-                stmt.setDouble(2, price);
-                stmt.setString(3, description);
-                stmt.setString(4, contact);
-                stmt.setString(5, mapLink);
-                stmt.setInt(6, selectedRoom.getId());
+                int paramIndex = 1;
+                stmt.setString(paramIndex++, location);
+                stmt.setDouble(paramIndex++, price);
+                stmt.setString(paramIndex++, description);
+                stmt.setString(paramIndex++, contact);
+                stmt.setString(paramIndex++, mapLink);
+                stmt.setString(paramIndex++, roomType);
+
+                if (image1Path != null) {
+                    stmt.setString(paramIndex++, image1Path);
+                }
+                if (image2Path != null) {
+                    stmt.setString(paramIndex++, image2Path);
+                }
+
+                stmt.setInt(paramIndex, selectedRoom.getId());
 
                 if (stmt.executeUpdate() > 0) {
                     showAlert("Success", "Room updated successfully!", Alert.AlertType.INFORMATION);
@@ -407,8 +424,12 @@ public class HouseOwnerDashboardController {
         contactField.clear();
         mapLinkField.clear();
         roomTypeComboBox.setValue(null);
-        image1PathLabel.setText("No image selected");
-        image2PathLabel.setText("No image selected");
+        if (image1PathLabel != null) {
+            image1PathLabel.setText("No image selected");
+        }
+        if (image2PathLabel != null) {
+            image2PathLabel.setText("No image selected");
+        }
         image1File = null;
         image2File = null;
     }
@@ -420,47 +441,75 @@ public class HouseOwnerDashboardController {
 
     @FXML
     private void handleThemeToggle() {
-        if (rootContainer.getStyleClass().contains("dark-theme")) {
-            rootContainer.getStyleClass().remove("dark-theme");
-            themeToggleButton.setText("🌙"); // Moon for dark mode
-        } else {
-            rootContainer.getStyleClass().add("dark-theme");
-            themeToggleButton.setText("☀"); // Sun for light mode
+        if (rootContainer != null) {
+            if (rootContainer.getStyleClass().contains("dark-theme")) {
+                rootContainer.getStyleClass().remove("dark-theme");
+                if (themeToggleButton != null) {
+                    themeToggleButton.setText("🌙"); // Moon for dark mode
+                }
+            } else {
+                rootContainer.getStyleClass().add("dark-theme");
+                if (themeToggleButton != null) {
+                    themeToggleButton.setText("☀"); // Sun for light mode
+                }
+            }
         }
     }
 
     @FXML
-    public void handleFeedback() {
-        SceneManager.switchScene("feedback-page.fxml", "styles1.css", 800, 600);
-        FeedbackController controller = (FeedbackController) SceneManager.getController();
-        if (controller != null) {
-            controller.setPreviousPage("houseowner-dashboard.fxml", "modern-dashboard.css");
-        }
-    }
-
-    @FXML
-    public void handleBackToLogin() {
+    public void handleFeedback(ActionEvent event) {
         try {
-            // Fix: Use the updated SceneManager method with the CSS file name.
-            SceneManager.switchScene("login.fxml", "login.css", 1000, 620);
+            // Use switchSceneAndGetController to get the controller instance
+            FeedbackController controller = SceneManager.switchSceneAndGetController(
+                    event,
+                    "/fxml/feedback-page.fxml",
+                    "StudentNest - Feedback"
+            );
+
+            // Set previous page information if controller was loaded successfully
+            if (controller != null) {
+                controller.setPreviousPage("/fxml/houseowner-dashboard.fxml", "/css/modern-dashboard.css");
+            } else {
+                System.err.println("Warning: Could not get FeedbackController instance");
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error navigating to feedback page: " + e.getMessage());
+            e.printStackTrace();
+
+            // Fallback: Navigate without getting controller
+            try {
+                SceneManager.switchScene(event, "/fxml/feedback-page.fxml", "/css/styles1.css", 800, 600, "StudentNest - Feedback");
+            } catch (Exception fallbackError) {
+                System.err.println("Fallback navigation also failed: " + fallbackError.getMessage());
+                // Show error alert to user
+                showAlert("Navigation Error", "Could not open feedback page. Please try again.", Alert.AlertType.ERROR);
+            }
+        }
+    }
+
+    @FXML
+    public void handleBackToLogin(ActionEvent event) {
+        try {
+            // Use the correct SceneManager method with ActionEvent and proper parameters
+            SceneManager.switchScene(event, "/fxml/login.fxml", "/css/login.css", 1000, 620, "StudentNest - Login");
             System.out.println("Navigating back to login page...");
         } catch (Exception e) {
             System.err.println("Error navigating to login page: " + e.getMessage());
             e.printStackTrace();
-            showAlert("Navigation Error",
-                    "Unable to return to login page. Please try again.",
-                    Alert.AlertType.ERROR);
         }
     }
 
+    // Single showAlert method to avoid duplication
     private void showAlert(String title, String message, Alert.AlertType alertType) {
-        javafx.application.Platform.runLater(() -> {
+        Platform.runLater(() -> {
             try {
                 Alert alert = new Alert(alertType);
                 alert.setTitle(title);
                 alert.setHeaderText(null);
                 alert.setContentText(message);
 
+                // Set icon for the alert window
                 Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
                 URL imageUrl = getClass().getResource("/images/img.png");
                 if (imageUrl != null) {
@@ -489,6 +538,7 @@ public class HouseOwnerDashboardController {
         });
     }
 
+    // Overloaded method for default INFO alerts
     private void showAlert(String title, String message) {
         showAlert(title, message, Alert.AlertType.INFORMATION);
     }

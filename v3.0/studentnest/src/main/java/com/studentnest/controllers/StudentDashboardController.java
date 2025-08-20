@@ -1,8 +1,11 @@
 package com.studentnest.controllers;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import com.studentnest.utils.SceneManager;
+
 import com.studentnest.models.User;
 import javafx.application.Platform;
-import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -428,42 +431,54 @@ public class StudentDashboardController {
         displayRooms();
     }
 
-    @FXML
-    public void handleAboutUs() {
-        SceneManager.switchScene("about-us.fxml", "student-dashboard.css", 800, 600);
-    }
 
     @FXML
-    public void handleFeedback() {
-        SceneManager.switchScene("feedback-page.fxml", "student-dashboard.css", 800, 600);
-        FeedbackController controller = (FeedbackController) SceneManager.getController();
-        if (controller != null) {
-            controller.setPreviousPage("student-dashboard.fxml", "student-dashboard.css");
-        }
-    }
-
-    @FXML
-    public void handleLogout() {
+    public void handleLogout(ActionEvent event) {
         try {
-            SceneManager.switchScene("login.fxml", "login.css", 1000, 620);
+            // Correctly use the SceneManager method with ActionEvent and all parameters
+            SceneManager.switchScene(event, "/fxml/login.fxml", "/css/login.css", 1000, 620, "StudentNest - Login");
+            System.out.println("Navigating back to login page...");
         } catch (Exception e) {
             System.err.println("Error navigating to login page: " + e.getMessage());
             e.printStackTrace();
-            showAlert("Navigation Error", "Unable to logout. Please try again.", Alert.AlertType.ERROR);
         }
     }
 
-    /**
-     * Show alert dialog with styling
-     */
+    // Inside your StudentDashboardController class
+
+    @FXML
+    public void handleAboutUs(ActionEvent event) {
+        // Correctly call the switchScene method with the required ActionEvent
+        SceneManager.switchScene(event, "/fxml/about-us.fxml", "/css/student-dashboard.css", 800, 600, "StudentNest - About Us");
+    }
+
+
+    @FXML
+    public void handleFeedback(ActionEvent event) {
+        // Call the correct method to switch scenes and get the controller
+        FeedbackController controller = SceneManager.switchSceneAndGetController(
+                event,
+                "/fxml/feedback-page.fxml",
+                "Feedback Page" // You can set a window title here
+        );
+
+        // After successfully getting the controller, you can set its properties
+        if (controller != null) {
+            controller.setPreviousPage("/fxml/student-dashboard.fxml", "/css/student-dashboard.css");
+        }
+    }
+
+
+    // Single showAlert method to avoid duplication
     private void showAlert(String title, String message, Alert.AlertType alertType) {
-        javafx.application.Platform.runLater(() -> {
+        Platform.runLater(() -> {
             try {
                 Alert alert = new Alert(alertType);
                 alert.setTitle(title);
                 alert.setHeaderText(null);
                 alert.setContentText(message);
 
+                // Set icon for the alert window
                 Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
                 URL imageUrl = getClass().getResource("/images/img.png");
                 if (imageUrl != null) {
@@ -475,11 +490,11 @@ public class StudentDashboardController {
 
                 // Try to style the alert to match the application theme
                 try {
-                    URL cssUrl = getClass().getResource("/css/student-dashboard.css");
+                    URL cssUrl = getClass().getResource("/css/login.css");
                     if (cssUrl != null) {
                         alert.getDialogPane().getStylesheets().add(cssUrl.toExternalForm());
                     } else {
-                        System.err.println("Warning: Could not apply CSS to alert dialog, file not found: /css/student-dashboard.css");
+                        System.err.println("Warning: Could not apply CSS to alert dialog, file not found: /css/login.css");
                     }
                 } catch (Exception e) {
                     System.err.println("Error applying CSS to alert dialog: " + e.getMessage());
@@ -492,6 +507,7 @@ public class StudentDashboardController {
         });
     }
 
+    // Overloaded method for default INFO alerts
     private void showAlert(String title, String message) {
         showAlert(title, message, Alert.AlertType.INFORMATION);
     }

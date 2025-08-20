@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
+import javafx.scene.Node;
 
 import java.net.URL;
 import java.sql.*;
@@ -22,8 +24,13 @@ public class LoginController {
     @FXML private ComboBox<String> userTypeComboBox;
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
+    @FXML private TextField passwordTextField; // For showing password as text
+    @FXML private Button passwordToggleButton;
     @FXML private Button loginButton;
     @FXML private Button createAccountButton;
+
+    // Password visibility state
+    private boolean isPasswordVisible = false;
 
     // User Session Management
     private static int currentUserId;
@@ -40,6 +47,9 @@ public class LoginController {
             userTypeComboBox.getItems().addAll("Student", "House Owner", "Admin");
             userTypeComboBox.setValue("Student");
 
+            // Bind password fields together
+            setupPasswordToggle();
+
             System.out.println("Login controller initialized successfully");
         } catch (Exception e) {
             System.err.println("Error initializing login controller: " + e.getMessage());
@@ -48,14 +58,69 @@ public class LoginController {
     }
 
     /**
+     * Setup password visibility toggle functionality
+     */
+    private void setupPasswordToggle() {
+        // Bind the text fields so they stay in sync
+        passwordTextField.textProperty().bindBidirectional(passwordField.textProperty());
+
+        // Initially hide the text field
+        passwordTextField.setVisible(false);
+        passwordTextField.setManaged(false);
+
+        // Set initial toggle button state
+        passwordToggleButton.setText("👁");
+    }
+
+    /**
+     * Toggle password visibility
+     */
+    @FXML
+    public void togglePasswordVisibility() {
+        try {
+            isPasswordVisible = !isPasswordVisible;
+
+            if (isPasswordVisible) {
+                // Show password as text
+                passwordField.setVisible(false);
+                passwordField.setManaged(false);
+                passwordTextField.setVisible(true);
+                passwordTextField.setManaged(true);
+                passwordToggleButton.setText("🙈"); // Hide icon
+                passwordTextField.requestFocus();
+                passwordTextField.positionCaret(passwordTextField.getText().length());
+            } else {
+                // Hide password (show as dots)
+                passwordTextField.setVisible(false);
+                passwordTextField.setManaged(false);
+                passwordField.setVisible(true);
+                passwordField.setManaged(true);
+                passwordToggleButton.setText("👁"); // Show icon
+                passwordField.requestFocus();
+                passwordField.positionCaret(passwordField.getText().length());
+            }
+        } catch (Exception e) {
+            System.err.println("Error toggling password visibility: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Get the current password value from the active field
+     */
+    private String getCurrentPassword() {
+        return isPasswordVisible ? passwordTextField.getText() : passwordField.getText();
+    }
+
+    /**
      * Handle login button click
      */
     @FXML
-    public void handleLogin() {
+    public void handleLogin(ActionEvent event) {
         try {
             String userType = userTypeComboBox.getValue();
             String username = usernameField.getText().trim();
-            String password = passwordField.getText();
+            String password = getCurrentPassword();
 
             // Validation
             if (username.isEmpty() || password.isEmpty()) {
@@ -70,7 +135,7 @@ public class LoginController {
 
             // Show loading state
             loginButton.setDisable(true);
-            loginButton.setText("Logging in...");
+            loginButton.setText("LOGGING IN...");
 
             // Authenticate user in background thread to prevent UI freezing
             Task<Boolean> loginTask = new Task<>() {
@@ -82,28 +147,32 @@ public class LoginController {
                 @Override
                 protected void succeeded() {
                     // Re-enable login button
-                    loginButton.setDisable(false);
-                    loginButton.setText("LOGIN");
+                    Platform.runLater(() -> {
+                        loginButton.setDisable(false);
+                        loginButton.setText("LOGIN");
 
-                    if (getValue()) {
-                        // Navigate to appropriate dashboard
-                        navigateToDashboard(userType);
-                    } else {
-                        showAlert("Login Failed",
-                                "Invalid username, password, or user type. Please try again.",
-                                Alert.AlertType.ERROR);
-                    }
+                        if (getValue()) {
+                            // Navigate to appropriate dashboard
+                            navigateToDashboard(userType, event);
+                        } else {
+                            showAlert("Login Failed",
+                                    "Invalid username, password, or user type. Please try again.",
+                                    Alert.AlertType.ERROR);
+                        }
+                    });
                 }
 
                 @Override
                 protected void failed() {
                     // Re-enable login button
-                    loginButton.setDisable(false);
-                    loginButton.setText("LOGIN");
+                    Platform.runLater(() -> {
+                        loginButton.setDisable(false);
+                        loginButton.setText("LOGIN");
 
-                    showAlert("Connection Error",
-                            "Unable to connect to the database. Please try again later.",
-                            Alert.AlertType.ERROR);
+                        showAlert("Connection Error",
+                                "Unable to connect to the database. Please try again later.",
+                                Alert.AlertType.ERROR);
+                    });
                 }
             };
 
@@ -123,36 +192,58 @@ public class LoginController {
     /**
      * Navigate to the appropriate dashboard based on user type
      */
-    private void navigateToDashboard(String userType) {
-        String fxmlFile;
-        String cssFile;
-        int width, height;
 
-        switch (userType) {
-            case "Student":
-                fxmlFile = "student-dashboard.fxml";
-                cssFile = "student-dashboard.css";
-                width = 1400;
-                height = 850;
-                break;
-            case "House Owner":
-                fxmlFile = "houseowner-dashboard.fxml";
-                cssFile = "modern-dashboard.css";
-                width = 1400;
-                height = 850;
-                break;
-            case "Admin":
-                fxmlFile = "admin-dashboard.fxml";
-                cssFile = "AdminDashboard.css";
-                width = 1400;
-                height = 850;
-                break;
-            default:
-                showAlert("Error", "Unknown user type: " + userType, Alert.AlertType.ERROR);
-                return;
+    // Inside LoginController.java
+
+     /**
+     * Navigate to the appropriate dashboard based on user type
+     */
+        /**
+     * Navigate to the appropriate dashboard based on user type
+     */
+    private void navigateToDashboard(String userType, ActionEvent event) {
+        try {
+            String fxmlFile;
+            String cssFile;
+            String title;
+            int width, height;
+
+            switch (userType) {
+                case "Student":
+                    fxmlFile = "/fxml/student-dashboard.fxml";
+                    cssFile = "/css/student-dashboard.css";
+                    title = "StudentNest - Student Dashboard";
+                    width = 1400;
+                    height = 850;
+                    break;
+                case "House Owner":
+                    fxmlFile = "/fxml/houseowner-dashboard.fxml";
+                    cssFile = "/css/modern-dashboard.css";
+                    title = "StudentNest - House Owner Dashboard";
+                    width = 1400;
+                    height = 850;
+                    break;
+                case "Admin":
+                    fxmlFile = "/fxml/admin-dashboard.fxml";
+                    // Use the CSS file name that matches your project structure
+                    cssFile = "/css/AdminDashboard.css"; // This matches your FXML reference
+                    title = "StudentNest - Admin Dashboard";
+                    width = 1400;
+                    height = 850;
+                    break;
+                default:
+                    showAlert("Error", "Unknown user type: " + userType, Alert.AlertType.ERROR);
+                    return;
+            }
+
+            // Use the correct SceneManager method with ActionEvent
+            SceneManager.switchScene(event, fxmlFile, cssFile, width, height, title);
+
+        } catch (Exception e) {
+            System.err.println("Error navigating to dashboard: " + e.getMessage());
+            e.printStackTrace();
+            showAlert("Navigation Error", "Could not load the dashboard. Please try again.", Alert.AlertType.ERROR);
         }
-
-        SceneManager.switchScene(fxmlFile, cssFile, width, height);
     }
 
     /**
@@ -202,11 +293,20 @@ public class LoginController {
         }
     }
 
+    /**
+     * Handle create account button click
+     */
     @FXML
-    public void handleCreateAccount() {
-        // Switch to registration scene using the SceneManager
-        SceneManager.switchScene("registration.fxml", "registration.css", 1000, 647);
-        System.out.println("Navigating to registration page...");
+    public void handleCreateAccount(ActionEvent event) {
+        try {
+            // Switch to registration scene using the SceneManager with correct parameters
+            SceneManager.switchScene(event, "/fxml/registration.fxml", "/css/registration.css", 1000, 680, "StudentNest - Create Account");
+            System.out.println("Navigating to registration page...");
+        } catch (Exception e) {
+            System.err.println("Error navigating to registration page: " + e.getMessage());
+            e.printStackTrace();
+            showAlert("Navigation Error", "Could not load the registration page. Please try again.", Alert.AlertType.ERROR);
+        }
     }
 
     /**
@@ -231,10 +331,10 @@ public class LoginController {
 
                 // Try to style the alert to match the application theme
                 try {
-                    // You can choose which stylesheet to apply here
-                    alert.getDialogPane().getStylesheets().add(
-                            getClass().getResource("/css/login.css").toExternalForm()
-                    );
+                    URL cssUrl = getClass().getResource("/css/login.css");
+                    if (cssUrl != null) {
+                        alert.getDialogPane().getStylesheets().add(cssUrl.toExternalForm());
+                    }
                 } catch (Exception e) {
                     // Continue without styling if no CSS is available
                     System.err.println("Warning: Could not apply CSS to alert dialog");

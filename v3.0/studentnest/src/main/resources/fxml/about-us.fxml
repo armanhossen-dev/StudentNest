@@ -3,51 +3,139 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import java.net.URL?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.AboutUsController">
     <center>
-        <VBox spacing="15" styleClass="about-container">
-            <Label styleClass="about-title" text="🏡 StudentNest – Student Home Finder" />
-            <!-- Replaced Text with Label to fix the loading error -->
-            <Label styleClass="about-text" text="StudentNest is a smart solution designed for students of Daffodil International University (DIU) to easily discover available homes, rooms, or seats around the campus. Students can search by location and price range to find a suitable place to live while studying." wrapText="true" />
+        <ScrollPane styleClass="main-scroll" fitToWidth="true" hbarPolicy="NEVER">
+            <VBox spacing="25" styleClass="about-container">
+                <padding>
+                    <Insets top="40" bottom="40" left="50" right="50"/>
+                </padding>
 
-            <Label styleClass="about-subtitle" text="🌟 Key Features" />
-            <VBox spacing="5" styleClass="feature-list">
-                <Label styleClass="feature-item" text="🔍 Location-Based Search (e.g., Khagan, Candgaon, Charabag, Kumkumari, Dattopara, Shadhupara)" />
-                <Label styleClass="feature-item" text="💰 Budget Filter – Find rooms that match your financial range" />
-                <Label styleClass="feature-item" text="🏠 Room/Seat Availability with verified listings" />
-                <Label styleClass="feature-item" text="📍 Map Integration (optional future feature)" />
-                <Label styleClass="feature-item" text="📊 User-friendly Interface for both mobile and desktop" />
+                <!-- Header Section -->
+                <VBox spacing="10" styleClass="header-section">
+                    <Label styleClass="about-title" text="🏡 StudentNest" />
+                    <Label styleClass="about-subtitle-main" text="Student Home Finder" />
+                    <Label styleClass="about-description" text="Your trusted companion for finding the perfect student accommodation near Daffodil International University" wrapText="true" />
+                </VBox>
+
+                <Separator styleClass="section-divider" />
+
+                <!-- Overview Section -->
+                <VBox spacing="15" styleClass="section-container">
+                    <Label styleClass="section-title" text="✨ What is StudentNest?" />
+                    <Label styleClass="section-text" text="StudentNest is a comprehensive digital platform specifically designed for students of Daffodil International University (DIU). We understand the challenges students face when searching for suitable accommodation, and our solution makes this process seamless, efficient, and reliable." wrapText="true" />
+                    <Label styleClass="section-text" text="Whether you're looking for a private room, shared accommodation, or just a seat in a mess, StudentNest connects you with verified listings in prime locations around the campus." wrapText="true" />
+                </VBox>
+
+                <!-- Key Features Section -->
+                <VBox spacing="15" styleClass="section-container">
+                    <Label styleClass="section-title" text="🌟 Key Features" />
+                    <VBox spacing="12" styleClass="feature-list">
+                        <HBox spacing="15" styleClass="feature-item">
+                            <Label styleClass="feature-icon" text="🔍" />
+                            <VBox spacing="5">
+                                <Label styleClass="feature-title" text="Smart Location Search" />
+                                <Label styleClass="feature-desc" text="Search in popular areas: Khagan, Candgaon, Charabag, Kumkumari, Dattopara, Shadhupara" wrapText="true" />
+                            </VBox>
+                        </HBox>
+
+                        <HBox spacing="15" styleClass="feature-item">
+                            <Label styleClass="feature-icon" text="💰" />
+                            <VBox spacing="5">
+                                <Label styleClass="feature-title" text="Budget-Friendly Filter" />
+                                <Label styleClass="feature-desc" text="Find accommodations that perfectly match your financial constraints" wrapText="true" />
+                            </VBox>
+                        </HBox>
+
+                        <HBox spacing="15" styleClass="feature-item">
+                            <Label styleClass="feature-icon" text="🏠" />
+                            <VBox spacing="5">
+                                <Label styleClass="feature-title" text="Verified Listings" />
+                                <Label styleClass="feature-desc" text="All room and seat availability data is verified and regularly updated" wrapText="true" />
+                            </VBox>
+                        </HBox>
+
+                        <HBox spacing="15" styleClass="feature-item">
+                            <Label styleClass="feature-icon" text="📱" />
+                            <VBox spacing="5">
+                                <Label styleClass="feature-title" text="Cross-Platform Design" />
+                                <Label styleClass="feature-desc" text="Optimized user interface for both mobile and desktop experiences" wrapText="true" />
+                            </VBox>
+                        </HBox>
+
+                        <HBox spacing="15" styleClass="feature-item">
+                            <Label styleClass="feature-icon" text="🚀" />
+                            <VBox spacing="5">
+                                <Label styleClass="feature-title" text="Future Enhancements" />
+                                <Label styleClass="feature-desc" text="Upcoming features include map integration, reviews system, and instant messaging" wrapText="true" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </VBox>
+
+                <!-- Technology Stack Section -->
+                <VBox spacing="15" styleClass="section-container">
+                    <Label styleClass="section-title" text="💻 Built With Modern Technologies" />
+                    <VBox spacing="12" styleClass="tech-grid">
+                        <HBox spacing="20" styleClass="tech-row">
+                            <VBox spacing="8" styleClass="tech-category">
+                                <Label styleClass="tech-category-title" text="Frontend" />
+                                <Label styleClass="tech-item" text="☕ Java" />
+                                <Label styleClass="tech-item" text="🎨 JavaFX" />
+                                <Label styleClass="tech-item" text="📱 Responsive Design" />
+                            </VBox>
+
+                            <VBox spacing="8" styleClass="tech-category">
+                                <Label styleClass="tech-category-title" text="Backend & Database" />
+                                <Label styleClass="tech-item" text="🗄️ MySQL Database" />
+                                <Label styleClass="tech-item" text="🔗 JDBC Connectivity" />
+                                <Label styleClass="tech-item" text="⚡ XAMPP Server" />
+                            </VBox>
+
+                            <VBox spacing="8" styleClass="tech-category">
+                                <Label styleClass="tech-category-title" text="Development Tools" />
+                                <Label styleClass="tech-item" text="💡 IntelliJ IDEA" />
+                                <Label styleClass="tech-item" text="📋 Git Version Control" />
+                                <Label styleClass="tech-item" text="🐙 GitHub Repository" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </VBox>
+
+                <!-- Contributors Section -->
+                <VBox spacing="15" styleClass="section-container">
+                    <Label styleClass="section-title" text="👥 Meet Our Team" />
+                    <Label styleClass="section-text" text="StudentNest is developed by passionate computer science students who understand the real challenges of finding student accommodation." wrapText="true" />
+                    <TableView fx:id="contributorsTable" styleClass="contributors-table">
+                        <columns>
+                            <TableColumn fx:id="nameColumn" text="Name" prefWidth="200" styleClass="table-column" />
+                            <TableColumn fx:id="idColumn" text="Student ID" prefWidth="150" styleClass="table-column" />
+                            <TableColumn fx:id="githubColumn" text="GitHub Profile" prefWidth="200" styleClass="table-column" />
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- Call to Action Section -->
+                <VBox spacing="20" styleClass="cta-section">
+                    <Label styleClass="cta-title" text="Ready to Find Your Perfect Home?" />
+                    <Label styleClass="cta-text" text="Join hundreds of DIU students who have already found their ideal accommodation through StudentNest!" wrapText="true" />
+                    <HBox spacing="15" styleClass="button-container">
+                        <Button onAction="#handleBack" text="⬅️ Back to Dashboard" styleClass="primary-button" />
+                        <Button onAction="#handleGetStarted" text="Get Started 🚀" styleClass="secondary-button" />
+                    </HBox>
+                </VBox>
             </VBox>
-
-            <Label styleClass="about-subtitle" text="💻 Technologies Used" />
-            <VBox spacing="5" styleClass="tech-list">
-                <Label styleClass="tech-item" text="Java (JavaFX / Swing)" />
-                <Label styleClass="tech-item" text="MySQL (with XAMPP)" />
-                <Label styleClass="tech-item" text="JDBC (Java Database Connectivity)" />
-                <Label styleClass="tech-item" text="IntelliJ IDEA / NetBeans / Eclipse (IDE)" />
-                <Label styleClass="tech-item" text="Git &amp; GitHub for version control" />
-            </VBox>
-
-            <Label styleClass="about-subtitle" text="👥 Contributors" />
-            <!-- The TableView items cannot be set directly in FXML with custom objects.
-                 They must be populated programmatically in the controller. -->
-            <TableView styleClass="contributor-table">
-                <columns>
-                    <TableColumn text="Name" prefWidth="150" />
-                    <TableColumn text="Student ID" prefWidth="120" />
-                    <TableColumn text="GitHub Username / ID" prefWidth="180" />
-                </columns>
-            </TableView>
-
-            <Button onAction="#handleBack" text="⬅️ Back to Dashboard" styleClass="back-button" />
-        </VBox>
+        </ScrollPane>
     </center>
     <stylesheets>
         <URL value="@css/about-us.css" />

@@ -446,13 +446,35 @@
     -fx-background: -bg-filter;
 }
 
-.root.dark-theme .combo-box-base {
-    -fx-background: -bg-secondary;
+/* ========== COMBO BOXES - DARK THEME OVERRIDES ========== */
+/* Main combo box style */
+.root.dark-theme .filter-combo {
+    -fx-background-color: -bg-secondary;
+    -fx-text-fill: -text-primary;
+    -fx-border-color: -border-color;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
 }
 
+/* Combo box popup list */
 .root.dark-theme .combo-box-popup .list-view {
-    -fx-background: -bg-secondary;
+    -fx-background-color: -bg-secondary;
+    -fx-border-color: -border-color;
 }
+
+/* Items in the combo box list */
+.root.dark-theme .combo-box-popup .list-view .list-cell {
+    -fx-background-color: -bg-secondary;
+    -fx-text-fill: -text-primary;
+}
+
+/* Selected item in the combo box list */
+.root.dark-theme .combo-box-popup .list-view .list-cell:filled:selected,
+.root.dark-theme .combo-box-popup .list-view .list-cell:filled:selected:hover {
+    -fx-background: -primary-gradient;
+    -fx-text-fill: white;
+}
+
 
 .root.dark-theme .scroll-bar .track {
     -fx-background-color: rgba(255, 255, 255, 0.1);

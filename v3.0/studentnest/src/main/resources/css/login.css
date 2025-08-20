@@ -1,167 +1,366 @@
 /* Modern Login Page Styles */
 
-/* Left Panel Styles with Image Slider Animation */
-.left-panel {
-    -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -fx-background-image: url("images\room0.jpg");
+/* Root variables for consistent theming */
+.root {
+    -fx-primary-color: #4F46E5;
+    -fx-primary-dark: #3730A3;
+    -fx-primary-light: #6366F1;
+    -fx-secondary-color: #10B981;
+    -fx-danger-color: #EF4444;
+    -fx-warning-color: #F59E0B;
+    -fx-dark-color: #111827;
+    -fx-gray-900: #111827;
+    -fx-gray-800: #1F2937;
+    -fx-gray-700: #374151;
+    -fx-gray-600: #4B5563;
+    -fx-gray-500: #6B7280;
+    -fx-gray-400: #9CA3AF;
+    -fx-gray-300: #D1D5DB;
+    -fx-gray-200: #E5E7EB;
+    -fx-gray-100: #F3F4F6;
+    -fx-gray-50: #F9FAFB;
+    -fx-white: #FFFFFF;
+    -fx-border-radius: 12px;
+}
+
+/* Main container */
+.login-container {
+    -fx-background-color: #F9FAFB;
+    -fx-padding: 0;
+}
+
+/* Left panel - Form */
+.login-form-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0, 0, 0);
+}
+
+/* Welcome section */
+.welcome-section {
+    -fx-alignment: center;
+}
+
+.welcome-title {
+    -fx-text-fill: #111827;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-weight: bold;
+}
+
+.welcome-subtitle {
+    -fx-text-fill: #4B5563;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* Form styling */
+.login-form {
+    -fx-alignment: center;
+}
+
+.input-group {
+    -fx-alignment: top-left;
+}
+
+.input-label {
+    -fx-text-fill: #374151;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-padding: 0 4 0 4;
+}
+
+/* Modern input fields */
+.modern-field {
+    -fx-background-color: #F3F4F6;
+    -fx-border-color: #D1D5DB;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #111827;
+    -fx-prompt-text-fill: #9CA3AF;
+    -fx-padding: 0 16 0 16;
+}
+
+.modern-field:focused {
+    -fx-border-color: #4F46E5;
+    -fx-border-width: 2px;
+    -fx-background-color: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, #4F46E5, 8, 0.15, 0, 0);
+}
+
+.modern-field:hover {
+    -fx-border-color: #9CA3AF;
+    -fx-background-color: #FFFFFF;
+}
+
+/* ComboBox styling */
+.modern-combo {
+    -fx-background-color: #F3F4F6;
+    -fx-border-color: #D1D5DB;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #111827;
+    -fx-padding: 0;
+}
+
+.modern-combo:hover {
+    -fx-border-color: #9CA3AF;
+    -fx-background-color: #FFFFFF;
+}
+
+.modern-combo:focused {
+    -fx-border-color: #4F46E5;
+    -fx-border-width: 2px;
+    -fx-background-color: #FFFFFF;
+}
+
+.modern-combo .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #111827;
+    -fx-padding: 12 16 12 16;
+}
+
+/* Hover effect for dropdown items */
+.modern-combo .list-cell:hover {
+    -fx-background-color: #79a8f45d;
+    -fx-text-fill: #0f0f0f;
+}
+
+.modern-combo .list-cell:selected {
+    -fx-text-fill: #1b7ce4;
+}
+
+.modern-combo .arrow-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0 12 0 0;
+}
+
+.modern-combo .arrow {
+    -fx-background-color: #6B7280;
+    -fx-padding: 4;
+}
+
+/* Password container */
+.password-container {
+    -fx-alignment: center-left;
+    -fx-spacing: 0;
+}
+
+.password-field {
+    -fx-border-radius: 12px 0px 0px 12px;
+    -fx-background-radius: 12px 0px 0px 12px;
+    -fx-border-width: 1px 0px 1px 1px;
+}
+
+.password-toggle-btn {
+    -fx-background-color: #F3F4F6;
+    -fx-border-color: #D1D5DB;
+    -fx-border-width: 1px 1px 1px 0px;
+    -fx-border-radius: 0px 12px 12px 0px;
+    -fx-background-radius: 0px 12px 12px 0px;
+    -fx-text-fill: #6B7280;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+}
+
+.password-toggle-btn:hover {
+    -fx-background-color: #E5E7EB;
+    -fx-text-fill: #374151;
+}
+
+.password-toggle-btn:pressed {
+    -fx-background-color: #D1D5DB;
+}
+
+/* Login button */
+.login-btn {
+    -fx-background-color: #4F46E5;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: transparent;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    
+}
+
+.login-btn:hover {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-background-color: #6366F1;
+}
+
+.login-btn:pressed {
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, #000000, 4, 0.2, 0, 1);
+}
+
+.login-btn:disabled {
+    -fx-background-color: #D1D5DB;
+    -fx-text-fill: #6B7280;
+    -fx-effect: null;
+    -fx-opacity: 0.6;
+}
+
+/* Signup section */
+.signup-section {
+    -fx-alignment: center;
+}
+
+.signup-link {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+   -fx-cursor: hand;
+    -fx-underline: false;
+    -fx-padding: 4 8 4 8;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.signup-link:hover {
+    -fx-background-color: #F0F0FF;
+    -fx-text-fill: #3730A3;
+}
+
+.signup-link:pressed {
+    -fx-background-color: #E0E0FF;
+}
+
+/* Right panel - Hero section */
+.hero-panel {
+    -fx-background-color: linear-gradient(to bottom right, #4F46E5 0%, #3730A3 100%);
+    -fx-alignment: center;
+}
+
+.hero-content {
+    -fx-alignment: center;
+    -fx-max-width: 500px;
+}
+
+/* Hero icon */
+.hero-icon {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 40px;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 2px;
+    -fx-border-radius: 40px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 15, 0, 0, 5);
+}
+
+/* Hero text with background */
+.hero-text-section {
+    -fx-alignment: center;
+}
+
+.hero-background {
+    -fx-background-image: url("../images/student-bg.jpg");
     -fx-background-size: cover;
-    -fx-background-position: center;
+    -fx-background-position: center center;
     -fx-background-repeat: no-repeat;
-    -fx-transition: -fx-background-image 0.5s ease-in-out;
-}
-.title-label {
-    -fx-text-fill: white;
-    -fx-font-size: 24px;
-    -fx-font-weight: 700;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 0);
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 15, 0, 0, 5);
 }
 
-.subtitle-label{
-    -fx-text-fill: #141511;
-    -fx-font-size: 20px;
-    -fx-font-weight: 700;
-    -fx-padding: 8;
+/* Add overlay for better text readability */
+.hero-background:before {
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-background-radius: 20px;
 }
 
-.overlay {
-    -fx-background-color: rgba(0,0,0,0.2);
-}
-
-.logo-text {
-    -fx-text-fill: white;
-    -fx-font-size: 30px;
+.hero-title {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
     -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 2);
 }
 
-.hero-text {
-    -fx-text-fill: white;
-    -fx-font-size: 20px;
+.hero-subtitle {
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-max-width: 400px;
 }
 
-.back-button {
-    -fx-background-color: rgba(255,255,255,0.2);
-    -fx-text-fill: white;
-    -fx-border-color: white;
-    -fx-border-radius: 20;
-    -fx-background-radius: 20;
-    -fx-padding: 8 16;
+.hero-description {
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-max-width: 350px;
 }
 
-/* Right Panel Styles */
-.right-panel {
-    -fx-background-color: #f3f4f6;
-    -fx-padding: 50;
+/* Feature points */
+.feature-points {
     -fx-alignment: center;
+    -fx-max-width: 300px;
 }
 
-/* Login Card */
-.login-card {
-    -fx-background-color: white;
-    -fx-background-radius: 12;
-    -fx-padding: 40;
-    -fx-spacing: 20;
+.feature-point {
+    -fx-alignment: center-left;
+    -fx-spacing: 12px;
+}
+
+.feature-icon {
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+.check-icon {
+    -fx-background-color: #10B981;
+}
+
+.feature-text {
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* Decorative dots */
+.decorative-dots {
     -fx-alignment: center;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 0);
+    -fx-spacing: 8px;
 }
 
-.main-title {
-    -fx-text-fill: #1f2937;
-    -fx-font-size: 28px;
-    -fx-font-weight: bold;
+.dot {
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
 }
 
-.link-text {
-    -fx-text-fill: #6366f1;
-    -fx-underline: true;
+.active-dot {
+    -fx-background-color: #FFFFFF;
 }
 
-.field-label {
-    -fx-text-fill: #4b5563;
-    -fx-font-weight: bold;
+.inactive-dot {
+    -fx-background-color: rgba(255, 255, 255, 0.4);
 }
 
-/* Input Fields */
-.input-field {
-    -fx-background-color: #f9fafb;
-    -fx-text-fill: #1f2937;
-    -fx-border-color: #d1d5db;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-padding: 8 10;
-    -fx-font-size: 14px;
-    -fx-prompt-text-fill: #9ca3af;
+/* Focus indicators for accessibility */
+.modern-field:focused,
+.modern-combo:focused,
+.login-btn:focused,
+.signup-link:focused,
+.password-toggle-btn:focused {
+    -fx-effect: dropshadow(gaussian, #4F46E5, 8, 0, 0, 0);
 }
 
-.input-field:focused {
-    -fx-border-color: #6366f1;
-    -fx-border-width: 2;
-    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.1), 8, 0, 0, 0);
+/* Error states */
+.modern-field.error {
+    -fx-border-color: #EF4444;
+    -fx-border-width: 2px;
 }
 
-/* Buttons */
-.btn-primary {
-    -fx-background-color: #6366f1;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 8;
-    -fx-font-size: 14px;
-    -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.25), 4, 0, 0, 2);
+.modern-combo.error {
+    -fx-border-color: #EF4444;
+    -fx-border-width: 2px;
 }
 
-.btn-primary:hover {
-    -fx-background-color: #5850e6;
-    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.35), 8, 0, 0, 4);
+/* Success states */
+.modern-field.success {
+    -fx-border-color: #10B981;
+    -fx-border-width: 2px;
 }
 
-.btn-primary:pressed {
-    -fx-background-color: #4f46e5;
+.modern-combo.success {
+    -fx-border-color: #10B981;
+    -fx-border-width: 2px;
 }
-
-.btn-success {
-    -fx-background-color: #10b981;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 8;
-    -fx-font-size: 14px;
-    -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.25), 4, 0, 0, 2);
-}
-
-.btn-success:hover {
-    -fx-background-color: #059669;
-    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.35), 8, 0, 0, 4);
-}
-
-.btn-success:pressed {
-    -fx-background-color: #047857;
-}
-
-.social-text {
-    -fx-text-fill: #6b7280;
-    -fx-font-size: 12px;
-}
-
-.social-button {
-    -fx-background-color: white;
-    -fx-text-fill: #4b5563;
-    -fx-border-color: #d1d5db;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 0);
-}
-
-.social-button:hover {
-    -fx-background-color: #f9fafb;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 0);
-}
-
-/* Checkbox */
-.checkbox {
-    -fx-box-border: #9ca3af;
-    -fx-background-color: white;
-    -fx-mark-color: #6366f1;
-    -fx-font-size: 14px;
-    -fx-text-fill: #4b5563;
-}
-

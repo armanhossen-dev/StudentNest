@@ -2,6 +2,7 @@ package com.studentnest.controllers;
 
 import com.studentnest.database.DatabaseConnection;
 import com.studentnest.utils.SceneManager;
+import javafx.event.ActionEvent; // Added import for ActionEvent
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
@@ -10,9 +11,9 @@ import javafx.scene.control.Alert.AlertType;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.net.URL; // Added import for URL
-import javafx.stage.Stage; // Added import for Stage
-import javafx.scene.image.Image; // Added import for Image
+import java.net.URL;
+import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
 public class FeedbackController {
 
@@ -37,7 +38,7 @@ public class FeedbackController {
      * Handles the submission of user feedback to the database.
      */
     @FXML
-    public void handleSubmitFeedback() {
+    public void handleSubmitFeedback(ActionEvent event) {
         String feedbackText = feedbackTextArea.getText().trim();
         if (feedbackText.isEmpty()) {
             showAlert(AlertType.ERROR, "Submission Failed", "Please write something before submitting.");
@@ -53,7 +54,7 @@ public class FeedbackController {
             int rowsInserted = stmt.executeUpdate();
             if (rowsInserted > 0) {
                 showAlert(AlertType.INFORMATION, "Success", "Your feedback has been submitted successfully!");
-                handleBack(); // Go back to the correct dashboard
+                handleBack(event); // Pass the ActionEvent to the handleBack method
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,16 +64,17 @@ public class FeedbackController {
 
     /**
      * Handles the 'back' button action, navigating the user to the previous page.
+     * @param event The action event from the back button.
      */
     @FXML
-    public void handleBack() {
+    public void handleBack(ActionEvent event) {
         // Navigate back to the stored previous page
         if (previousPageFxml != null) {
             // Correct the dimensions to match the dashboard's dimensions
-            SceneManager.switchScene(previousPageFxml, previousPageCss, 1200, 700);
+            SceneManager.switchScene(event, previousPageFxml, previousPageCss, 1200, 700);
         } else {
             // Fallback in case previousPageFxml is not set
-            SceneManager.switchScene("login.fxml", "login.css", 1000, 620);
+            SceneManager.switchScene(event, "login.fxml", "login.css", 1000, 620);
         }
     }
 
