@@ -10,6 +10,9 @@ import javafx.scene.control.Alert.AlertType;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.net.URL; // Added import for URL
+import javafx.stage.Stage; // Added import for Stage
+import javafx.scene.image.Image; // Added import for Image
 
 public class FeedbackController {
 
@@ -65,7 +68,7 @@ public class FeedbackController {
     public void handleBack() {
         // Navigate back to the stored previous page
         if (previousPageFxml != null) {
-            // Use the new SceneManager method with FXML, CSS, and dimensions
+            // Correct the dimensions to match the dashboard's dimensions
             SceneManager.switchScene(previousPageFxml, previousPageCss, 1200, 700);
         } else {
             // Fallback in case previousPageFxml is not set
@@ -80,10 +83,37 @@ public class FeedbackController {
      * @param message The content message of the alert dialog.
      */
     private void showAlert(AlertType type, String title, String message) {
-        Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        javafx.application.Platform.runLater(() -> {
+            try {
+                Alert alert = new Alert(type);
+                alert.setTitle(title);
+                alert.setHeaderText(null);
+                alert.setContentText(message);
+
+                Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+                URL imageUrl = getClass().getResource("/images/img.png");
+                if (imageUrl != null) {
+                    Image icon = new Image(imageUrl.toExternalForm());
+                    alertStage.getIcons().add(icon);
+                } else {
+                    System.err.println("Warning: The image file was not found. Please check the path: /images/img.png");
+                }
+
+                try {
+                    URL cssUrl = getClass().getResource("/css/login.css");
+                    if (cssUrl != null) {
+                        alert.getDialogPane().getStylesheets().add(cssUrl.toExternalForm());
+                    } else {
+                        System.err.println("Warning: Could not apply CSS to alert dialog, file not found: /css/login.css");
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error applying CSS to alert dialog: " + e.getMessage());
+                }
+
+                alert.showAndWait();
+            } catch (Exception e) {
+                System.err.println("Error showing alert: " + e.getMessage());
+            }
+        });
     }
 }

@@ -6,6 +6,8 @@ import com.studentnest.database.DatabaseConnection;
 import com.studentnest.utils.SceneManager;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 
 import java.net.URL;
 import java.sql.*;
@@ -71,7 +73,7 @@ public class LoginController {
             loginButton.setText("Logging in...");
 
             // Authenticate user in background thread to prevent UI freezing
-            javafx.concurrent.Task<Boolean> loginTask = new javafx.concurrent.Task<Boolean>() {
+            Task<Boolean> loginTask = new Task<>() {
                 @Override
                 protected Boolean call() throws Exception {
                     return authenticateUser(username, password, userType);
@@ -124,30 +126,38 @@ public class LoginController {
     private void navigateToDashboard(String userType) {
         String fxmlFile;
         String cssFile;
+        int width, height;
 
         switch (userType) {
             case "Student":
                 fxmlFile = "student-dashboard.fxml";
-                cssFile = "styles1.css"; // Or a specific CSS file for the student dashboard
+                cssFile = "student-dashboard.css";
+                width = 1400;
+                height = 850;
                 break;
             case "House Owner":
                 fxmlFile = "houseowner-dashboard.fxml";
-                cssFile = "styles1.css"; // Or a specific CSS file for the house owner dashboard
+                cssFile = "modern-dashboard.css";
+                width = 1400;
+                height = 850;
                 break;
             case "Admin":
                 fxmlFile = "admin-dashboard.fxml";
-                cssFile = "styles1.css"; // Or a specific CSS file for the admin dashboard
+                cssFile = "AdminDashboard.css";
+                width = 1400;
+                height = 850;
                 break;
             default:
                 showAlert("Error", "Unknown user type: " + userType, Alert.AlertType.ERROR);
                 return;
         }
 
-        // The SceneManager now handles both FXML and CSS loading
-        SceneManager.switchScene(fxmlFile, cssFile, 1200, 700);
+        SceneManager.switchScene(fxmlFile, cssFile, width, height);
     }
 
-    /*Authenticate user against the database*/
+    /**
+     * Authenticate user against the database
+     */
     private boolean authenticateUser(String username, String password, String userType) {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -199,9 +209,11 @@ public class LoginController {
         System.out.println("Navigating to registration page...");
     }
 
-    /* Show alert dialog with specified type   */
+    /**
+     * Show alert dialog with specified type
+     */
     private void showAlert(String title, String message, Alert.AlertType alertType) {
-        javafx.application.Platform.runLater(() -> {
+        Platform.runLater(() -> {
             try {
                 Alert alert = new Alert(alertType);
                 alert.setTitle(title);
@@ -242,6 +254,14 @@ public class LoginController {
 
     public static String getCurrentUserName() {
         return currentUserName;
+    }
+
+    /**
+     * Sets the name of the currently logged-in user.
+     * @param name The name of the user to set.
+     */
+    public static void setCurrentUserName(String name) {
+        currentUserName = name;
     }
 
     /**

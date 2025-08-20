@@ -3,13 +3,12 @@
 /* Left Panel Styles with Image Slider Animation */
 .left-panel {
     -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -fx-background-image: url("../images/room1.jpg");
+    -fx-background-image: url("images\room0.jpg");
     -fx-background-size: cover;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-transition: -fx-background-image 0.5s ease-in-out;
 }
-
 .title-label {
     -fx-text-fill: white;
     -fx-font-size: 24px;

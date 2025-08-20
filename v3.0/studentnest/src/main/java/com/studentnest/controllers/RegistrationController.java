@@ -172,8 +172,6 @@ public class RegistrationController {
         }
     }
 
-
-
     @FXML
     public void handleBackToLogin() {
         try {

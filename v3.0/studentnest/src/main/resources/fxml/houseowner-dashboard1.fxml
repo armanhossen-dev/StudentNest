@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.HouseOwnerDashboardController">
+
+    <left>
+        <VBox prefWidth="250.0" styleClass="sidebar,owner-sidebar">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label alignment="CENTER" text="House Owner Panel" prefHeight="30.0" prefWidth="220.0" styleClass="HouseOwnerPanel">
+                <VBox.margin>
+                    <Insets bottom="30.0" />
+                </VBox.margin>
+            </Label>
+
+            <Button text="💬 Feedback &amp; Issues" fx:id="feedbackButton" onAction="#handleFeedback" styleClass="sidebar-btn" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets bottom="30.0" />
+                </VBox.margin>
+            </Button>
+
+            <Button fx:id="logoutButton" onAction="#handleBackToLogin" text="🚪 Logout" styleClass="btn-danger" prefWidth="200.0" />
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="20.0" styleClass="container">
+            <Label fx:id="welcomeLabel" text="Welcome, House Owner!" styleClass="welcome-label" />
+
+            <HBox spacing="30.0" styleClass="row">
+                <VBox spacing="15.0" styleClass="card">
+                    <Label text="Add/Update Room Details" styleClass="section-label" />
+                    <VBox spacing="8.0">
+                        <Label text="Location:" />
+                        <ComboBox fx:id="locationComboBox" prefWidth="250.0" />
+                    </VBox>
+                    <VBox spacing="8.0">
+                        <Label text="Price (per month):" />
+                        <TextField fx:id="priceField" prefWidth="250.0" />
+                    </VBox>
+                    <VBox spacing="8.0">
+                        <Label text="Description:" />
+                        <TextArea fx:id="descriptionArea" prefHeight="80.0" prefWidth="250.0" />
+                    </VBox>
+                    <VBox spacing="8.0">
+                        <Label text="Contact Number:" />
+                        <TextField fx:id="contactField" prefWidth="250.0" />
+                    </VBox>
+                    <VBox spacing="8.0">
+                        <Label text="Map Link (optional):" />
+                        <TextField fx:id="mapLinkField" prefWidth="250.0" />
+                    </VBox>
+
+                    <VBox spacing="8.0">
+                        <Label text="Room Type:" />
+                        <ComboBox fx:id="roomTypeComboBox" prefWidth="250.0" promptText="Select Type" />
+                    </VBox>
+
+                    <VBox spacing="8.0">
+                        <Label text="Upload Room Pictures (max 2):" />
+                        <HBox spacing="5.0">
+                            <Button onAction="#handleUploadImage1" text="Select Image 1" />
+                            <Label fx:id="image1PathLabel" text="No image selected" />
+                        </HBox>
+                        <HBox spacing="5.0">
+                            <Button onAction="#handleUploadImage2" text="Select Image 2" />
+                            <Label fx:id="image2PathLabel" text="No image selected" />
+                        </HBox>
+                    </VBox>
+
+                    <HBox spacing="10.0">
+                        <Button fx:id="addRoomButton" onAction="#handleAddRoom" styleClass="btn-success" text="Add Room" />
+                        <Button fx:id="updateRoomButton" onAction="#handleUpdateRoom" styleClass="btn-primary" text="Update Room" />
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="15.0" styleClass="card">
+                    <Label text="Your Rooms" styleClass="section-label" />
+                    <ListView fx:id="roomsList" prefHeight="300.0" prefWidth="300.0" />
+                    <Button fx:id="deleteRoomButton" onAction="#handleDeleteRoom" styleClass="btn-danger" text="Delete Selected Room" />
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
