@@ -71,10 +71,12 @@ public class FeedbackController {
         // Navigate back to the stored previous page
         if (previousPageFxml != null) {
             // Correct the dimensions to match the dashboard's dimensions
-            SceneManager.switchScene(event, previousPageFxml, previousPageCss, 1200, 700);
+            SceneManager.switchScene(event, previousPageFxml, previousPageCss, 1400, 800);
         } else {
             // Fallback in case previousPageFxml is not set
-            SceneManager.switchScene(event, "login.fxml", "login.css", 1000, 620);
+            SceneManager.switchScene(event, previousPageFxml, previousPageCss, 1400, 800);
+            SceneManager.switchScene(event, "/fxml/feedback-page.fxml", "/css/styles1.css", 800, 600,
+                    "StudentNest - House Owner Dashboard");
         }
     }
 

@@ -77,7 +77,7 @@
     -fx-font-size: 14px;
     -fx-text-fill: #111827;
     -fx-prompt-text-fill: #9CA3AF;
-    -fx-padding: 0 16 0 16;
+    -fx-padding: 10 16 10 16;
 }
 
 .modern-field:focused {

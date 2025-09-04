@@ -13,17 +13,17 @@
     -purple-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 
     /* Background colors */
-    -bg-primary: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    -bg-secondary: #ffffff;
-    -bg-card: rgba(255, 255, 255, 0.95);
+    -bg-primary: #69e2ff;
+     -bg-secondary: #a8a8a8;
+    -bg-card: rgba(95, 95, 95, 0.95);
     -bg-sidebar: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-    -bg-filter: rgba(255, 255, 255, 0.9);
+    -bg-filter: rgb(255, 255, 255);
 
     /* Text colors */
     -text-primary: #2c3e50;
     -text-secondary: #34495e;
-    -text-light: #ffffff;
-    -text-muted: #7f8c8d;
+    -text-light: #000000;
+    -text-muted: #130d0d;
     -text-accent: #667eea;
 
     /* Border and shadow */
@@ -45,7 +45,7 @@
     /* Background colors */
     -bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     -bg-secondary: #2c3e50;
-    -bg-card: rgba(44, 62, 80, 0.95);
+    -bg-card: rgba(46, 79, 112, 0.95);
     -bg-sidebar: linear-gradient(180deg, #1a252f 0%, #2c3e50 100%);
     -bg-filter: rgba(44, 62, 80, 0.9);
 
@@ -97,8 +97,8 @@
 
 .theme-toggle-btn:hover {
     -fx-background: -primary-gradient;
-    -fx-text-fill: white;
-    -fx-border-color: transparent;
+    -fx-text-fill: rgb(13, 132, 228);
+    -fx-border-color: -bg-card;
 }
 
 .logout-btn {
@@ -116,15 +116,15 @@
 
 .logout-btn:hover {
     -fx-background: -danger-gradient;
-    -fx-text-fill: white;
-    -fx-border-color: transparent;
+    -fx-text-fill: rgb(108, 108, 108);
+    -fx-border-color: -bg-color;
 }
 
 /* ========== SIDEBAR STYLING ========== */
 .sidebar {
     -fx-background: -bg-sidebar;
     -fx-effect: dropshadow(three-pass-box, -shadow-medium, 8, 0, 2, 0);
-    -fx-border-color: -border-color;
+    -fx-border-color: -bg-card;
     -fx-border-width: 0 1 0 0;
 }
 
@@ -146,7 +146,7 @@
 
 .brand-subtitle {
     -fx-font-size: 14px;
-    -fx-text-fill: rgba(255, 255, 255, 0.8);
+    -fx-text-fill:-text-light ;
 }
 
 /* Stats Section */
@@ -177,7 +177,7 @@
 
 .stat-label {
     -fx-font-size: 12px;
-    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-text-fill: -text-light;
 }
 
 /* Navigation Menu */
@@ -311,15 +311,24 @@
 
 .rooms-scroll .viewport {
     -fx-background-color: transparent;
+    -fx-text-fill: rgb(0, 0, 0);
 }
 
+
+/* Light Theme */
 .rooms-container {
-    -fx-background-color: transparent;
+    -fx-text-fill: -text-primary;
+}
+
+/* Dark Theme */
+.root.dark-theme .rooms-container {
+    -fx-text-fill: -text-primary;
 }
 
 /* ========== ROOM CARD STYLING ========== */
 .room-card {
     -fx-background: -bg-card;
+    -fx-text-fill: rgb(0, 0, 0);
     -fx-background-radius: 20;
     -fx-padding: 25;
     -fx-effect: dropshadow(three-pass-box, -shadow-light, 8, 0, 0, 4);
@@ -335,6 +344,7 @@
 }
 
 .room-title {
+    -fx-text-fill: rgb(0, 0, 0);
     -fx-font-size: 20px;
     -fx-font-weight: 700;
     -fx-text-fill: -text-primary;

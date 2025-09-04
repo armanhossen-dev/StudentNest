@@ -20,8 +20,8 @@
     -fx-sidebar-background: #1e293b;
 
     /* Text Colors */
-    -fx-text-primary: #0f172a;
-    -fx-text-secondary: #64748b;
+    -fx-text-primary: #000000;
+    -fx-text-secondary: #000000;
     -fx-text-light: #ffffff;
 
     /* Border Colors */
@@ -43,7 +43,7 @@
     -fx-sidebar-background: #020617;
 
     -fx-text-primary: #f8fafc;
-    -fx-text-secondary: #cbd5e1;
+    -fx-text-secondary: #ffffff;
 
     -fx-border-light: #475569;
     -fx-border-medium: #64748b;
@@ -235,6 +235,7 @@
 /* ==========================================================================
    Table Styles
    ========================================================================== */
+/* Table Styles */
 .data-table {
     -fx-background-color: -fx-background-primary;
     -fx-border-color: -fx-border-light;
@@ -247,6 +248,13 @@
     -fx-background-color: -fx-background-secondary;
 }
 
+.root.dark-theme .data-table .column-header-background {
+    -fx-background-color: #2b3952;
+    -fx-text-fil: -fx-background-primary;
+
+}
+
+
 .data-table .column-header {
     -fx-background-color: -fx-background-secondary;
     -fx-text-fill: -fx-text-primary;
@@ -257,6 +265,7 @@
 }
 
 .data-table .table-row-cell {
+    
     -fx-background-color: -fx-background-primary;
     -fx-border-color: transparent transparent -fx-border-light transparent;
     -fx-border-width: 0 0 1px 0;
