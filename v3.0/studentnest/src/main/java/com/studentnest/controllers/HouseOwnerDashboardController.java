@@ -479,7 +479,8 @@ public class HouseOwnerDashboardController {
 
             // Fallback: Navigate without getting controller
             try {
-                SceneManager.switchScene(event, "/fxml/feedback-page.fxml", "/css/styles1.css", 800, 600, "StudentNest - Feedback");
+                SceneManager.switchScene(event, "/fxml/feedback-page.fxml", "/css/styles1.css", 800, 600,
+                        "StudentNest - Feedback");
             } catch (Exception fallbackError) {
                 System.err.println("Fallback navigation also failed: " + fallbackError.getMessage());
                 // Show error alert to user
