@@ -1,0 +1,330 @@
+/* Modern Login Page Styles */
+
+/* Root variables for consistent theming */
+.root {
+    -fx-primary-color: #4F46E5;
+    -fx-primary-dark: #3730A3;
+    -fx-primary-light: #6366F1;
+    -fx-secondary-color: #10B981;
+    -fx-danger-color: #EF4444;
+    -fx-warning-color: #F59E0B;
+    -fx-dark-color: #111827;
+    -fx-gray-900: #111827;
+    -fx-gray-800: #1F2937;
+    -fx-gray-700: #374151;
+    -fx-gray-600: #4B5563;
+    -fx-gray-500: #6B7280;
+    -fx-gray-400: #9CA3AF;
+    -fx-gray-300: #D1D5DB;
+    -fx-gray-200: #E5E7EB;
+    -fx-gray-100: #F3F4F6;
+    -fx-gray-50: #F9FAFB;
+    -fx-white: #FFFFFF;
+    -fx-border-radius: 5px;
+}
+
+/* Main container */
+.login-container {
+    -fx-background-color: #ffffff;
+    -fx-padding: 0;
+}
+
+/* Left panel - Form */
+.login-form-panel {
+    -fx-background-color: #292929;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0, 0, 0);
+}
+
+/* Welcome section */
+.welcome-section {
+    -fx-alignment: center;
+}
+
+.welcome-title {
+    -fx-translate-y: -10; /* moves it 10px upward */
+    /* -fx-translate-x: 20; moves it 20px to the right */
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 26;
+}
+
+.welcome-subtitle {
+    -fx-text-fill: #dcdcdc;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* Form styling */
+.login-form {
+    -fx-alignment: center;
+}
+
+.input-group {
+    -fx-alignment: top-left;
+}
+
+.input-label {
+    -fx-text-fill: #f1f4f8;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* Modern input fields */
+.modern-field {
+    -fx-background-color: #434343;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill:  #d4d4d4;
+    -fx-padding: 10;
+}
+
+.modern-field:focused,
+.modern-combo:focused {
+    -fx-border-width: 1px;
+    -fx-background-color: #434343;
+    -fx-text-fill: #ffffff;
+}
+
+.modern-field:hover,
+.modern-combo:hover {
+    -fx-border-color: #9CA3AF;
+    -fx-background-color: #434343;
+}
+
+/* ComboBox styling */
+.modern-combo {
+    -fx-background-color: #434343;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 0;
+}
+
+.modern-combo .list-cell {
+    -fx-background-color: #434343;
+    -fx-text-fill: #f2f2f2;
+    -fx-padding: 10 10 10 10;
+    -fx-border: none;
+    -fx-background-radius: 5px;
+}
+
+/* Hover effect for dropdown items */
+.modern-combo .list-cell:hover {
+    -fx-background-radius: 0px;
+    -fx-background-color: #222222;
+    -fx-border-width: 0px;
+    -fx-border-color: #222222;
+    -fx-text-fill: #cfcfcf;
+    -fx-font-weight: bold;
+}
+
+.modern-combo .list-cell:selected {
+    -fx-text-fill: #ffffff;
+}
+
+.modern-combo .arrow-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 5 10;
+}
+
+.modern-combo .arrow {
+    -fx-background-color: #cfcfcf;
+    -fx-padding: 5;
+}
+
+/* Password container */
+.password-container {
+    -fx-alignment: center-left;
+    -fx-spacing: 0;
+}
+
+
+
+
+.password-field,
+.text-field {
+    -fx-background-color: #434343;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill:  #d4d4d4;
+}
+
+.password-field {
+    -fx-padding: 10;
+    -fx-border-radius: 5px 0px 0px 5px;
+    -fx-background-radius: 5px 0px 0px 5px;
+    -fx-border-width: 1px 0px 1px 1px;
+}
+
+.password-field:hover {
+    -fx-border-color: #9CA3AF;
+}
+
+.password-toggle-btn {
+    /* -fx-background-color: #F3F4F6; */
+    /* -fx-border-color: #D1D5DB; */
+    -fx-background-color: #434343;
+    -fx-border-color: #000000;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 0px;
+    -fx-border-width: 1px 1px 1px 0px;
+    -fx-border-radius: 0px 5px 5px 0px;
+    -fx-background-radius: 0px 5px 5px 0px;
+    -fx-cursor: hand;
+}
+
+.password-toggle-btn:hover{
+    -fx-background-color: #373737;
+}
+
+/* Login button */
+.login-btn {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-border-color: transparent;
+    -fx-border-radius: 5px;
+    -fx-font-size: 16;
+    -fx-background-radius: 5px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-cursor: hand;
+}
+
+.login-btn:hover {
+    -fx-background-color: #fefefe;
+    -fx-font-weight: bold;
+    -fx-font-size: 16;
+}
+
+/* Signup section */
+.signup-section {
+    -fx-alignment: center;
+}
+.signup-text{
+    -fx-text-fill: #e0e0e0;
+}
+
+
+.signup-link {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+   -fx-cursor: hand;
+    -fx-underline: false;
+    -fx-padding: 4 8 4 8;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-text-fill: #e0e0e0;
+}
+
+.signup-link:hover {
+    -fx-text-fill: #ffffff;
+}
+
+.signup-link:pressed {
+    -fx-background-color: #1a1a1f;
+}
+
+/* Right panel - Hero section */
+
+.hero-panel {
+    /* -fx-background-color: linear-gradient(to bottom right, #4F46E5 0%, #3730A3 100%); */
+    -fx-background-image: url("../images/stu_room.jpg"); /* ✅ correct */
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.225), 15, 0, 0, 5);
+    -fx-alignment: center;
+}
+
+.hero-panel:before {
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-background-radius: 20px;
+}
+
+.hero-content {
+    -fx-alignment: center;
+    -fx-max-width: 500px;
+}
+
+/* Hero icon */
+.hero-icon {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 40px;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+    -fx-border-width: 2px;
+    -fx-border-radius: 40px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 15, 0, 0, 5);
+}
+
+/* Hero text with background */
+.hero-text-section {
+    -fx-alignment: center;
+}
+
+.hero-title {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 2);
+}
+
+.hero-subtitle {
+     -fx-alignment: center;
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-max-width: 350px;
+}
+
+.hero-description {
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-max-width: 350px;
+}
+
+
+.feature-text {
+    -fx-text-fill: rgba(255, 255, 255, 0.9);
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* Error states */
+.modern-field.error {
+    -fx-border-color: #EF4444;
+    -fx-border-width: 2px;
+}
+
+.modern-combo.error {
+    -fx-border-color: #EF4444;
+    -fx-border-width: 2px;
+}
+
+/* Success states */
+.modern-field.success {
+    -fx-border-color: #10B981;
+    -fx-border-width: 2px;
+}
+
+.modern-combo.success {
+    -fx-border-color: #10B981;
+    -fx-border-width: 2px;
+}

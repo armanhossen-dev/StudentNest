@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fillHeight="true" prefHeight="642.0" prefWidth="1089.0" styleClass="registration-container" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.studentnest.controllers.RegistrationController">
+    <children>
+        <!-- Left Panel - Form -->
+        <VBox alignment="CENTER" fillWidth="true" prefHeight="700.0" prefWidth="509.0" spacing="0.0" styleClass="form-panel">
+            <children>
+
+                <!-- Title -->
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="416.0" styleClass="registration-title" text="Create your account">
+                    <VBox.margin>
+                        <Insets bottom="8.0" />
+                    </VBox.margin>
+                </Label>
+                <!-- Form Fields -->
+                <VBox fillWidth="true" maxWidth="450.0" spacing="20.0" styleClass="form-container">
+                    <children>
+                        <!-- User Type -->
+                        <VBox spacing="6.0" styleClass="form-field-container">
+                            <children>
+                                <Label styleClass="form-label" text="I am a" />
+                                <ComboBox fx:id="userTypeComboBox" prefHeight="25.0" prefWidth="453.0" styleClass="registration-combo" />
+                            </children>
+                        </VBox>
+
+                        <!-- Full Name -->
+                        <VBox spacing="6.0" styleClass="form-field-container">
+                            <children>
+                                <Label styleClass="form-label" text="Full Name" />
+                                <TextField fx:id="nameField" prefHeight="48.0" promptText="Enter your full name" styleClass="registration-field" />
+                            </children>
+                        </VBox>
+
+                        <!-- Phone Number -->
+                        <VBox spacing="6.0" styleClass="form-field-container">
+                            <children>
+                                <Label styleClass="form-label" text="Phone Number" />
+                                <TextField fx:id="phoneField" prefHeight="48.0" promptText="Enter your phone number" styleClass="registration-field" />
+                            </children>
+                        </VBox>
+
+                        <!-- Username -->
+                        <VBox spacing="6.0" styleClass="form-field-container">
+                            <children>
+                                <Label styleClass="form-label" text="Username" />
+                                <TextField fx:id="usernameField" prefHeight="48.0" promptText="Choose a username" styleClass="registration-field" />
+                            </children>
+                        </VBox>
+
+                        <!-- Password -->
+                        <VBox spacing="6.0" styleClass="form-field-container">
+                            <children>
+                                <Label styleClass="form-label" text="Password" />
+                                <PasswordField fx:id="passwordField" prefHeight="48.0" promptText="Create a secure password" styleClass="registration-field" />
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+
+                <!-- Buttons -->
+                <VBox fillWidth="true" maxWidth="450.0" spacing="15.0" styleClass="button-container">
+                    <VBox.margin>
+                        <Insets top="25.0" />
+                    </VBox.margin>
+                    <children>
+                        <Button fx:id="registerButton" onAction="#handleRegister" prefHeight="25.0" prefWidth="481.0" styleClass="btn-signup" text="CREATE ACCOUNT" />
+
+                        <HBox alignment="CENTER" styleClass="login-link-container">
+                            <children>
+                                <Label prefHeight="17.0" prefWidth="168.0" styleClass="login-text" text="Already have an account?" />
+                                <Button fx:id="backToLoginButton" onAction="#handleBackToLogin" prefHeight="25.0" prefWidth="111.0" styleClass="btn-login-link" text="Sign in" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+            <padding>
+                <Insets bottom="50.0" left="60.0" right="40.0" top="50.0" />
+            </padding>
+        </VBox>
+
+        <!-- Right Panel - Image/Quote -->
+        <VBox alignment="CENTER" prefHeight="653.0" prefWidth="590.0" styleClass="quote-panel">
+            <children>
+                <Pane styleClass="image-overlay">
+                    <children>
+                        <VBox alignment="CENTER" layoutX="-2.0" layoutY="1.0" prefHeight="642.0" prefWidth="590.0" spacing="30.0" styleClass="overlay-content">
+                            <children>
+                                <!-- Decorative Icon -->
+                                <Pane styleClass="decorative-icon" />
+                                <!-- Quote -->
+                                <Label alignment="CENTER" prefHeight="126.0" prefWidth="430.0" styleClass="quote-text" text="&quot;The student housing solution you’ve been waiting for.&quot;" textAlignment="CENTER" wrapText="true">
+                                    <font>
+                                        <Font name="System Bold" size="28.0" />
+                                    </font>
+                                </Label>
+                                <!-- Progress dots -->
+                                <HBox alignment="CENTER" spacing="8.0" styleClass="dot-indicator">
+                                    <children>
+                                        <Pane styleClass="dot active-dot" />
+                                        <Pane styleClass="dot inactive-dot" />
+                                        <Pane styleClass="dot inactive-dot" />
+                                    </children>
+                                </HBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="60.0" left="40.0" right="60.0" top="60.0" />
+                            </padding>
+                        </VBox>
+                    </children>
+                </Pane>
+            </children>
+        </VBox>
+    </children>
+</HBox>
