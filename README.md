@@ -28,10 +28,10 @@
 
 We proudly present our dedicated team behind **StudentNest** – each member played an important role in building this project:
 
-| Name                    | Student ID    | GitHub Username / ID            |
-|-------------------------|---------------|----------------------------------|
-| Md. Hasibur Rahman      | 241-15-806    | [@Hasib55-bit](https://github.com/Hasib55-bit) |
-| Md. Arman Hossen Ripon  | 241-15-883    | [@armanhossen-dev](https://github.com/armanhossen-dev) |
-| Md. Rahul Hossain       | 241-15-766    | [@Rahul003-phy](https://github.com/Rahul003-phy) |
-| Sabbir Hosine           | 241-15-673    | [@sabbir-hossine](https://github.com/sabbir-hossine) |
-| Md. Wahidur Rahman      | 241-15-865    | [@Saief24](https://github.com/Saief24) |
+| Name                    |   | GitHub Username / ID            |
+|-------------------------|------------------------------------------------|
+| Md. Hasibur Rahman      | [@Hasib55-bit](https://github.com/Hasib55-bit) |
+| Md. Arman Hossen Ripon  | [@armanhossen-dev](https://github.com/armanhossen-dev) |
+| Md. Rahul Hossain       | [@Rahul003-phy](https://github.com/Rahul003-phy) |
+| Sabbir Hosine           | [@sabbir-hossine](https://github.com/sabbir-hossine) |
+| Md. Wahidur Rahman      | [@Saief24](https://github.com/Saief24) |
