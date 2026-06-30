@@ -28,7 +28,7 @@
 
 We proudly present our dedicated team behind **StudentNest** – each member played an important role in building this project:
 
-| Name                    | GitHub Username / ID            |
+| Name                    | GitHub Username             |
 |-------------------------|---------------------------------|
 | Md. Arman Hossen Ripon  |[@armanhossen-dev](https://github.com/armanhossen-dev) |
 | Sabbir Hosine           |[@sabbir-hossine](https://github.com/sabbir-hossine) |
