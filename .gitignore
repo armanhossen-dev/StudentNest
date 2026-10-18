@@ -1,0 +1,49 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Build Artifacts & Target Directories
+target/
+**/target/
+build/
+**/build/
+dist/
+**/dist/
+*.class
+
+# Maven
+.mvn/timing.properties
+# Ensure maven wrapper jar is tracked
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IDE & Editors
+.idea/
+*.iml
+*.iws
+*.ipr
+.settings/
+.project
+.classpath
+.factorypath
+*.sublime-project
+*.sublime-workspace
+
+# VS Code specific (keep tasks/launch if desired, ignore local editor state)
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/settings.json
+
+# Logs & Temporary Files
+*.log
+*.tmp
+*.bak
+*.swp
+*~

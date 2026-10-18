@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run StudentNest (JavaFX)",
+            "type": "shell",
+            "command": "./mvnw javafx:run",
+            "windows": {
+                "command": ".\\mvnw.cmd javafx:run"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/v1"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
