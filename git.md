@@ -11,13 +11,13 @@ A practical reference guide for Git operations in this project. All commands, co
 git status
 ```
 
-### To Commit Newly Added `v2/`, `Screenshot/v2/` & Docs:
+### To Commit `v2/`, `v2-2026/`, `Screenshot/v2/` & Docs:
 ```bash
 # 1. Stage changes
 git add .
 
 # 2. Commit with message
-git commit -m "feat(v2): add v2 build, screenshots, and updated documentation"
+git commit -m "feat(v2-2026): complete UI redesign with Boxicons, MySQL database, and JavaFX modern theme"
 
 # 3. Push to GitHub
 git push origin main
@@ -97,5 +97,11 @@ cd /Users/armanhossenripon/Documents/GitHub/StudentNest/v1
 ### Running `v2`:
 ```bash
 cd /Users/armanhossenripon/Documents/GitHub/StudentNest/v2
+./mvnw javafx:run
+```
+
+### Running `v2-2026` (Boxicons Redesign):
+```bash
+cd /Users/armanhossenripon/Documents/GitHub/StudentNest/v2-2026
 ./mvnw javafx:run
 ```
