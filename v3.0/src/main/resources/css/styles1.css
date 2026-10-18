@@ -1,0 +1,505 @@
+/*
+==============================================
+StudentNest - Common CSS Styles
+File: src/main/resources/css/styles.css
+==============================================
+*/
+
+/* Root Variables for Consistent Colors */
+:root {
+    -fx-primary-color: #2196F3;
+    -fx-primary-dark: #1976D2;
+    -fx-secondary-color: #4CAF50;
+    -fx-accent-color: #FF9800;
+    -fx-danger-color: #f44336;
+    -fx-warning-color: #FFC107;
+    -fx-success-color: #4CAF50;
+    -fx-info-color: #2196F3;
+    -fx-light-gray: #f5f5f5;
+    -fx-medium-gray: #ddd;
+    -fx-dark-gray: #666;
+    -fx-text-color: #333;
+    -fx-white: white;
+    -fx-shadow: rgba(0,0,0,0.1);
+}
+
+/* Global Styles */
+.root {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: linear-gradient(to bottom, #f0f8ff, #e6f3ff);
+}
+
+/* Common Button Styles */
+.button {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 24;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);
+    -fx-transition: all 0.3s ease;
+}
+
+.button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 6, 0, 0, 3);
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.button:pressed {
+    -fx-scale-y: 0.98;
+    -fx-scale-x: 0.98;
+}
+
+/* Primary Button */
+.btn-primary {
+    -fx-background-color: linear-gradient(to bottom, #2196F3, #1976D2);
+    -fx-text-fill: white;
+    -fx-border-color: #1976D2;
+    -fx-border-width: 1;
+}
+
+.btn-primary:hover {
+    -fx-background-color: linear-gradient(to bottom, #1976D2, #1565C0);
+}
+
+/* Success Button */
+.btn-success {
+    -fx-background-color: linear-gradient(to bottom, #4CAF50, #388E3C);
+    -fx-text-fill: white;
+    -fx-border-color: #388E3C;
+    -fx-border-width: 1;
+}
+
+.btn-success:hover {
+    -fx-background-color: linear-gradient(to bottom, #388E3C, #2E7D32);
+}
+
+/* Danger Button */
+.btn-danger {
+    -fx-background-color: linear-gradient(to bottom, #f44336, #D32F2F);
+    -fx-text-fill: white;
+    -fx-border-color: #D32F2F;
+    -fx-border-width: 1;
+}
+
+.btn-danger:hover {
+    -fx-background-color: linear-gradient(to bottom, #D32F2F, #C62828);
+}
+
+/* Warning Button */
+.btn-warning {
+    -fx-background-color: linear-gradient(to bottom, #FF9800, #F57C00);
+    -fx-text-fill: white;
+    -fx-border-color: #F57C00;
+    -fx-border-width: 1;
+}
+
+.btn-warning:hover {
+    -fx-background-color: linear-gradient(to bottom, #F57C00, #EF6C00);
+}
+
+/* Sidebar Button */
+.sidebar-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-color: rgba(255,255,255,0.3);
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 10 20;
+    -fx-font-size: 14px;
+    -fx-alignment: center-left;
+}
+
+.sidebar-btn:hover {
+    -fx-background-color: rgba(255,255,255,0.1);
+    -fx-border-color: rgba(255,255,255,0.6);
+}
+
+.sidebar-btn:pressed {
+    -fx-background-color: rgba(255,255,255,0.2);
+}
+
+/* Input Fields */
+.text-field, .password-field, .text-area {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 5;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
+}
+
+.text-field:focused, .password-field:focused, .text-area:focused {
+    -fx-border-color: #2196F3;
+    -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.3), 4, 0, 0, 0);
+}
+
+/* ComboBox */
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #1072f3;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-background-radius: 4;
+    -fx-padding: 4;
+}
+
+.combo-box:showing {
+    -fx-border-color: #33A1E0;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 4;
+    -fx-font-size: 14px;
+}
+
+.combo-box .list-cell:hover{
+    fx-text-fill : #000000;
+}
+
+
+/* Labels */
+.label {
+    -fx-text-fill: #333;
+    -fx-font-size: 14px;
+}
+
+
+/* Cards */
+.card {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
+}
+
+.card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 12, 0, 0, 4);
+    -fx-translate-y: -2;
+}
+
+.login-card {
+    -fx-background-color: #f5f5f5;;
+    -fx-border-color: #dadada;
+    -fx-border-width: 1;
+    -fx-border-radius: 15;
+    -fx-background-radius: 12;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 5);
+}
+
+.room-card {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0, 0, 2);
+    -fx-spacing: 12;
+}
+
+.room-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 10, 0, 0, 4);
+    -fx-translate-y: -3;
+}
+
+/* Sidebars */
+.sidebar {
+    -fx-padding: 25;
+    -fx-spacing: 15;
+}
+
+.student-sidebar {
+    -fx-background-color: linear-gradient(to bottom, #2196F3, #1976D2);
+}
+
+.owner-sidebar {
+    -fx-background-color: linear-gradient(to bottom, #4CAF50, #388E3C);
+}
+
+.admin-sidebar {
+    -fx-background-color: linear-gradient(to bottom, #673AB7, #512DA8);
+}
+
+/* Tables */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0, 0, 1);
+}
+
+.table-view .column-header {
+    -fx-background-color: #328fec;
+    -fx-border-color: #77a7d6;
+    -fx-border-width: 0 0 2 0;
+    -fx-font-weight: bold;
+    -fx-text-fill: #a6c4e2;
+    -fx-padding: 15 10;
+}
+
+.table-view .table-cell {
+    -fx-padding: 12 10;
+    -fx-border-color: #bac3cb;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #2d8ded;
+    -fx-text-fill: #1976D2;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #328fec;
+    -fx-text-fill: white;
+}
+
+/* ListView */
+.list-view {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.list-cell {
+    -fx-padding: 15;
+    -fx-border-color: #f0f0f0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.list-cell:selected {
+    -fx-background-color: rgba(33,150,243,0.1);
+    -fx-text-fill: #1976D2;
+}
+
+
+/* ScrollPane */
+.scroll-pane {
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .content {
+    -fx-background-color: transparent;
+}
+
+/* Charts */
+.chart {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);
+}
+
+.chart-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+/* Tab Pane */
+.tab-pane {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 2 0;
+}
+
+.tab-pane .tab {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 12 20;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: white;
+    -fx-border-color: #2196F3;
+    -fx-border-width: 0 0 3 0;
+    -fx-text-fill: #2196F3;
+}
+
+.tab-pane .tab:hover {
+    -fx-background-color: rgba(33,150,243,0.05);
+}
+
+.tab-pane .tab-content-area {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Specific Component Styles */
+.price-label {
+    -fx-text-fill: #4CAF50;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+
+.location-label {
+    -fx-text-fill: #2196F3;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+
+.contact-btn {
+    -fx-background-color: linear-gradient(to bottom, #4CAF50, #388E3C);
+    -fx-text-fill: white;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 8 16;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.contact-btn:hover {
+    -fx-background-color: linear-gradient(to bottom, #388E3C, #2E7D32);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Filter Controls */
+.filter-container {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+    -fx-spacing: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0, 0, 1);
+}
+
+/* Animations */
+.fade-in {
+    -fx-opacity: 0;
+}
+
+.slide-in-left {
+    -fx-translate-x: -100;
+    -fx-opacity: 0;
+}
+
+.slide-in-right {
+    -fx-translate-x: 100;
+    -fx-opacity: 0;
+}
+
+/* Custom Scrollbar */
+.scroll-bar:horizontal, .scroll-bar:vertical {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: transparent;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #c0c0c0;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #a0a0a0;
+}
+
+.scroll-bar .thumb:pressed {
+    -fx-background-color: #808080;
+}
+
+/* Status Indicators */
+.status-active {
+    -fx-text-fill: #4CAF50;
+    -fx-font-weight: bold;
+}
+
+.status-inactive {
+    -fx-text-fill: #f44336;
+    -fx-font-weight: bold;
+}
+
+.status-pending {
+    -fx-text-fill: #FF9800;
+    -fx-font-weight: bold;
+}
+
+/* Responsive Design Classes */
+.container {
+    -fx-padding: 20;
+    -fx-spacing: 20;
+}
+
+.row {
+    -fx-spacing: 20;
+}
+
+.col {
+    -fx-spacing: 10;
+}
+
+.PANELNAME{
+   -fx-text-fill: #ffffff;
+   -fx-font-weight: bold;
+   -fx-font-size: 20;
+}
+
+.HouseOwnerPanel{
+   -fx-text-fill: #ffffff;
+   -fx-font-weight: bold;
+   -fx-font-size: 20;
+}
+
+.DashboardTitleText{
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+}
+
+.PANELNAMEN{
+       -fx-text-fill: #ffffff;
+       -fx-font-weight: bold;
+       -fx-font-size: 16;
+ }
+
+.rN{
+   -fx-text-fill: #ffffff;
+   -fx-font-weight: bold;
+   -fx-font-size: 16;
+}
+.uN{
+   -fx-text-fill: #ffffff;
+   -fx-font-weight: bold;
+   -fx-font-size: 16;
+}
+
+.AdminSideBTN{
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-background-color: #2d8ded;
+}
+
