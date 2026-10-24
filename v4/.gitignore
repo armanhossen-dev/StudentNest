@@ -1,0 +1,17 @@
+target/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+*.log
+studentnest.db
+studentnest.db-journal
+studentnest.db-wal
+studentnest.db-shm
+room_images/
+.studentnest/
+*.class
+.DS_Store
+dependency-reduced-pom.xml

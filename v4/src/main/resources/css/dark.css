@@ -1,0 +1,404 @@
+.root {
+    -sn-bg: #0F172A;
+    -sn-surface: #1E293B;
+    -sn-sidebar: #0B1220;
+    -sn-sidebar-text: #FFFFFF;
+    -sn-text: #FFFFFF;
+    -sn-muted: #FFFFFF;
+    -sn-border: rgba(255, 255, 255, 0.12);
+    -sn-field: #0F172A;
+
+    /* Base JavaFX text colors so all controls inherit white text */
+    -fx-text-base-color: #FFFFFF;
+    -fx-text-fill: #FFFFFF;
+    -fx-text-background-color: #FFFFFF;
+}
+
+/* Base text elements */
+.text,
+.label,
+Text,
+Label {
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Brand and navigation text */
+.brand-title,
+.brand-sub,
+.brand-mark-label,
+.sidebar-section-title,
+.avatar-label {
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Page titles, subtitles, headers, stats */
+.page-title,
+.page-subtitle,
+.feature-title,
+.property-title,
+.property-meta,
+.stat-value,
+.stat-label,
+.hero-title,
+.hero-copy,
+.empty-title,
+.empty-copy,
+.muted,
+.price {
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Badges & Chips */
+.badge,
+.badge-blue,
+.badge-green,
+.badge-yellow,
+.badge-pink,
+.badge-red,
+.chip {
+    -fx-text-fill: #FFFFFF;
+}
+
+.chip {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-text-fill: #FFFFFF;
+}
+
+.badge-yellow {
+    -fx-background-color: rgba(234, 179, 8, 0.28);
+    -fx-text-fill: #FFFFFF;
+}
+
+.demo-note {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: rgba(234, 179, 8, 0.25);
+}
+
+/* All buttons */
+.button,
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-ghost,
+.btn-warn,
+.btn-danger,
+.btn-success,
+.icon-button,
+.nav-button {
+    -fx-text-fill: #FFFFFF;
+}
+
+.btn-secondary {
+    -fx-background-color: rgba(37, 99, 235, 0.28);
+    -fx-text-fill: #FFFFFF;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: rgba(37, 99, 235, 0.42);
+    -fx-text-fill: #FFFFFF;
+}
+
+.btn-ghost {
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: rgba(255, 255, 255, 0.20);
+}
+
+.btn-ghost:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.10);
+    -fx-text-fill: #FFFFFF;
+}
+
+.btn-warn {
+    -fx-text-fill: #FFFFFF;
+}
+
+.icon-button {
+    -fx-background-color: rgba(255, 255, 255, 0.10);
+    -fx-text-fill: #FFFFFF;
+}
+
+.icon-button:hover {
+    -fx-background-color: rgba(37, 99, 235, 0.30);
+    -fx-text-fill: #FFFFFF;
+}
+
+.nav-button {
+    -fx-text-fill: #FFFFFF;
+}
+
+.nav-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.10);
+    -fx-text-fill: #FFFFFF;
+}
+
+.nav-button.active {
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Text inputs, TextAreas, ComboBoxes, ChoiceBoxes */
+.text-field,
+.password-field,
+.text-area,
+.combo-box,
+.choice-box {
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.55);
+}
+
+.text-field .text,
+.password-field .text,
+.text-area .text,
+.text-area .content {
+    -fx-fill: #FFFFFF;
+    -fx-text-fill: #FFFFFF;
+}
+
+.combo-box .list-cell,
+.combo-box-popup .list-view,
+.combo-box-popup .list-view .list-cell,
+.choice-box .list-cell {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #1E293B;
+}
+
+.combo-box-popup .list-view .list-cell:hover,
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: #FFFFFF;
+}
+
+.spinner .text-field {
+    -fx-text-fill: #FFFFFF;
+}
+
+.spinner .increment-arrow-button .increment-arrow,
+.spinner .decrement-arrow-button .decrement-arrow,
+.combo-box .arrow-button .arrow {
+    -fx-background-color: #FFFFFF;
+}
+
+/* Checkboxes and radio buttons */
+.check-box,
+.check-box .label,
+.check-box .text,
+.radio-button,
+.radio-button .label,
+.radio-button .text {
+    -fx-text-fill: #FFFFFF;
+}
+
+.check-box .box {
+    -fx-background-color: #1E293B;
+    -fx-border-color: rgba(255, 255, 255, 0.25);
+    -fx-border-radius: 4;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #FFFFFF;
+}
+
+/* Tables */
+.table-view {
+    -fx-background-color: -sn-surface;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 700;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-view .placeholder .label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: rgba(255, 255, 255, 0.02);
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgba(37, 99, 235, 0.35);
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Tab panes */
+.tab-pane .tab .tab-label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 700;
+}
+
+/* Charts */
+.chart-title {
+    -fx-text-fill: #FFFFFF;
+}
+
+.axis {
+    -fx-tick-label-fill: #FFFFFF;
+}
+
+.axis-label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+}
+
+.chart-legend-item {
+    -fx-text-fill: #FFFFFF;
+}
+
+.chart-pie-label {
+    -fx-fill: #FFFFFF;
+}
+
+/* Hyperlinks */
+.hyperlink {
+    -fx-text-fill: #FFFFFF;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #93C5FD;
+}
+
+/* Modals & Dialogs */
+.modal-card .label,
+.modal-card .text {
+    -fx-text-fill: #FFFFFF;
+}
+
+.auth-dialog-root,
+.dialog-window-card {
+    -fx-background-color: -sn-surface;
+    -fx-background-radius: 0;
+    -fx-effect: null;
+}
+
+.dialog-pane,
+.dialog-pane .label,
+.dialog-pane .content.label,
+.dialog-pane:header .header-panel .label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.dialog-pane {
+    -fx-background-color: -sn-surface;
+}
+
+/* Toasts */
+.toast-title,
+.toast-body,
+.toast-warning .toast-title,
+.toast-warning .toast-body {
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Scrollbars */
+.scroll-bar .thumb {
+    -fx-background-color: rgba(255, 255, 255, 0.25);
+}
+
+.scroll-bar:hover .thumb {
+    -fx-background-color: rgba(255, 255, 255, 0.45);
+}
+
+/* Topbar Actions in Dark Mode */
+.topbar-btn {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-text-fill: #FFFFFF;
+}
+
+.topbar-btn:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+    -fx-border-color: rgba(255, 255, 255, 0.22);
+    -fx-text-fill: #FFFFFF;
+}
+
+.topbar-divider {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+}
+
+.user-profile-pill {
+    -fx-background-color: rgba(255, 255, 255, 0.06);
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+}
+
+.user-pill-name {
+    -fx-text-fill: #FFFFFF;
+}
+
+.user-pill-role {
+    -fx-text-fill: rgba(255, 255, 255, 0.70);
+}
+
+.topbar-auth-logout {
+    -fx-background-color: rgba(239, 68, 68, 0.18);
+    -fx-border-color: rgba(239, 68, 68, 0.35);
+    -fx-text-fill: #FFFFFF;
+}
+
+.topbar-auth-logout:hover {
+    -fx-background-color: rgba(239, 68, 68, 0.28);
+    -fx-border-color: rgba(239, 68, 68, 0.50);
+}
+
+/* Confirmation Dialog in Dark Mode */
+.confirm-dialog-title,
+.confirm-dialog-body {
+    -fx-text-fill: #FFFFFF;
+}
+
+/* DialogPane in Dark Mode */
+.dialog-pane {
+    -fx-background-color: #1E293B;
+}
+
+.dialog-pane:header .header-panel {
+    -fx-background-color: #0F172A;
+    -fx-border-color: rgba(255, 255, 255, 0.10);
+    -fx-border-width: 0 0 1 0;
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 700;
+}
+
+.dialog-pane > .content {
+    -fx-background-color: #1E293B;
+    -fx-text-fill: #FFFFFF;
+}
+
+.dialog-pane > .button-bar {
+    -fx-background-color: #1E293B;
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-width: 1 0 0 0;
+}
+
+.dialog-pane > .button-bar .button {
+    -fx-background-color: rgba(255, 255, 255, 0.08);
+    -fx-border-color: rgba(255, 255, 255, 0.16);
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 600;
+}

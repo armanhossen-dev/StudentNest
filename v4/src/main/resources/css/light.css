@@ -1,0 +1,10 @@
+.root {
+    -sn-bg: #FFFFFF;
+    -sn-surface: #FFFFFF;
+    -sn-sidebar: #0F172A;
+    -sn-sidebar-text: #FFFFFF;
+    -sn-text: #0F172A;
+    -sn-muted: rgba(15, 23, 42, 0.62);
+    -sn-border: rgba(15, 23, 42, 0.10);
+    -sn-field: #FFFFFF;
+}
